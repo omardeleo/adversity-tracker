@@ -1,10 +1,10 @@
 module Api::V1
   class AdversitiesController < ApplicationController
-  def index
-    # @adversities = Adversity.where(user_id: params[:user_id])
-    @adversities = Adversity.all
-    render json: @adversities
-  end
+    def index
+      # @adversities = Adversity.where(user_id: params[:user_id])
+      @adversities = Adversity.all
+      render json: @adversities
+    end
 
   #   def create
   #     @adversity = Adversity.create(adversity_params)
