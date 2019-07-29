@@ -27,9 +27,12 @@ class App extends React.Component {
       return <li key={i}>{adversity.title}</li>
     })
     return (
-      <ul>
-        {adversitiesList}
-      </ul>
+      <div>
+        <h1>Adversity Tracker</h1>
+        <ul>
+          {adversitiesList}
+        </ul>
+      </div>
     )
   }
 }
