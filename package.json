@@ -1,8 +1,7 @@
 {
   "name": "adversity-tracker",
   "engines": {
-    "node": "12.4.0",
-    "npm": "6.10.2"
+    "node": "12.4.0"
   },
   "version": "1.0.0",
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",

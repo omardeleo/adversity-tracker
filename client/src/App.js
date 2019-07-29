@@ -10,7 +10,7 @@ class App extends React.Component {
     }
   }
   componentDidMount() {
-    fetch("/v1/adversities")
+    fetch("api/v1/adversities")
       .then((response) => {
         // console.log(response.json());
         return response.json()
