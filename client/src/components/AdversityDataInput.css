@@ -1,0 +1,18 @@
+.AdversityDataInput {
+  width: 1024px;
+  font-family: sans-serif;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #a9a9a9;
+  border-radius: 10px;
+  margin: 10px 0;
+  padding-right: 20px;
+  overflow: hidden;
+}
+
+.navigation {
+  display: flex;
+  margin-bottom: 30px;
+}

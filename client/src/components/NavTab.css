@@ -1,0 +1,31 @@
+.navigation {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.navigation-button {
+  padding: 10px;
+  width: 170px;
+  border: 2px solid #a9a9a9;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  margin-top: -1px;
+  color: #a9a9a9;
+  background: #181818;
+}
+
+.nav-selected {
+  transform: scale(1.2);
+  z-index: 2;
+  margin-top: 3px;
+}
+
+.navigation-button:nth-of-type(2) {
+  margin-left: -15px;
+  z-index: 1;
+}
+
+.navigation-button:nth-of-type(3) {
+  margin-left: -15px;
+}

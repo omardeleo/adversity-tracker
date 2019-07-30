@@ -1,0 +1,15 @@
+.main-container {
+  width: 1300px;
+  border: 1px solid #a9a9a9;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-navigation {
+  display: flex;
+  margin-bottom: 60px;
+  width: 100%;
+  margin-left: 50px;
+}
