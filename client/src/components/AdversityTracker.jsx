@@ -1,7 +1,7 @@
 import React from "react";
 
 import AdversityTitle from "./AdversityTitle";
-import Initialize from "./Initialize";
+import Recognition from "./Recognition";
 
 class AdversityTracker extends React.Component {
     render() {
@@ -11,7 +11,7 @@ class AdversityTracker extends React.Component {
                     <div className="accept-button">accept</div>
                 </div>
                 <AdversityTitle handleTitle={this.props.handleTitle} />
-                <Initialize />
+                <Recognition />
             </div>
         );
     }

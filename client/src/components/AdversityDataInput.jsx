@@ -11,7 +11,7 @@ class AdversityDataInput extends React.Component {
                 <div className="AdversityDataInput">
                     <div className="navigation">
                         <Tab
-                            section="Initialize"
+                            section="Recognition"
                             selected={true}
                         />
                         <Tab section="Introspection" />
