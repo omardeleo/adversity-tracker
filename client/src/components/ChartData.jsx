@@ -3,13 +3,9 @@ import React from 'react';
 import Chart from './Chart';
 
 class ChartData extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
-        this.props.fetchAdversities(1);
-        // this.props.fetchAdversities(this.props.currentUser.id);
+        // this.props.fetchAdversities(1);
+        this.props.fetchAdversities(this.props.currentUser.id);
     }
 
 

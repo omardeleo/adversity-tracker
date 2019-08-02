@@ -36,7 +36,8 @@ class Chart extends React.Component {
         series.dataFields.categoryY = "title";
         series.columns.template.height = 0;
 
-        var dateBullet = series.bullets.create(am4charts.CircleBullet);
+        series.bullets.create(am4charts.CircleBullet);
+        // var dateBullet = series.bullets.create(am4charts.CircleBullet);
     }
 
     componentWillUnmount() {

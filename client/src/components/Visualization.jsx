@@ -13,7 +13,7 @@ class Visualization extends React.Component {
     render() {
         return (
             <div>
-                <h1>Adversity Data for Dean Dibbert</h1>
+                <h1>Adversity Data for {this.props.currentUser.name}</h1>
                 <div className="chart-container">
                     <ChartContainer />
                 </div>
@@ -23,5 +23,3 @@ class Visualization extends React.Component {
 }
 
 export default Visualization;
-
-// <h1>Adversity Data for {this.props.currentUser.name}</h1>
