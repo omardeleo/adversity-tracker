@@ -2,6 +2,8 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 
+import './AdversityStory.css';
+
 const useStyles = makeStyles(theme => ({
     advStoryField: {
         height: 70,
@@ -43,6 +45,7 @@ export default function AdversityStory(props) {
                 rows="2"
                 // eslint-disable-next-line
                 inputProps={{ "aria-label": "adversity-story" }}
+                onChange={e => props.handleStory(e.target.value)}
             />
         </div>
     );

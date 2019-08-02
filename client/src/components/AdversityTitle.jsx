@@ -2,6 +2,8 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 
+import './AdversityTitle.css';
+
 const useStyles = makeStyles(theme => ({
     advTitleField: {
         height: 50,
@@ -38,6 +40,7 @@ export default function AdversityTitle(props) {
                 defaultValue=""
                 margin="normal"
                 variant="outlined"
+                onChange={e => props.handleTitle(e.target.value)}
             />
         </div>
     );

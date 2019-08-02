@@ -5,6 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import { Add } from "@material-ui/icons";
 
 import FeelingsSlider from "./CustomSlider";
+import './AdversityFeeling.css';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -29,21 +30,25 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const FeelingItem = props => {
-    // const { feeling, sliderVal } = props.feeling;
+    const { feeling, sliderVal } = props.feeling;
     const classes = useStyles();
     return (
         <div className="feeling-row">
             <TextField
                 className={classes.root}
                 placeholder="Enter Feeling"
+                defaultValue={feeling}
                 margin="normal"
                 variant="outlined"
                 inputProps={{
                     "aria-label": "adversity-feeling",
                     className: classes.input
                 }}
+                onChange={props.handleFeelingChange}
             />
             <FeelingsSlider
+                sliderVal={sliderVal}
+                handleChange={props.handleSliderChange}
                 className={classes.slider}
             />
         </div>
@@ -67,12 +72,22 @@ class AdversityFeeling extends React.Component {
           </div>
                     <div className="feeling-main">
                         <div className="feelings-container">
-
-                                <FeelingItem />
+                            {this.props.feelings.map((feeling, i) => (
+                                <FeelingItem
+                                    key={i}
+                                    feeling={feeling}
+                                    handleSliderChange={(evt, val, idx) =>
+                                        this.props.handleSliderChange(evt, val, i)
+                                    }
+                                    handleFeelingChange={(evt, idx) =>
+                                        this.props.handleFeelingChange(evt, i)
+                                    }
+                                />
+                            ))}
                         </div>
                     </div>
                 </div>
-                <Add className="add-feeling" />
+                <Add className="add-feeling" onClick={this.props.handleAddSlider} />
             </div>
         );
     }

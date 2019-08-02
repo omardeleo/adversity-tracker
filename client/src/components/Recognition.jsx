@@ -8,7 +8,12 @@ class Recognition extends React.Component {
         return (
             <div>
                 <AdversityStory handleStory={this.props.handleStory} />
-                <AdversityFeeling />
+                <AdversityFeeling
+                    feelings={this.props.feelings}
+                    handleAddSlider={this.props.handleAddSlider}
+                    handleFeelingChange={this.props.handleFeelingChange}
+                    handleSliderChange={this.props.handleSliderChange}
+                />
             </div>
         );
     }
