@@ -3,13 +3,13 @@ module Api::V1
   def index
     @adversities = Adversity.where(user_id: params[:user_id])
 
-    render :index
+    render json: @adversities
   end
 
   def create
     @adversity = Adversity.create(adversity_params)
     if @adversity.save
-      render :show
+      render json: @adversity
     else
       render json: @adversity.errors.full_messages, status: 422
     end
@@ -18,7 +18,7 @@ module Api::V1
   def show
     @adversity = Adversity.find(params[:id])
 
-    render :show
+    render json: @adversity
   end
 
   def adversity_params
