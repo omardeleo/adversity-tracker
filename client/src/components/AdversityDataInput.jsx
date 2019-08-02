@@ -100,7 +100,8 @@ class AdversityDataInput extends React.Component {
     handleAccept(e) {
         e.preventDefault();
         const { title, story, feelings } = this.state.recognition;
-        const user_id = this.props.currentUser.id;
+        // const user_id = this.props.currentUser.id;
+        const user_id = 1;
         createAdversity({ title, story, user_id }).then(adversity => {
             const adversity_id = adversity.id
             feelings.forEach(feeling => {

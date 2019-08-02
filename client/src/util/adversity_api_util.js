@@ -3,7 +3,7 @@ import $ from 'jquery';
 export const createAdversity = (adversity) => (
     $.ajax({
         method: 'POST',
-        url: `/api/users/${adversity.user_id}/adversities`,
+        url: `/api/v1/users/${adversity.user_id}/adversities`,
         data: { adversity }
     })
 );
@@ -11,6 +11,6 @@ export const createAdversity = (adversity) => (
 export const fetchAdversities = id => {
     return $.ajax({
         method: 'GET',
-        url: `/api/users/${id}/adversities`,
+        url: `/api/v1/users/${id}/adversities`,
     });
 };
