@@ -2,7 +2,7 @@ import React from 'react';
 
 import Tab from "./NavTab";
 import AdversityInput from './AdversityDataInputContainer';
-// import Visualization from './VisualizationContainer';
+import Visualization from './VisualizationContainer';
 
 import './Main.css';
 
@@ -26,13 +26,13 @@ class Main extends React.Component {
             return { currentTab: currentTab };
         });
     }
-    // displayComponent = tab => {
-    //     if (tab === "Adversity Data Input") {
-    //         return <AdversityInput />
-    //     } else {
-    //         return <Visualization />
-    //     }
-    // }
+    displayComponent = tab => {
+        if (tab === "Adversity Data Input") {
+            return <AdversityInput />
+        } else {
+            return <Visualization />
+        }
+    }
     render() {
         return (
             <div className="main-container">
@@ -47,7 +47,7 @@ class Main extends React.Component {
                         selected={true}
                     />
                 </div>
-                <AdversityInput />
+                {this.displayComponent(this.state.currentTab)}
             </div>
         )
     }
