@@ -1,0 +1,23 @@
+.tracker-container {
+  width: 100%;
+}
+
+.accept-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.accept-button {
+  margin-right: 40px;
+  border: 1px solid #a9a9a9;
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.2);
+  background: #383838;
+}
+
+.accept-button:hover {
+  border: 1px solid #606060;
+}

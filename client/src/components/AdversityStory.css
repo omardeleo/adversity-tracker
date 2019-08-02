@@ -1,0 +1,10 @@
+.adv-story {
+  display: flex;
+  align-items: center;
+}
+
+.adv-story-label {
+  min-width: 200px;
+  text-align: right;
+  margin: 0 10px 0 40px;
+}

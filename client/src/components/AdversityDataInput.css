@@ -16,3 +16,22 @@
   display: flex;
   margin-bottom: 30px;
 }
+
+.logout-btn {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.input-data {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.feelings {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}

@@ -1,0 +1,27 @@
+.feelings-slider {
+  margin-left: 20px;
+  display: flex;
+}
+
+.slider-container {
+  min-width: 300px;
+  margin-left: 30px;
+  border: 1px solid #a9a9a9;
+  border-radius: 5px;
+  padding: 0 20px;
+}
+
+.slider-values {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: -10px;
+  margin-bottom: 8px;
+}
+
+.slider-value {
+  display: flex;
+  justify-content: center;
+  width: 33%;
+  font-size: 12px;
+}

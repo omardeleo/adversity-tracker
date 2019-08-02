@@ -1,0 +1,27 @@
+.adv-feeling {
+  display: flex;
+}
+
+.adv-feeling-text input:focus {
+  outline: none;
+}
+
+.feeling-row {
+  display: flex;
+  align-items: center;
+}
+
+.feelings-tracker-label {
+  min-width: 200px;
+  text-align: right;
+  margin: 0 10px 0 40px;
+}
+
+.feeling-main {
+  display: flex;
+  align-items: center;
+}
+
+.add-feeling {
+  cursor: pointer;
+}

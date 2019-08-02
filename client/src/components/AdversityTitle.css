@@ -1,0 +1,18 @@
+.adv-title {
+  display: flex;
+  align-items: center;
+}
+
+.adv-title-input {
+  box-sizing: border-box;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  border: 1px solid;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.adv-title-label {
+  min-width: 200px;
+  text-align: right;
+  margin: 0 10px 0 40px;
+}
