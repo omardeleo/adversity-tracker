@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import Root from './components/Root';
 import configureStore from './store/store';
+import './index.css';
 
 document.addEventListener('DOMContentLoaded', () => {
     let store;
