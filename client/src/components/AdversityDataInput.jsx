@@ -5,7 +5,7 @@ import Tab from "./NavTab";
 import DisplayValues from "../util/DisplayValues";
 import './AdversityDataInput.css';
 
-import { createAdversity } from '../util/adversity_api_util';
+import { createAdversity } from '../actions/adversity_actions';
 import { createFeeling } from '../util/feeling_api_util';
 
 class AdversityDataInput extends React.Component {
@@ -100,16 +100,10 @@ class AdversityDataInput extends React.Component {
     handleAccept(e) {
         e.preventDefault();
         const { title, story, feelings } = this.state.recognition;
-        // const user_id = this.props.currentUser.id;
-        const user_id = 1;
-        createAdversity({ title, story, user_id }).then(adversity => {
-            const adversity_id = adversity.id
-            feelings.forEach(feeling => {
-                let { feeling: name, sliderVal: intensity } = feeling;
-                createFeeling({ name, intensity, adversity_id })
-            })
-            return adversity;
-        }).then(adversity => {
+        const user_id = this.props.currentUser.id;
+        // const user_id = 1;
+        this.props.createAdversity({ title, story, user_id })
+        .then(() => {
             this.setState({
                 recognition: {
                     title: "",
@@ -117,7 +111,23 @@ class AdversityDataInput extends React.Component {
                     feelings: [{ feeling: "", sliderVal: 0 }]
                 }
             })
-        })
+        });
+        // createAdversity({ title, story, user_id }).then(adversity => {
+        //     const adversity_id = adversity.id
+        //     feelings.forEach(feeling => {
+        //         let { feeling: name, sliderVal: intensity } = feeling;
+        //         createFeeling({ name, intensity, adversity_id })
+        //     })
+        //     return adversity;
+        // }).then(adversity => {
+        //     this.setState({
+        //         recognition: {
+        //             title: "",
+        //             story: "",
+        //             feelings: [{ feeling: "", sliderVal: 0 }]
+        //         }
+        //     })
+        // })
     }
 
     render() {

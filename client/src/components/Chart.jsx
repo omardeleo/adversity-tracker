@@ -5,6 +5,8 @@ import * as am4charts from "@amcharts/amcharts4/charts";
 class Chart extends React.Component {
     componentDidMount() {
         let chart = am4core.create("chartdiv", am4charts.XYChart);
+        this.chart = chart;
+        console.log('inside the Chart.jsx avd', this.props.adversities);
         chart.data = this.props.adversities;
         chart.background.fill = "#282828";
         chart.paddingRight = 50;
@@ -19,7 +21,7 @@ class Chart extends React.Component {
         dateAxis.strictMinMax = true;
         categoryAxis.renderer.labels.template.fill = am4core.color("#a9a9a9");
         categoryAxis.renderer.labels.template.events.on("hit", function(ev) {
-            console.log("click on", ev.target);
+            // console.log("click on", ev.target);
         }, this);
         dateAxis.renderer.labels.template.fill = am4core.color("#a9a9a9");
         dateAxis.renderer.grid.template.stroke = am4core.color("#a9a9a9");
