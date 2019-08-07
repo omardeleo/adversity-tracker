@@ -7,15 +7,15 @@ import './index.css';
 
 document.addEventListener('DOMContentLoaded', () => {
     let store;
-    if (window.currentUser) {
+    let currentUser = JSON.parse(window.localStorage.getItem('userData'));
+    if (currentUser) {
         const preloadedState = {
-            session: { id: window.currentUser.id },
+            session: { id: currentUser.id },
             entities: {
-                users: { [window.currentUser.id]: window.currentUser }
+                users: { [currentUser.id]: currentUser }
             }
         };
         store = configureStore(preloadedState);
-        delete window.currentUser;
     } else {
         store = configureStore();
     }
