@@ -97,21 +97,19 @@ class AdversityDataInput extends React.Component {
         });
     }
 
+    clearState = () => {
+        console.log('clesrsatte')
+        // console.log('stetsta',this.setState)
+        this.handleTitle("")
+    }
+
     handleAccept(e) {
         e.preventDefault();
         const { title, story, feelings } = this.state.recognition;
         const user_id = this.props.currentUser.id;
         // const user_id = 1;
         this.props.createAdversity({ title, story, user_id })
-        .then(() => {
-            this.setState({
-                recognition: {
-                    title: "",
-                    story: "",
-                    feelings: [{ feeling: "", sliderVal: 0 }]
-                }
-            })
-        });
+            .then(() => console.log("yooooooo"))
         // createAdversity({ title, story, user_id }).then(adversity => {
         //     const adversity_id = adversity.id
         //     feelings.forEach(feeling => {

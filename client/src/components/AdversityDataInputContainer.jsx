@@ -13,7 +13,7 @@ const mapStateToProps = ({ session, entities: { users } }) => {
 
 const mapDispatchToProps = dispatch => ({
     logout: () => dispatch(logout()),
-    createAdversity: (adversity) => dispatch(createAdversity(adversity))
+    createAdversity: (adversity, callback) => dispatch(createAdversity(adversity, callback))
 });
 
 export default withRouter(connect(

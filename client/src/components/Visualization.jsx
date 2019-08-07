@@ -10,7 +10,12 @@ class Visualization extends React.Component {
         }
     }
 
+    componentDidMount() {
+        this.props.getUser(this.props.currentUser.id);
+    }
+
     render() {
+        console.log(this.props.currentUser.name);
         return (
             <div>
                 <h1>Adversity Data for {this.props.currentUser.name}</h1>
