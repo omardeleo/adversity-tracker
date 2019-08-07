@@ -38,13 +38,13 @@ class Main extends React.Component {
             <div className="main-container">
                 <div className="main-navigation">
                     <Tab
-                        section="Adversity Analyzer"
-                        handleTabClick={this.handleTabClick}
-                    />
-                    <Tab
                         section="Adversity Data Input"
                         handleTabClick={this.handleTabClick}
                         selected={true}
+                    />
+                    <Tab
+                        section="Adversity Analyzer"
+                        handleTabClick={this.handleTabClick}
                     />
                 </div>
                 {this.displayComponent(this.state.currentTab)}
