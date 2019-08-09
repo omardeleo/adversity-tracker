@@ -1,7 +1,7 @@
 module Api::V1
     class FeelingsController < ApplicationController
         def index
-            @feelings = Feeling.where(adversity_id: params[:adversity_id])
+            @feelings = Feeling.where(recognition_id: params[:recognition_id])
 
             render json: @feelings
         end
@@ -23,7 +23,7 @@ module Api::V1
 
         def feeling_params
             params.require(:feeling).permit(
-                :adversity_id, 
+                :recognition_id, 
                 :name,
                 :intensity
             )

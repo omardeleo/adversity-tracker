@@ -5,7 +5,7 @@ module Api::V1
 
             if @user.save
                 login(@user)
-                render json: @user
+                render json: @user.to_json(:only => [:id, :name, :email])
             else
                 render json: @user.errors.full_messages, status: 422
             end

@@ -3,7 +3,8 @@ module Api::V1
   def index
     @adversities = Adversity.where(user_id: params[:user_id])
 
-    render json: @adversities
+    render json: @adversities.to_json(:include => { :recognitions => {
+                                                      :include => [:story, :feelings] } })
   end
 
   def create
@@ -24,8 +25,7 @@ module Api::V1
   def adversity_params
     params.require(:adversity).permit(
         :user_id, 
-        :title,
-        :story
+        :title
     )
   end
 end
