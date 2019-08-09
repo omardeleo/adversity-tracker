@@ -5,7 +5,7 @@
 #### Server (Tab 1)
 - `bundle install`
 - `rails db:setup`
-- `rails db:migrate`
+- `rails s -p 3001`
 
 #### Client (Tab 2)
 - `cd client`
