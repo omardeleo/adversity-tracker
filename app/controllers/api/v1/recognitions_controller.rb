@@ -1,10 +1,7 @@
 module Api::V1
    class RecognitionsController < ApplicationController
         def create
-            puts "hello"
             @recognition = Recognition.new(recognition_params)
-            puts "hey"
-            puts @recognition
             if @recognition.save
             render json: @recognition
             else

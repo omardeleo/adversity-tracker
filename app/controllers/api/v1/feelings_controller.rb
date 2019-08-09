@@ -23,9 +23,9 @@ module Api::V1
 
         def feeling_params
             params.require(:feeling).permit(
-                :recognition_id, 
-                :name,
-                :intensity
+                :name, 
+                :intensity,
+                :recognition_id
             )
         end
     end
