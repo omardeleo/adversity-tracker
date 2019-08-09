@@ -9,6 +9,7 @@
 
 #### Client (Tab 2)
 - `cd client`
+- `npm install`
 - `npm start`
 
 ## Entity Relationship Diagram
