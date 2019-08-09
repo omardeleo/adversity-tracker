@@ -5,6 +5,7 @@ Rails.application.routes.draw do
         resources :adversities, only: [:index, :create, :show]
       end
       resources :recognitions, only: [:create]
+      resources :stories, only: [:create]
       resources :feelings, only: [:index, :create, :show]
       resource :session, only: [:create, :destroy]
     end
