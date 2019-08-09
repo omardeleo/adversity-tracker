@@ -26,6 +26,10 @@ export const clearErrors = () => ({
 
 export const signup = user => dispatch => {
     return APIUtil.signup(user).then(user => {
+        const loginData = {
+            id: user.id
+        }
+        window.localStorage.setItem('userData', JSON.stringify(loginData));
         dispatch(receiveCurrentUser(user))
     }, err => (
         dispatch(receiveErrors(err.responseJSON))
