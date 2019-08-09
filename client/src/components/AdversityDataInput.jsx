@@ -5,8 +5,9 @@ import Tab from "./NavTab";
 import DisplayValues from "../util/DisplayValues";
 import './AdversityDataInput.css';
 
-import { createAdversity } from '../actions/adversity_actions';
-import { createFeeling } from '../util/feeling_api_util';
+import { createRecognition } from "../util/recognition_api_util"
+import { createStory } from "../util/story_api_util"
+import { createFeeling } from "../util/feeling_api_util"
 
 class AdversityDataInput extends React.Component {
     constructor(props) {
@@ -97,39 +98,28 @@ class AdversityDataInput extends React.Component {
         });
     }
 
-    clearState = () => {
-        console.log('clesrsatte')
-        // console.log('stetsta',this.setState)
-        this.handleTitle("")
-    }
-
     handleAccept(e) {
         e.preventDefault();
         const { title, story, feelings } = this.state.recognition;
         const user_id = this.props.currentUser.id;
-        // const user_id = 1;
         this.props.createAdversity({ title, story, user_id })
-            .then(() => console.log("yooooooo"))
-        // createAdversity({ title, story, user_id }).then(adversity => {
-        //     const adversity_id = adversity.id
-        //     feelings.forEach(feeling => {
-        //         let { feeling: name, sliderVal: intensity } = feeling;
-        //         createFeeling({ name, intensity, adversity_id })
-        //     })
-        //     return adversity;
-        // }).then(adversity => {
-        //     this.setState({
-        //         recognition: {
-        //             title: "",
-        //             story: "",
-        //             feelings: [{ feeling: "", sliderVal: 0 }]
-        //         }
-        //     })
-        // })
+            .then(({adversity}) => {
+                return createRecognition(adversity.id)
+            }).then(recognition => {
+                createStory({id: recognition.id, text: story});
+                
+                for (let feel of feelings) {
+                    const {feeling, sliderVal } = feel;
+                    createFeeling({ 
+                        name: feeling, 
+                        intensity: sliderVal,
+                        recognition_id: recognition.id
+                    });
+                }
+            });
     }
 
     render() {
-
         return (
             <div>
                 <div className="AdversityDataInput">

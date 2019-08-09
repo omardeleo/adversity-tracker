@@ -15,7 +15,6 @@ class Visualization extends React.Component {
     }
 
     render() {
-        console.log(this.props.currentUser.name);
         return (
             <div>
                 <h1>Adversity Data for {this.props.currentUser.name}</h1>

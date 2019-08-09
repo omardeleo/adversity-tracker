@@ -6,7 +6,6 @@ class Chart extends React.Component {
     componentDidMount() {
         let chart = am4core.create("chartdiv", am4charts.XYChart);
         this.chart = chart;
-        console.log('inside the Chart.jsx avd', this.props.adversities);
         chart.data = this.props.adversities;
         chart.background.fill = "#282828";
         chart.paddingRight = 50;
