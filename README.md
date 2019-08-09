@@ -1,6 +1,6 @@
 # Mocha Adversity Tracker
 
-## Set Up
+## Setup
 
 #### Server (Tab 1)
 - `bundle install`
