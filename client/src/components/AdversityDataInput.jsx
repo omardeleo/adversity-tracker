@@ -102,12 +102,10 @@ class AdversityDataInput extends React.Component {
         e.preventDefault();
         const { title, story, feelings } = this.state.recognition;
         const user_id = this.props.currentUser.id;
-        this.props.createAdversity({ title, story, user_id })
+        this.props.createAdversity({ title, user_id })
             .then(({adversity}) => {
-                return createRecognition(adversity.id)
+                return createRecognition(adversity.id, story)
             }).then(recognition => {
-                createStory({id: recognition.id, text: story});
-                
                 for (let feel of feelings) {
                     const {feeling, sliderVal } = feel;
                     createFeeling({ 
