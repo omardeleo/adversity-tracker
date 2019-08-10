@@ -10,7 +10,7 @@ module Api::V1
         end
 
         def recognition_params
-            params.require(:recognition).permit(:adversity_id)
+            params.require(:recognition).permit(:adversity_id, :story)
         end
     end
 end

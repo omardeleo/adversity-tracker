@@ -4,7 +4,7 @@ module Api::V1
     @adversities = Adversity.where(user_id: params[:user_id])
 
     render json: @adversities.to_json(:include => { :recognitions => {
-                                                      :include => [:story, :feelings] } })
+                                                      :include => [:feelings] } })
   end
 
   def create
