@@ -10,7 +10,8 @@ module Api::V1
   def create
     @adversity = Adversity.create(adversity_params)
     if @adversity.save
-      render json: @adversity
+      render json: @adversity.to_json(:include => { :recognitions => {
+                                                      :include => [:feelings] } })
     else
       render json: @adversity.errors.full_messages, status: 422
     end
