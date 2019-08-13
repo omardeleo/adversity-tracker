@@ -6,7 +6,6 @@ import DisplayValues from "../util/DisplayValues";
 import './AdversityDataInput.css';
 
 import { createRecognition } from "../util/recognition_api_util"
-import { createStory } from "../util/story_api_util"
 import { createFeeling } from "../util/feeling_api_util"
 
 class AdversityDataInput extends React.Component {
@@ -15,7 +14,7 @@ class AdversityDataInput extends React.Component {
         this.state = {
             currentTab: "Recognition",
             recognition: {
-                title: "",
+                title: this.props.title,
                 story: "",
                 feelings: [{ feeling: "", sliderVal: 0 }]
             },
@@ -102,19 +101,36 @@ class AdversityDataInput extends React.Component {
         e.preventDefault();
         const { title, story, feelings } = this.state.recognition;
         const user_id = this.props.currentUser.id;
-        this.props.createAdversity({ title, user_id })
-            .then(({adversity}) => {
-                return createRecognition(adversity.id, story)
-            }).then(recognition => {
-                for (let feel of feelings) {
-                    const {feeling, sliderVal } = feel;
-                    createFeeling({ 
-                        name: feeling, 
-                        intensity: sliderVal,
-                        recognition_id: recognition.id
-                    });
-                }
-            });
+        if (this.props.adding) {
+            createRecognition(this.props.adversity_id, story)
+                .then(recognition => {
+                    for (let feel of feelings) {
+                        const { feeling, sliderVal } = feel;
+                        createFeeling({
+                            name: feeling,
+                            intensity: sliderVal,
+                            recognition_id: recognition.id
+                        });
+                    }
+                })
+                .then(() => this.props.clearTitle())
+                .then(() => this.props.history.push('/analyzer'));
+        } else {
+            this.props.createAdversity({ title, user_id })
+                .then(({ adversity }) => {
+                    return createRecognition(adversity.id, story)
+                }).then(recognition => {
+                    for (let feel of feelings) {
+                        const { feeling, sliderVal } = feel;
+                        createFeeling({
+                            name: feeling,
+                            intensity: sliderVal,
+                            recognition_id: recognition.id
+                        });
+                    }
+                }).then(() => this.props.clearTitle())
+                .then(() => this.props.history.push('/analyzer'));
+        }
     }
 
     render() {
@@ -130,7 +146,10 @@ class AdversityDataInput extends React.Component {
                         <Tab section="Introspection" handleTabClick={this.handleTabClick} />
                         <Tab section="Retrospection" handleTabClick={this.handleTabClick} />
                     </div>
+                    { this.props ? 
                     <AdversityTracker
+                        title={this.props.title}
+                        adding={this.props.adding}
                         state={this.state}
                         handleTitle={this.handleTitle}
                         handleStory={this.handleStory}
@@ -139,6 +158,7 @@ class AdversityDataInput extends React.Component {
                         handleFeelingChange={this.handleFeelingChange}
                         handleAccept={this.handleAccept}
                     />
+                    : null }
                     <div className="logout-btn">
                         <button onClick={this.props.logout}>LOG OUT</button>
                     </div>

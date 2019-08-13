@@ -9,30 +9,48 @@ import './Main.css';
 class Main extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            currentTab: "Adversity Data Input"
-        }
+        // this.state = {
+        //     currentTab: "Adversity Data Input",
+        //     title: ""
+        // }
         this.handleTabClick = this.handleTabClick.bind(this);
     }
 
     handleTabClick(e) {
-        const currentTab = e.target.innerText;
-        const selected = document.querySelector(".nav-selected");
-        if (selected) {
-            selected.classList.remove("nav-selected");
+        function selectTab(tab, setTab) {
+            setTab(tab)
+            const selected = document.querySelector(".nav-selected");
+            if (selected) {
+                selected.classList.remove("nav-selected");
+            }
+            e.target.classList.add("nav-selected");
         }
-        e.target.classList.add("nav-selected");
-        this.setState(state => {
-            return { currentTab: currentTab };
-        });
+        
+        let targetTab = e.target.innerText;
+        let currentPath = this.props.history.location.pathname;
+
+        if (targetTab === "Adversity Data Input") {
+            if (currentPath !== '/input') {
+                this.props.history.push('/input');
+                selectTab(targetTab, this.props.setCurrentTab)
+            }            
+        } else if (targetTab === "Adversity Analyzer") {
+            if (currentPath !== '/analyzer') {
+                this.props.history.push('/analyzer');
+                selectTab(targetTab, this.props.setCurrentTab)
+            }
+        }
     }
-    displayComponent = tab => {
-        if (tab === "Adversity Data Input") {
+
+    displayComponent = () => {
+        const tab = this.props.location.pathname;
+        if (tab === "/input" || tab === "/") {
             return <AdversityInput />
         } else {
             return <Visualization />
         }
     }
+
     render() {
         return (
             <div className="main-container">
@@ -47,7 +65,7 @@ class Main extends React.Component {
                         handleTabClick={this.handleTabClick}
                     />
                 </div>
-                {this.displayComponent(this.state.currentTab)}
+                {this.displayComponent()}
             </div>
         )
     }

@@ -1,13 +1,22 @@
 import React from 'react';
 import * as am4core from "@amcharts/amcharts4/core";
-import * as am4charts from "@amcharts/amcharts4/charts";
+import * as am4charts from "@amcharts/amcharts4/charts"; 
+
+import { Redirect } from 'react-router-dom';
 
 class Chart extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            redirect: false
+        };
+    }
+
     componentDidMount() {
         let chart = am4core.create("chartdiv", am4charts.XYChart);
         this.chart = chart;
         const { adversities } = this.props;
-        console.log('tp', this.props)
+        // console.log('adv in ch.jsx', adversities)
         chart.data = adversities;
         chart.background.fill = "#282828";
         chart.paddingRight = 50;
@@ -27,8 +36,21 @@ class Chart extends React.Component {
         xAxis.max = dateMax;
         xAxis.strictMinMax = true;
         yAxis.renderer.labels.template.fill = am4core.color("#a9a9a9");
+        yAxis.renderer.labels.template.cursorOverStyle = am4core.MouseCursorStyle.pointer;
         yAxis.renderer.labels.template.events.on("hit", function(ev) {
-            // console.log("click on", ev.target);
+            // console.log("click on", ev.target.currentText);
+            const title = ev.target.currentText;
+            let id;
+
+            for (let adversity of adversities) {
+                if (adversity.title === title) {
+                    id = adversity.adv_id;
+                    break;
+                }
+            }
+
+            this.props.onTitleClick(title, id);
+            this.setState(({redirect: true}))
         }, this);
         xAxis.renderer.labels.template.fill = am4core.color("#a9a9a9");
         xAxis.renderer.grid.template.stroke = am4core.color("#a9a9a9");
@@ -52,6 +74,13 @@ class Chart extends React.Component {
     }
 
     render() {
+        const { redirect } = this.state;
+
+        if (redirect) {
+            this.chart.dispose();
+            return <Redirect to="/input" />
+        }
+
         return (
             <div id="chartdiv" style={{ width: "940px", height: "500px" }}></div>
         );

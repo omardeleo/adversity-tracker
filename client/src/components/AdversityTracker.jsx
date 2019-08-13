@@ -22,12 +22,14 @@ class AdversityTracker extends React.Component {
         }
     };
     render() {
+        const { adding, title, handleTitle } = this.props;
         return (
+            
             <div className="tracker-container">
                 <div className="accept-container">
                     <div className="accept-button" onClick={this.props.handleAccept}>accept</div>
                 </div>
-                <AdversityTitle handleTitle={this.props.handleTitle} />
+                <AdversityTitle adding={adding} title={title} handleTitle={handleTitle} />
                 {this.displayComponent(this.props.state)}
             </div>
         );

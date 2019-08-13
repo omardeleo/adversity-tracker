@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 
 import { fetchAdversities } from '../actions/adversity_actions';
 import { getAllAdversities } from '../reducers/selectors';
+import { setTitle } from '../actions/ui_actions';
 import ChartData from './ChartData';
 
 const mapStateToProps = ({ session, entities: { users, adversities } }) => {
@@ -13,7 +14,8 @@ const mapStateToProps = ({ session, entities: { users, adversities } }) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-    fetchAdversities: (id) => dispatch(fetchAdversities(id))
+    fetchAdversities: (id) => dispatch(fetchAdversities(id)),
+    setTitle: (title, id) => dispatch(setTitle(title, id))
 });
 
 export default withRouter(connect(

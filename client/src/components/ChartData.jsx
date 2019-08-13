@@ -1,8 +1,6 @@
 import React from 'react';
 
 import Chart from './Chart';
-import AdversityTitle from './AdversityTitle';
-import AdversityDataInput from './AdversityDataInput';
 
 class ChartData extends React.Component {
     constructor(props) {
@@ -11,22 +9,22 @@ class ChartData extends React.Component {
     }
 
     componentDidMount() {     
+        // console.log('cdM', this.props.currentUser.id)
         this.props.fetchAdversities(this.props.currentUser.id);
     }
 
     render() {
         const { adversities } = this.props;
+        // console.log(this.props)
         const adversityData = [];
         for (let adversity of adversities) {
-            // console.log('ad', adversity)
-            // adversityData.push({title: adversity.title, })
             for (let recognition of adversity.recognitions) {
-                let point = {title: adversity.title, recognition: recognition.created_at}
+                let point = {adv_id: adversity.id, title: adversity.title, recognition: recognition.created_at}
                 adversityData.push(point);
             }
         }
-        console.log('aD', adversityData);
-        let chartDiv = adversityData.length > 0 ? <Chart adversities={adversityData} /> : "";
+        // console.log('adv in ch', adversities)
+        let chartDiv = adversityData.length > 0 ? <Chart adversities={adversityData} onTitleClick={this.props.setTitle} /> : "";
         return chartDiv;
     }
 }
