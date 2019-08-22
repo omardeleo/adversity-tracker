@@ -38,7 +38,7 @@ const FeelingItem = props => {
             <TextField
                 className={classes.root}
                 placeholder="Enter Feeling"
-                defaultValue={feeling}
+                value={feeling}
                 margin="normal"
                 variant="outlined"
                 inputProps={{

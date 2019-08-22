@@ -38,7 +38,7 @@ export default function AdversityStory(props) {
                     "aria-label": "adversity-story"
                 }}
                 placeholder="Enter Story"
-                defaultValue={props.story}
+                value={props.story}
                 margin="normal"
                 variant="outlined"
                 multiline={true}

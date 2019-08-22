@@ -81,7 +81,7 @@ export default function CustomizedSlider(props) {
             <div className="slider-container" data-order={props.order}>
                 <FeelingsSlider
                     aria-label="feelings slider"
-                    defaultValue={props.sliderVal}
+                    value={props.sliderVal}
                     marks={marks}
                     valueLabelDisplay="off"
                     onChange={(e, val) => props.handleChange({index: props.index, value: val})}

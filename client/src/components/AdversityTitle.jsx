@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function AdversityTitle(props) {
     const classes = useStyles();
-
+    console.log('title props', props)
     return (
         <div className="adv-title">
             <div className="adv-title-label">Adversity Experience Title...</div>
@@ -38,7 +38,7 @@ export default function AdversityTitle(props) {
                     "aria-label": "adversity-title"
                 }}
                 placeholder="Enter Title"
-                defaultValue={props.title}
+                value={props.title}
                 margin="normal"
                 variant="outlined"
                 onChange={e => props.handleTitle(e.target.value)}
