@@ -11,13 +11,13 @@ const mapStateToProps = ({ session, entities: { users, ui } }) => {
         currentUser: users[session.id],
         title: ui.recognition_title,
         adding: ui.adding_recognition,
+        form: ui.recognition_form,
         adversity_id: ui.adversity_id
     }
 };
 
 const mapDispatchToProps = dispatch => ({
     logout: () => dispatch(logout()),
-    createAdversity: (adversity, callback) => dispatch(createAdversity(adversity, callback)),
     clearTitle: () => dispatch(clearTitle)
 });
 

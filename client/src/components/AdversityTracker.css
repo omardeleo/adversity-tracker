@@ -2,13 +2,13 @@
   width: 100%;
 }
 
-.accept-container {
+.accept-container, .clear-container {
   width: 100%;
   display: flex;
   justify-content: flex-end;
 }
 
-.accept-button {
+.accept-button, .clear-button {
   margin-right: 40px;
   border: 1px solid #a9a9a9;
   padding: 8px 15px;
