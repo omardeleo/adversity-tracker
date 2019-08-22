@@ -7,11 +7,11 @@ class Recognition extends React.Component {
     render() {
         return (
             <div>
-                <AdversityStory handleStory={this.props.handleStory} />
+                <AdversityStory story={this.props.story} handleStory={this.props.handleStory} />
                 <AdversityFeeling
                     feelings={this.props.feelings}
                     handleAddSlider={this.props.handleAddSlider}
-                    handleFeelingChange={this.props.handleFeelingChange}
+                    handleFeelingTextChange={this.props.handleFeelingTextChange}
                     handleSliderChange={this.props.handleSliderChange}
                 />
             </div>
@@ -20,3 +20,4 @@ class Recognition extends React.Component {
 }
 
 export default Recognition;
+

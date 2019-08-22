@@ -5,35 +5,27 @@ import Recognition from "./Recognition";
 import './AdversityTracker.css';
 
 class AdversityTracker extends React.Component {
-    displayComponent = state => {
-        const currentTab = state.currentTab;
-        if (currentTab === "Recognition") {
-            return (
-                <Recognition
-                    handleStory={this.props.handleStory}
-                    feelings={this.props.state.recognition.feelings}
-                    handleAddSlider={this.props.handleAddSlider}
-                    handleFeelingChange={this.props.handleFeelingChange}
-                    handleSliderChange={this.props.handleSliderChange}
-                />
-            );
-        } else {
-            return <h1>{currentTab}</h1>;
-        }
-    };
+
     render() {
-        const { adding, title, handleTitle } = this.props;
+        const { adding, title, updateTitle, story, feelings } = this.props;
         return (
-            
             <div className="tracker-container">
                 <div className="accept-container">
                     <div className="accept-button" onClick={this.props.handleAccept}>accept</div>
                 </div>
-                <AdversityTitle adding={adding} title={title} handleTitle={handleTitle} />
-                {this.displayComponent(this.props.state)}
+                <AdversityTitle adding={adding} title={title} handleTitle={updateTitle} />
+                <Recognition
+                    handleStory={this.props.updateStory}
+                    story={story}
+                    feelings={feelings}
+                    handleAddSlider={this.props.handleAddSlider}
+                    handleFeelingTextChange={this.props.updateFeelingText}
+                    handleSliderChange={this.props.updateFeelingValue}
+                />
             </div>
         );
     }
 }
 
 export default AdversityTracker;
+// {this.displayComponent(this.props.state)}

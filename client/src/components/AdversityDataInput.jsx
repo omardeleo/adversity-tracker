@@ -1,6 +1,8 @@
 import React from 'react';
 
 import AdversityTracker from "./AdversityTracker";
+
+import AdversityTrackerContainer from "./AdversityTrackerContainer";
 import Tab from "./NavTab";
 import DisplayValues from "../util/DisplayValues";
 import './AdversityDataInput.css';
@@ -147,17 +149,7 @@ class AdversityDataInput extends React.Component {
                         <Tab section="Retrospection" handleTabClick={this.handleTabClick} />
                     </div>
                     { this.props ? 
-                    <AdversityTracker
-                        title={this.props.title}
-                        adding={this.props.adding}
-                        state={this.state}
-                        handleTitle={this.handleTitle}
-                        handleStory={this.handleStory}
-                        handleAddSlider={this.handleAddSlider}
-                        handleSliderChange={this.handleSliderChange}
-                        handleFeelingChange={this.handleFeelingChange}
-                        handleAccept={this.handleAccept}
-                    />
+                    <AdversityTrackerContainer />
                     : null }
                     <div className="logout-btn">
                         <button onClick={this.props.logout}>LOG OUT</button>
@@ -174,3 +166,15 @@ class AdversityDataInput extends React.Component {
 }
 
 export default AdversityDataInput;
+
+// <AdversityTracker
+//     title={this.props.title}
+//     adding={this.props.adding}
+//     state={this.state}
+//     handleTitle={this.handleTitle}
+//     handleStory={this.handleStory}
+//     handleAddSlider={this.handleAddSlider}
+//     handleSliderChange={this.handleSliderChange}
+//     handleFeelingChange={this.handleFeelingChange}
+//     handleAccept={this.handleAccept}
+// />
