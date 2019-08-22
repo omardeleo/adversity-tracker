@@ -5,14 +5,25 @@ import AdversityFeeling from "./AdversityFeeling";
 
 class Recognition extends React.Component {
     render() {
+        const { 
+            feelings, 
+            handleAddSlider, 
+            handleFeelingTextChange, 
+            handleSliderChange,
+            handleStory,
+            story
+        } = this.props;
         return (
             <div>
-                <AdversityStory story={this.props.story} handleStory={this.props.handleStory} />
+                <AdversityStory 
+                    story={story} 
+                    handleStory={handleStory} 
+                />
                 <AdversityFeeling
-                    feelings={this.props.feelings}
-                    handleAddSlider={this.props.handleAddSlider}
-                    handleFeelingTextChange={this.props.handleFeelingTextChange}
-                    handleSliderChange={this.props.handleSliderChange}
+                    feelings={feelings}
+                    handleAddSlider={handleAddSlider}
+                    handleFeelingTextChange={handleFeelingTextChange}
+                    handleSliderChange={handleSliderChange}
                 />
             </div>
         );
