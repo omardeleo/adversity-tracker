@@ -5,6 +5,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 30px;
+  padding-bottom: 30px;
+  font-family: sans-serif;
 }
 
 .main-navigation {
