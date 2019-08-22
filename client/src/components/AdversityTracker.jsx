@@ -12,51 +12,36 @@ class AdversityTracker extends React.Component {
         e.preventDefault();
         const { title, story, feelings } = this.props
         const user_id = this.props.currentUser.id;
-        this.props.createAdversity({ title, user_id })
-            .then(({ adversity }) => {
-                return createRecognition(adversity.id, story)
-            }).then(recognition => {
-                for (let feel of feelings) {
-                    const { feeling, sliderVal } = feel;
-                    createFeeling({
-                        name: feeling,
-                        intensity: sliderVal,
-                        recognition_id: recognition.id
-                    });
-                }
-            }).then(() => this.props.clearForm())
-            .then(() => this.props.history.push('/analyzer'));
-
-        // if (this.props.adding) {
-        //     createRecognition(this.props.adversity_id, story)
-        //         .then(recognition => {
-        //             for (let feel of feelings) {
-        //                 const { feeling, sliderVal } = feel;
-        //                 createFeeling({
-        //                     name: feeling,
-        //                     intensity: sliderVal,
-        //                     recognition_id: recognition.id
-        //                 });
-        //             }
-        //         })
-        //         .then(() => this.props.clearTitle())
-        //         .then(() => this.props.history.push('/analyzer'));
-        // } else {
-        //     this.props.createAdversity({ title, user_id })
-        //         .then(({ adversity }) => {
-        //             return createRecognition(adversity.id, story)
-        //         }).then(recognition => {
-        //             for (let feel of feelings) {
-        //                 const { feeling, sliderVal } = feel;
-        //                 createFeeling({
-        //                     name: feeling,
-        //                     intensity: sliderVal,
-        //                     recognition_id: recognition.id
-        //                 });
-        //             }
-        //         }).then(() => this.props.clearTitle())
-        //         .then(() => this.props.history.push('/analyzer'));
-        // }
+        if (this.props.adding) {
+            createRecognition(this.props.adversity_id, story)
+                .then(recognition => {
+                    for (let feel of feelings) {
+                        const { feeling, sliderVal } = feel;
+                        createFeeling({
+                            name: feeling,
+                            intensity: sliderVal,
+                            recognition_id: recognition.id
+                        });
+                    }
+                })
+                .then(() => this.props.clearForm())
+                .then(() => this.props.history.push('/analyzer'));
+        } else {
+            this.props.createAdversity({ title, user_id })
+                .then(({ adversity }) => {
+                    return createRecognition(adversity.id, story)
+                }).then(recognition => {
+                    for (let feel of feelings) {
+                        const { feeling, sliderVal } = feel;
+                        createFeeling({
+                            name: feeling,
+                            intensity: sliderVal,
+                            recognition_id: recognition.id
+                        });
+                    }
+                }).then(() => this.props.clearForm())
+                .then(() => this.props.history.push('/analyzer'));
+        }
     }
 
     render() {

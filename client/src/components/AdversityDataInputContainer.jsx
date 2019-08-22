@@ -2,9 +2,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import { logout } from '../actions/session_actions';
-import { createAdversity } from '../actions/adversity_actions';
-import AdversityDataInput from './AdversityDataInput';
 import { clearTitle } from '../actions/ui_actions';
+import AdversityDataInput from './AdversityDataInput';
 
 const mapStateToProps = ({ session, entities: { users, ui } }) => {
     return {
