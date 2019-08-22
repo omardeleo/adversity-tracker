@@ -52,7 +52,6 @@ export const setTitle = (title, id) => dispatch => {
 };
 
 export const addSlider = () => {
-    console.log('hey')
    return{ type: ADD_SLIDER}
 }
 

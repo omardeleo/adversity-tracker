@@ -32,7 +32,8 @@ const uiReducer = (state = initialState, action) => {
         case CLICK_MAIN_NAV:
             return Object.assign({}, state, { tab: action.tab });
         case CLICK_TITLE:
-            return Object.assign({}, state, { recognition_title: action.payload.title,
+            newFormData = Object.assign({}, oldFormData, { title: action.payload.title })
+            return Object.assign({}, state, { recognition_form: newFormData,
                                                 adding_recognition: true,
                                             adversity_id: action.payload.id });
         case CLEAR_TITLE:
