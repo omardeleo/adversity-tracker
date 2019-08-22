@@ -1,8 +1,9 @@
 import React from 'react';
 import * as am4core from "@amcharts/amcharts4/core";
-import * as am4charts from "@amcharts/amcharts4/charts"; 
+import * as am4charts from "@amcharts/amcharts4/charts";
 
-import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom'; 
+var equal = require('deep-equal');
 
 class Chart extends React.Component {
     constructor(props) {
@@ -12,11 +13,10 @@ class Chart extends React.Component {
         };
     }
 
-    componentDidMount() {
+    renderChart() {
         let chart = am4core.create("chartdiv", am4charts.XYChart);
         this.chart = chart;
         const { adversities } = this.props;
-
         chart.data = adversities;
         chart.background.fill = "#282828";
         chart.paddingRight = 50;
@@ -37,7 +37,7 @@ class Chart extends React.Component {
         xAxis.strictMinMax = true;
         yAxis.renderer.labels.template.fill = am4core.color("#a9a9a9");
         yAxis.renderer.labels.template.cursorOverStyle = am4core.MouseCursorStyle.pointer;
-        yAxis.renderer.labels.template.events.on("hit", function(ev) {
+        yAxis.renderer.labels.template.events.on("hit", function (ev) {
 
             const title = ev.target.currentText;
             let id;
@@ -50,14 +50,14 @@ class Chart extends React.Component {
             }
 
             this.props.onTitleClick(title, id);
-            this.setState(({redirect: true}))
+            this.setState(({ redirect: true }))
         }, this);
         xAxis.renderer.labels.template.fill = am4core.color("#a9a9a9");
         xAxis.renderer.grid.template.stroke = am4core.color("#a9a9a9");
         xAxis.renderer.line.strokeOpacity = 1;
         xAxis.renderer.line.strokeWidth = 2;
         xAxis.renderer.line.stroke = am4core.color("#a9a9a9");
-        
+
 
         let series = chart.series.push(new am4charts.ColumnSeries());
         series.name = "Adversity";
@@ -67,6 +67,16 @@ class Chart extends React.Component {
         series.bullets.create(am4charts.CircleBullet);
     }
 
+    componentDidMount() {
+        this.renderChart();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (!equal(prevProps.adversities, this.props.adversities)) {
+            this.renderChart();
+        }
+    }
+
     componentWillUnmount() {
         if (this.chart) {
             this.chart.dispose();
@@ -74,6 +84,7 @@ class Chart extends React.Component {
     }
 
     render() {
+        
         const { redirect } = this.state;
 
         if (redirect) {

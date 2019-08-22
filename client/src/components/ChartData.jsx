@@ -21,7 +21,11 @@ class ChartData extends React.Component {
                 adversityData.push(point);
             }
         }
-        let chartDiv = adversityData.length > 0 ? <Chart adversities={adversityData} onTitleClick={this.props.setTitle} /> : "";
+        let chartDiv = adversityData.length > 0 ? 
+            <Chart 
+                adversities={adversityData} 
+                onTitleClick={this.props.setTitle} 
+            /> : "";
         return chartDiv;
     }
 }
