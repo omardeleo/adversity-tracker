@@ -84,7 +84,7 @@ export default function CustomizedSlider(props) {
                     defaultValue={props.sliderVal}
                     marks={marks}
                     valueLabelDisplay="off"
-                    onChange={props.handleChange}
+                    onChange={(e, val) => props.handleChange({index: props.index, value: val})}
                 />
                 <div className="slider-values">
                     <div className="slider-value">mildly</div>

@@ -32,6 +32,7 @@ const useStyles = makeStyles(theme => ({
 const FeelingItem = props => {
     const { feeling, sliderVal } = props.feeling;
     const classes = useStyles();
+
     return (
         <div className="feeling-row">
             <TextField
@@ -44,25 +45,21 @@ const FeelingItem = props => {
                     "aria-label": "adversity-feeling",
                     className: classes.input
                 }}
-                onChange={props.handleFeelingChange}
+                onChange={(e) => {
+                    props.handleFeelingTextChange({index: props.index, feeling: e.target.value})
+                }}
             />
             <FeelingsSlider
                 sliderVal={sliderVal}
                 handleChange={props.handleSliderChange}
                 className={classes.slider}
+                index={props.index}
             />
         </div>
     );
 };
 
-class AdversityFeeling extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            feelingsValues: [{ feeling: "", value: 0 }]
-        };
-    }
-
+class AdversityFeeling extends React.Component {  
     render() {
         return (
             <div className="adv-feeling-container">
@@ -75,13 +72,10 @@ class AdversityFeeling extends React.Component {
                             {this.props.feelings.map((feeling, i) => (
                                 <FeelingItem
                                     key={i}
+                                    index={i}
                                     feeling={feeling}
-                                    handleSliderChange={(evt, val, idx) =>
-                                        this.props.handleSliderChange(evt, val, i)
-                                    }
-                                    handleFeelingChange={(evt, idx) =>
-                                        this.props.handleFeelingChange(evt, i)
-                                    }
+                                    handleSliderChange={this.props.handleSliderChange}
+                                    handleFeelingTextChange={this.props.handleFeelingTextChange}
                                 />
                             ))}
                         </div>
