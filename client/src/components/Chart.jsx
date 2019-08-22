@@ -16,7 +16,7 @@ class Chart extends React.Component {
         let chart = am4core.create("chartdiv", am4charts.XYChart);
         this.chart = chart;
         const { adversities } = this.props;
-        // console.log('adv in ch.jsx', adversities)
+
         chart.data = adversities;
         chart.background.fill = "#282828";
         chart.paddingRight = 50;
@@ -38,7 +38,7 @@ class Chart extends React.Component {
         yAxis.renderer.labels.template.fill = am4core.color("#a9a9a9");
         yAxis.renderer.labels.template.cursorOverStyle = am4core.MouseCursorStyle.pointer;
         yAxis.renderer.labels.template.events.on("hit", function(ev) {
-            // console.log("click on", ev.target.currentText);
+
             const title = ev.target.currentText;
             let id;
 

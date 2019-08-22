@@ -27,7 +27,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function AdversityTitle(props) {
     const classes = useStyles();
-    console.log('title props', props)
     return (
         <div className="adv-title">
             <div className="adv-title-label">Adversity Experience Title...</div>

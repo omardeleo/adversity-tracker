@@ -44,7 +44,6 @@ const uiReducer = (state = initialState, action) => {
             return Object.assign({}, state, { recognition_form: newFormData })
         case UPDATE_STORY:
             newFormData = Object.assign({}, oldFormData, {story: action.story.value})
-            console.log('newFormData', newFormData)
             return Object.assign({}, state, { recognition_form: newFormData })
         case UPDATE_FEELING_TEXT:
             newFeelings[action.feeling.index].feeling = action.feeling.feeling;
@@ -55,7 +54,6 @@ const uiReducer = (state = initialState, action) => {
             newFormData = Object.assign({}, oldFormData, { feelings: newFeelings })
             return Object.assign({}, state, { recognition_form: newFormData })
         case ADD_SLIDER: 
-            console.log('hey')
             newFeelings.push({ feeling: "", sliderVal: 0 });
             newFormData = Object.assign({}, oldFormData, { feelings: newFeelings })
             return Object.assign({}, state, { recognition_form: newFormData })
