@@ -10,9 +10,9 @@ class AdversityTracker extends React.Component {
 
     handleAccept(e) {
         e.preventDefault();
-        const { title, story, feelings } = this.props
-        const user_id = this.props.currentUser.id;
-        if (this.props.adding) {
+        const { title, story, feelings, adding, currentUser } = this.props
+        const user_id = currentUser.id;
+        if (adding) {
             createRecognition(this.props.adversity_id, story)
                 .then(recognition => {
                     for (let feel of feelings) {
