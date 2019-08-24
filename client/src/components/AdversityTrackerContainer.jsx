@@ -13,12 +13,14 @@ import { createAdversity } from '../actions/adversity_actions';
 import AdversityTracker from './AdversityTracker';
 
 
-const mapStateToProps = ({ session, entities: { users, ui: {recognition_form} } }) => {
+const mapStateToProps = ({ session, entities: { users, ui: { adversity_id, adding_recognition, recognition_form } } }) => {
     return {
         currentUser: users[session.id],
         title: recognition_form.title,
         story: recognition_form.story,
-        feelings: recognition_form.feelings
+        feelings: recognition_form.feelings,
+        adding: adding_recognition,
+        adversity_id: adversity_id
     }
 };
 
