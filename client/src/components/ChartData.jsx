@@ -16,10 +16,12 @@ class ChartData extends React.Component {
         const { adversities } = this.props;
         const adversityData = [];
         for (let adversity of adversities) {
+            let recognitions = [];
             for (let recognition of adversity.recognitions) {
-                let point = {adv_id: adversity.id, title: adversity.title, recognition: recognition.created_at}
-                adversityData.push(point);
+                recognitions.push(recognition.created_at) 
             }
+            let point = { adv_id: adversity.id, title: adversity.title, recognitions: recognitions }
+            adversityData.push(point);
         }
         let chartDiv = adversityData.length > 0 ? 
             <Chart 
