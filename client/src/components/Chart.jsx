@@ -20,7 +20,8 @@ class Chart extends React.Component {
         chart.data = adversities;
         chart.background.fill = "#282828";
         chart.paddingRight = 50;
-
+       
+        // create y axis
         let yAxis = chart.yAxes.push(new am4charts.CategoryAxis());
         yAxis.dataFields.category = "title"
         yAxis.renderer.grid.template.disabled = true;
@@ -28,7 +29,7 @@ class Chart extends React.Component {
         yAxis.renderer.line.strokeWidth = 2;
         yAxis.renderer.line.stroke = am4core.color("#a9a9a9");
 
-
+        // create x axis
         let xAxis = chart.xAxes.push(new am4charts.DateAxis());
         let dateMin = new Date(2019, 7, 1).valueOf();
         let dateMax = new Date(2019, 7, 31).valueOf();
@@ -58,13 +59,22 @@ class Chart extends React.Component {
         xAxis.renderer.line.strokeWidth = 2;
         xAxis.renderer.line.stroke = am4core.color("#a9a9a9");
 
-
-        let series = chart.series.push(new am4charts.ColumnSeries());
-        series.name = "Adversity";
-        series.dataFields.dateX = "recognition";
-        series.dataFields.categoryY = "title";
-        series.columns.template.height = 0;
-        series.bullets.create(am4charts.CircleBullet);
+        
+        for (let adversity of adversities) {
+            let data = [];
+            for (let recognition of adversity.recognitions) {
+                 let obj = {title: adversity.title, recognition: recognition}
+                 data.push(obj)
+            }
+            let series = chart.series.push(new am4charts.LineSeries());
+            series.name = "Adversity";
+            series.dataFields.dateX = "recognition";
+            series.dataFields.categoryY = "title";
+            series.strokeWidth = 3;
+            series.sequencedInterpolation = true;
+            series.bullets.create(am4charts.CircleBullet);
+            series.data = data;
+        }
     }
 
     componentDidMount() {
