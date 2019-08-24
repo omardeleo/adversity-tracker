@@ -64,7 +64,7 @@ const uiReducer = (state = initialState, action) => {
                 story: "",
                 feelings: [{ feeling: "", sliderVal: 0 }]
             };
-            return Object.assign({}, state, { recognition_form: newFormData })
+            return Object.assign({}, state, { adversity_id: null, adding_recognition: false, recognition_form: newFormData })
         default:
             return state;
     }
