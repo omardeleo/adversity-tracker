@@ -30,7 +30,7 @@ r.save!
 
 Recognition.create(adversity_id: adv.id, story: "Not sure how much longer")
 r = Recognition.last
-r.created_at = DateTime.new(2019, 8, 3, 3, 2, 1)
+r.created_at = DateTime.new(2019, 8, 9, 3, 4, 5)
 r.save!
 
 Adversity.create(title: "Lost a loved one", user_id: user.id)
