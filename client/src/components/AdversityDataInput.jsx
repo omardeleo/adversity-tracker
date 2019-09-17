@@ -9,7 +9,6 @@ class AdversityDataInput extends React.Component {
         super(props);
 
         this.handleTabClick = this.handleTabClick.bind(this);
-        // this.handleAccept = this.handleAccept.bind(this);
     }
 
     handleTabClick(e) {
