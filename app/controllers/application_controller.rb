@@ -24,7 +24,6 @@ class ApplicationController < ActionController::API
   end
 
   def logout
-    puts "hey"
     current_user.reset_session_token!
     session[:session_token] = nil
     @current_user = nil
@@ -36,3 +35,4 @@ class ApplicationController < ActionController::API
     end
   end
 end
+
