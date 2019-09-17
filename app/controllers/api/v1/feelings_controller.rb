@@ -1,5 +1,7 @@
 module Api::V1
     class FeelingsController < ApplicationController
+        before_action :require_logged_in
+        
         def index
             @feelings = Feeling.where(recognition_id: params[:recognition_id])
 

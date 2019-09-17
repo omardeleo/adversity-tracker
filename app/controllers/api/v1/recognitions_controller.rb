@@ -1,5 +1,7 @@
 module Api::V1
    class RecognitionsController < ApplicationController
+        before_action :require_logged_in
+        
         def create
             @recognition = Recognition.new(recognition_params)
             if @recognition.save
