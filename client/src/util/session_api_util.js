@@ -1,5 +1,12 @@
 import $ from 'jquery';
 
+export const checkSession = () => {
+    return $.ajax({
+        method: 'GET',
+        url: 'api/v1/checkSession'
+    })
+};
+
 export const login = user => (
     $.ajax({
         method: 'POST',
