@@ -1,9 +1,10 @@
 import React from 'react';
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
+import { Redirect } from 'react-router-dom';
 
-import { Redirect } from 'react-router-dom'; 
-var equal = require('deep-equal');
+import getDateRange from '../util/date_util';
+const equal = require('deep-equal');
 
 class Chart extends React.Component {
     constructor(props) {
@@ -31,8 +32,8 @@ class Chart extends React.Component {
 
         // create x axis
         let xAxis = chart.xAxes.push(new am4charts.DateAxis());
-        let dateMin = new Date(2019, 7, 1).valueOf();
-        let dateMax = new Date(2019, 7, 31).valueOf();
+        let dateMin = getDateRange().start;
+        let dateMax = getDateRange().end;
         xAxis.min = dateMin;
         xAxis.max = dateMax;
         xAxis.strictMinMax = true;
