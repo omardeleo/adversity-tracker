@@ -3,7 +3,7 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import { Redirect } from 'react-router-dom';
 
-import getDateRange from '../util/date_util';
+import { getDateRange } from '../util/date_util';
 const equal = require('deep-equal');
 
 class Chart extends React.Component {
