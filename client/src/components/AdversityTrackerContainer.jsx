@@ -21,7 +21,7 @@ const mapStateToProps = ({ session, entities: { users, ui: { adversity_id, addin
         feelings: recognition_form.feelings,
         adding: adding_recognition,
         adversity_id: adversity_id
-    }
+    };
 };
 
 const mapDispatchToProps = dispatch => ({

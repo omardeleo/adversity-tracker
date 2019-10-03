@@ -12,7 +12,7 @@ const mapStateToProps = ({ session, entities: { users, ui } }) => {
         adding: ui.adding_recognition,
         form: ui.recognition_form,
         adversity_id: ui.adversity_id
-    }
+    };
 };
 
 const mapDispatchToProps = dispatch => ({
