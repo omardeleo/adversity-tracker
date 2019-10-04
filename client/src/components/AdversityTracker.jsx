@@ -56,8 +56,8 @@ class AdversityTracker extends React.Component {
                 handleFeelingTextChange={this.props.updateFeelingText}
                 handleSliderChange={this.props.updateFeelingValue}
                 />
-        } else if (subtab === 'Introspection') {
-            return <div>INTROSPECTION</div>
+        } else if (subtab === 'Reflection') {
+            return <div>REFLECTION</div>
         } else {
             return <div>RETROSPECTION</div>
         }

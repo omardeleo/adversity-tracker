@@ -30,7 +30,7 @@ class AdversityDataInput extends React.Component {
                             handleTabClick={this.handleTabClick}
                             selected={true}
                         />
-                        <Tab section="Introspection" handleTabClick={this.handleTabClick} />
+                        <Tab section="Reflection" handleTabClick={this.handleTabClick} />
                         <Tab section="Retrospection" handleTabClick={this.handleTabClick} />
                     </div>
                     { this.props ? 
