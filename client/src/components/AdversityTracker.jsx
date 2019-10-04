@@ -44,8 +44,30 @@ class AdversityTracker extends React.Component {
         }
     }
 
+    generateInputFields() {
+
+        const { story, feelings, subtab } = this.props;
+        
+        if (subtab === 'Recognition') {
+            return <Recognition handleStory={this.props.updateStory}
+                story={story}
+                feelings={feelings}
+                handleAddSlider={this.props.addSlider}
+                handleFeelingTextChange={this.props.updateFeelingText}
+                handleSliderChange={this.props.updateFeelingValue}
+                />
+        } else if (subtab === 'Introspection') {
+            return <div>INTROSPECTION</div>
+        } else {
+            return <div>RETROSPECTION</div>
+        }
+
+    }
+
     render() {
-        const { adding, title, updateTitle, story, feelings } = this.props;
+        const { adding, title, updateTitle } = this.props;
+        const inputFields = this.generateInputFields();
+        
         return (
             <div className="tracker-container">
                 <div className="accept-container">
@@ -55,14 +77,7 @@ class AdversityTracker extends React.Component {
                     <div className="clear-button" onClick={this.props.clearForm}>clear</div>
                 </div>
                 <AdversityTitle adding={adding} title={title} handleTitle={updateTitle} />
-                <Recognition
-                    handleStory={this.props.updateStory}
-                    story={story}
-                    feelings={feelings}
-                    handleAddSlider={this.props.addSlider}
-                    handleFeelingTextChange={this.props.updateFeelingText}
-                    handleSliderChange={this.props.updateFeelingValue}
-                />
+                {inputFields}
             </div>
         );
     }

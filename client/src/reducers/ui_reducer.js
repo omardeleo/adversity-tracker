@@ -13,6 +13,7 @@ import {
 
 const initialState = {
     tab: "Adversity Data Input",
+    subtab: "Recognition",
     recognition_title: "",
     adding_recognition: false,
     adversity_id: null,
