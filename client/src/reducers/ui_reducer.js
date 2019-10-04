@@ -28,10 +28,12 @@ const uiReducer = (state = initialState, action) => {
     const oldFormData = state.recognition_form;
     const oldFeelings = oldFormData.feelings;
     let newFormData;
-    let newFeelings = [...oldFeelings];;
+    let newFeelings = [...oldFeelings];
     switch (action.type) {
         case CLICK_MAIN_NAV:
             return Object.assign({}, state, { tab: action.tab });
+        case CLICK_SUB_NAV:
+            return Object.assign({}, state, { subtab: action.tab });
         case CLICK_TITLE:
             newFormData = Object.assign({}, oldFormData, { title: action.payload.title })
             return Object.assign({}, state, { recognition_form: newFormData,

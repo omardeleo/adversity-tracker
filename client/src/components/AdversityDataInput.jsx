@@ -7,21 +7,17 @@ import './AdversityDataInput.css';
 class AdversityDataInput extends React.Component {
     constructor(props) {
         super(props);
-
         this.handleTabClick = this.handleTabClick.bind(this);
     }
 
     handleTabClick(e) {
         const currentTab = e.target.innerText;
-        debugger
         const selected = document.querySelector(".nav-selected");
         if (selected) {
             selected.classList.remove("nav-selected");
         }
         e.target.classList.add("nav-selected");
-        this.setState(state => {
-            return { currentTab: currentTab };
-        });
+        this.props.setSubTab(currentTab);
     }
 
     render() {

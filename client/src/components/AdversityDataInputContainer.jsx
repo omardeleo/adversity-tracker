@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import { logout } from '../actions/session_actions';
-import { clearTitle } from '../actions/ui_actions';
+import { clearTitle, setSubTab } from '../actions/ui_actions';
 import AdversityDataInput from './AdversityDataInput';
 
 const mapStateToProps = ({ session, entities: { users, ui } }) => {
@@ -17,7 +17,8 @@ const mapStateToProps = ({ session, entities: { users, ui } }) => {
 
 const mapDispatchToProps = dispatch => ({
     logout: () => dispatch(logout()),
-    clearTitle: () => dispatch(clearTitle)
+    clearTitle: () => dispatch(clearTitle),
+    setSubTab: subtab => dispatch(setSubTab(subtab))
 });
 
 export default withRouter(connect(
