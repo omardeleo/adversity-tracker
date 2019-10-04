@@ -32,12 +32,12 @@ class Main extends React.Component {
         if (targetTab === "Adversity Data Input") {
             if (currentPath !== '/input') {
                 this.props.history.push('/input');
-                selectTab(targetTab, this.props.setCurrentTab)
+                selectTab(targetTab, this.props.setMainTab);
             }            
         } else if (targetTab === "Adversity Analyzer") {
             if (currentPath !== '/analyzer') {
                 this.props.history.push('/analyzer');
-                selectTab(targetTab, this.props.setCurrentTab)
+                selectTab(targetTab, this.props.setMainTab);
             }
         }
     }

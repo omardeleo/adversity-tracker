@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import { logout } from '../actions/session_actions';
-import { setCurrentTab } from '../actions/ui_actions';
+import { setMainTab } from '../actions/ui_actions';
 import Main from './Main';
 
 const mapStateToProps = ({ session, entities: { users, ui } }) => {
@@ -14,7 +14,7 @@ const mapStateToProps = ({ session, entities: { users, ui } }) => {
 
 const mapDispatchToProps = dispatch => ({
     logout: () => dispatch(logout()),
-    setCurrentTab: tab => dispatch(setCurrentTab(tab))
+    setMainTab: tab => dispatch(setMainTab(tab))
 });
 
 export default withRouter(connect(

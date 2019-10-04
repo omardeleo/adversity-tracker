@@ -13,6 +13,7 @@ class AdversityDataInput extends React.Component {
 
     handleTabClick(e) {
         const currentTab = e.target.innerText;
+        debugger
         const selected = document.querySelector(".nav-selected");
         if (selected) {
             selected.classList.remove("nav-selected");

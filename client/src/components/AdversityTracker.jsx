@@ -2,8 +2,8 @@ import React from "react";
 
 import AdversityTitle from "./AdversityTitle";
 import Recognition from "./Recognition";
-import { createRecognition } from "../util/recognition_api_util"
-import { createFeeling } from "../util/feeling_api_util"
+import { createRecognition } from "../util/recognition_api_util";
+import { createFeeling } from "../util/feeling_api_util";
 import './AdversityTracker.css';
 
 class AdversityTracker extends React.Component {

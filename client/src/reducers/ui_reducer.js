@@ -1,5 +1,6 @@
 import {
     CLICK_MAIN_NAV,
+    CLICK_SUB_NAV,
     CLICK_TITLE,
     CLEAR_TITLE,
     UPDATE_TITLE,
