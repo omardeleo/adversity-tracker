@@ -5,7 +5,7 @@ import { logout } from '../actions/session_actions';
 import { clearTitle, setSubTab } from '../actions/ui_actions';
 import AdversityDataInput from './AdversityDataInput';
 
-const mapStateToProps = ({ session, entities: { users, ui } }) => {
+const mapStateToProps = ({ session, entities: { users }, ui }) => {
     return {
         currentUser: users[session.id],
         title: ui.recognition_title,

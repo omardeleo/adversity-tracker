@@ -5,11 +5,11 @@ import { logout } from '../actions/session_actions';
 import { setMainTab } from '../actions/ui_actions';
 import Main from './Main';
 
-const mapStateToProps = ({ session, entities: { users, ui } }) => {
+const mapStateToProps = ({ session, entities: { users }, ui }) => {
     return {
         currentUser: users[session.id],
         currentTab: ui.tab
-    }
+    };
 };
 
 const mapDispatchToProps = dispatch => ({
