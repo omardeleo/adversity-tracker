@@ -36,7 +36,7 @@ const uiReducer = (state = initialState, action) => {
         case CLICK_SUB_NAV:
             return Object.assign({}, state, { subtab: action.tab });
         case CLICK_TITLE:
-            newFormData = Object.assign({}, oldFormData, { title: action.payload.title })
+            newFormData = Object.assign({}, oldFormData, { title: action.payload.title });
             return Object.assign({}, state, { recognition_form: newFormData,
                                                 adding_recognition: true,
                                             adversity_id: action.payload.id });
@@ -45,30 +45,30 @@ const uiReducer = (state = initialState, action) => {
                 adding_recognition: false,
             adversity_id: null });
         case UPDATE_TITLE:
-            newFormData = Object.assign({}, oldFormData, { title: action.title })
-            return Object.assign({}, state, { recognition_form: newFormData })
+            newFormData = Object.assign({}, oldFormData, { title: action.title });
+            return Object.assign({}, state, { recognition_form: newFormData });
         case UPDATE_STORY:
-            newFormData = Object.assign({}, oldFormData, {story: action.story.value})
-            return Object.assign({}, state, { recognition_form: newFormData })
+            newFormData = Object.assign({}, oldFormData, {story: action.story.value});
+            return Object.assign({}, state, { recognition_form: newFormData });
         case UPDATE_FEELING_TEXT:
             newFeelings[action.feeling.index].feeling = action.feeling.feeling;
-            newFormData = Object.assign({}, oldFormData, { feelings: newFeelings })
-            return Object.assign({}, state, { recognition_form: newFormData })
+            newFormData = Object.assign({}, oldFormData, { feelings: newFeelings });
+            return Object.assign({}, state, { recognition_form: newFormData });
         case UPDATE_FEELING_VALUE:
             newFeelings[action.feeling.index].sliderVal = action.feeling.value;
-            newFormData = Object.assign({}, oldFormData, { feelings: newFeelings })
-            return Object.assign({}, state, { recognition_form: newFormData })
+            newFormData = Object.assign({}, oldFormData, { feelings: newFeelings });
+            return Object.assign({}, state, { recognition_form: newFormData });
         case ADD_SLIDER: 
             newFeelings.push({ feeling: "", sliderVal: 0 });
-            newFormData = Object.assign({}, oldFormData, { feelings: newFeelings })
-            return Object.assign({}, state, { recognition_form: newFormData })
+            newFormData = Object.assign({}, oldFormData, { feelings: newFeelings });
+            return Object.assign({}, state, { recognition_form: newFormData });
         case CLEAR_FORM:
             newFormData = {
                 title: "",
                 story: "",
                 feelings: [{ feeling: "", sliderVal: 0 }]
             };
-            return Object.assign({}, state, { adversity_id: null, adding_recognition: false, recognition_form: newFormData })
+            return Object.assign({}, state, { adversity_id: null, adding_recognition: false, recognition_form: newFormData });
         default:
             return state;
     }
