@@ -4,6 +4,8 @@ import '../stylesheets/Reflection.css';
 export const Beliefs = () => {
   const [belief, setBelief] = useState('Beliefs');
   return (
-    <div className="beliefs">{belief}</div>
+    <div className="beliefs">
+      <div className='module-label'>Beliefs</div>
+    </div>
   );
 };
