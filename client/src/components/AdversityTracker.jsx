@@ -2,7 +2,8 @@ import React from "react";
 
 import AdversityTitle from "./AdversityTitle";
 import Recognition from "./Recognition";
-import { Reflection } from "./Reflection";
+import { Reflection } from "./reflection/Reflection";
+import { Retrospection } from "./retrospection/Retrospection";
 import { createRecognition } from "../util/recognition_api_util";
 import { createFeeling } from "../util/feeling_api_util";
 import './AdversityTracker.css';
@@ -60,7 +61,7 @@ class AdversityTracker extends React.Component {
         } else if (subtab === 'Reflection') {
             return <Reflection />;
         } else {
-            return <div>RETROSPECTION</div>
+            return <Retrospection />
         }
 
     }

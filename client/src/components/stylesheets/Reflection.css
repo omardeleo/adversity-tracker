@@ -1,0 +1,25 @@
+.reflection {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    margin: 10px 0;
+    padding-right: 20px;
+    overflow: hidden;
+}
+
+.beliefs, .needs {
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #a9a9a9;
+    border-radius: 10px;
+    margin: 10px 0;
+    padding-right: 20px;
+    overflow: hidden;
+}
