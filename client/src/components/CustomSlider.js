@@ -75,6 +75,7 @@ const FeelingsSlider = withStyles({
 })(Slider);
 
 export default function CustomizedSlider(props) {
+    debugger
     return (
         <div className="feelings-slider">
             <div className="slider-label">intensity</div>
