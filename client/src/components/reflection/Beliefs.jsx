@@ -1,115 +1,55 @@
 import React, { useState } from "react";
-// import BeliefsSlider from "../CustomSlider";
-import { withStyles } from "@material-ui/core/styles";
-import { Slider } from '@material-ui/core';
-import { useStyles } from '../../util/ui_util';
-import '../stylesheets/Reflection.css';
-import '../CustomSlider.css';
-
-const feelingsBoxShadow =
-  "0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.13),0 0 0 1px rgba(0,0,0,0.02)";
-
-const marks = [
-  {
-    value: 0
-  },
-  {
-    value: 33
-  },
-  {
-    value: 67
-  },
-  {
-    value: 100
-  }
-];
-
-const CustomSlider = withStyles({
-  root: {
-    color: "#505050",
-    height: 2,
-    padding: "15px 0"
-  },
-  thumb: {
-    height: 20,
-    width: 8,
-    borderRadius: 3,
-    border: "1px solid black",
-    backgroundColor: "#fff",
-    boxShadow: feelingsBoxShadow,
-    marginTop: -10,
-    // marginLeft: -6,
-    "&:focus,&:hover,&$active": {
-      boxShadow:
-        "0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02)",
-      // Reset on touch devices, it doesn't add specificity
-      "@media (hover: none)": {
-        boxShadow: feelingsBoxShadow
-      }
-    }
-  },
-  active: {},
-  valueLabel: {
-    left: "calc(-50% + 11px)",
-    top: -22,
-    "& *": {
-      background: "transparent",
-      color: "#000"
-    }
-  },
-  track: {
-    height: 2
-  },
-  rail: {
-    height: 2,
-    opacity: 0.5,
-    backgroundColor: "#bfbfbf",
-  },
-  mark: {
-    backgroundColor: "#bfbfbf",
-    height: 8,
-    width: 1,
-    marginTop: -3
-  },
-  markActive: {
-    backgroundColor: "currentColor"
-  }
-})(Slider);
-
-
-
+import { CustomSlider } from '../ui/CustomSlider';
 
 export const Beliefs = () => {
-  const [sliderVal, setSliderVal] = useState(0);
-  const classes = useStyles();
-  const className = classes.slider;
-  const index = 1;
+  const [control, setControl] = useState(0);
+  const controlScale = ["External", "Internal"];
+
+  const [ability, setAbility] = useState(0);
+  const abilityScale = ["Can't", "Can"];
 
   return (
     <div className="beliefs">
       <div className='module-label'>Beliefs</div>
 
+      <div className="beliefs-data">
+        <div className="description">My perceived sense of control (locus of control) in reflecting on this adversity is that...</div> 
+        <CustomSlider
+          scale={controlScale}
+          value={control}
+          handleChange={setControl}
+        />
+        <div className="slider-details">
+          <div className="sub-detail">
+            <span>- The outcome is out of my control</span>
+            <span>- Things happen to me</span>
+          </div>
+          <div className="sub-detail">
+            <span>- The outcome is within my control</span>
+            <span>- I make things happen</span>
 
-
-      <div className="feelings-slider">
-        <div className="slider-label">intensity</div>
-        <div className="slider-container" >
-          <CustomSlider
-            aria-label="feelings slider"
-            value={sliderVal}
-            marks={marks}
-            valueLabelDisplay="off"
-            onChange={(e, val) => setSliderVal(val)}
-          />
-          <div className="slider-values">
-            <div className="slider-value">mildly</div>
-            <div className="slider-value">moderately</div>
-            <div className="slider-value">intensely</div>
           </div>
         </div>
       </div>
 
-
+      <div className="beliefs-data"> 
+        <div className="description">My perceived sense of ability (self-efficacy) in reflecting on this adversity is that...</div> 
+        <CustomSlider
+          scale={abilityScale}
+          value={ability}
+          handleChange={setAbility}
+        />
+        <div className="slider-details">
+          <div className="sub-detail">
+            <span>- The adversity is too much for me</span>
+            <span>- I'm not strong enough</span>
+          </div>
+          <div className="sub-detail">
+            <span>- It won't be easy but I can do this</span>
+            <span>- I am strong enough</span>
+          </div>
+        </div>
+       </div>
 
 
     </div>

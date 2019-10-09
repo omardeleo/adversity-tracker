@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Beliefs } from './Beliefs';
 import { Needs } from './Needs';
 
