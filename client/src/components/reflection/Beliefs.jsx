@@ -40,12 +40,13 @@ export const Beliefs = () => {
         <textarea value={beliefText} onChange={handleBeliefText}></textarea>
       </div>
 
-
-
       <div className="beliefs-sliders">
 
           <div className="belief">
-            <div className="description">My perceived sense of control (locus of control) in reflecting on this adversity is that...</div>
+          <div className="description">
+            <span>My perceived sense of control (locus of control) in reflecting on this adversity is that...</span>
+            <div className="info">i</div>
+          </div>
 
             <div className="belief-data">
               <CustomSlider
@@ -68,7 +69,10 @@ export const Beliefs = () => {
           </div>
 
           <div className="belief">
-            <div className="description">My perceived sense of ability (self-efficacy) in reflecting on this adversity is that...</div>
+            <div className="description">
+              <span>My perceived sense of ability (self-efficacy) in reflecting on this adversity is that...</span>
+              <div className="info">i</div>
+              </div>
            
             <div className="belief-data">
               <CustomSlider
@@ -95,7 +99,13 @@ export const Beliefs = () => {
       <div className="beliefs-sliders">
 
         <div className="belief">
-          <div className="description">I perceive my need... <option value={needOption} onChange={handleNeedOption}></option></div>
+          <div className="description">
+            <div>
+              <span>I perceive my need...</span>
+              <option value={needOption} onChange={handleNeedOption}>SELECT</option>
+            </div>
+              <div className="info">i</div>
+          </div>
           <div className="description">is...</div>
 
           <div className="belief-data">
@@ -105,12 +115,15 @@ export const Beliefs = () => {
               handleChange={setNeed}
             />
           </div>
-          
-          <div className="description">because... <input value={needText} onChange={handleNeedText}></input></div>
+  
+          <div className="description">because...<input value={needText} onChange={handleNeedText}></input></div>
         </div>
 
         <div className="belief">
-          <div className="description">My perceived sense of pressure...</div>
+          <div className="description">
+            <span>My perceived sense of pressure...</span>
+            <div className="info">i</div>
+          </div>
 
           <div className="belief-data">
             <CustomSlider
