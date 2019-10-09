@@ -1,18 +1,18 @@
 .reflection {
-    width: 100%;
-    align-content: center;
-    justify-content: space-evenly;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    border-radius: 10px;
-    margin: 10px 0;
-    padding-right: 20px;
-    overflow: hidden;
+  width: 100%;
+  align-content: center;
+  justify-content: space-evenly;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 10px;
+  margin: 10px 0;
+  padding-right: 20px;
+  overflow: hidden;
 }
 
-.beliefs, .needs {
-  width: 45%;
+.beliefs {
+  width: 80%;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -37,20 +37,63 @@
   background: #181818;
 }
 
-.beliefs-data {
+.beliefs-sliders, .belief-text {
   width: 80%;
-  border: 1px solid #a9a9a9;
-  border-radius: 10px;
-  padding: 10px;
   margin: 10px;
-  text-align: left;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+}
+
+.belief-text {
+  height: 300px;
+}
+.belief-text span {
+  align-self: baseline;
+  margin-bottom: 10px;
+}
+
+
+.belief-text textarea {
+  border: 1px solid #a9a9a9;
+  border-radius: 10px;
+  height: 80%;
+  width: 85%;
+  background: none;
+  color: #a9a9a9;
+  font-size: 18px;
+}
+
+.beliefs-sliders {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.belief .belief-data {
+  border: 1px solid #a9a9a9;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.belief {
+  border: none;
+  width: 45%;
 }
 
 .description {
-  /* width: 80%; */
+  text-align: left;
+  margin: 10px 0;
+}
+
+.description input {
+  border: 1px solid #a9a9a9;
+  border-radius: 10px;
+  background: none;
+  color: #a9a9a9;
+  font-size: 12px;
 }
 
 .slider-details {
@@ -62,8 +105,7 @@
 }
 
 .sub-detail {
-  text-align: center;
-  display:flex;
-  flex-direction: column;
-  margin: 2px;
+  width: 35%;
+  padding-inline-start: 10px;
+  text-align: left;
 }
