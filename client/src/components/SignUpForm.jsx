@@ -33,6 +33,9 @@ const useStyles = makeStyles(theme => ({
     submit: {
         margin: theme.spacing(3, 0, 2),
     },
+    errorText: {
+        color: 'red'
+    },
 }));
 
 class SignUpForm extends React.Component {
@@ -52,12 +55,13 @@ class SignUpForm extends React.Component {
     }
 
     render() {
-        return <SignUp formSubmit={this.formSubmit} />;
+        return <SignUp formSubmit={this.formSubmit} errors={this.props.errors} clearErrors={this.props.clearErrors}/>;
     }
 }
 
 function SignUp(props) {
     const classes = useStyles();
+    const isError = Object.values(props.errors).some(error => error !== null)
 
     return (
         <Container component="main" maxWidth="xs">
@@ -68,7 +72,7 @@ function SignUp(props) {
                 </Avatar>
                 <Typography component="h1" variant="h5">
                     Sign up
-        </Typography>
+                </Typography>
                 <form className={classes.form} noValidate>
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
@@ -77,16 +81,21 @@ function SignUp(props) {
                                 name="firstName"
                                 variant="outlined"
                                 required
+                                error={isError}
                                 fullWidth
                                 id="firstName"
                                 label="First Name"
                                 autoFocus
                             />
+                        <Typography variant="body2" display="block" className={classes.errorText}>
+                                {props.errors.name}
+                        </Typography>
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <TextField
                                 variant="outlined"
                                 required
+                                error={isError}
                                 fullWidth
                                 id="lastName"
                                 label="Last Name"
@@ -98,17 +107,22 @@ function SignUp(props) {
                             <TextField
                                 variant="outlined"
                                 required
+                                error={isError}
                                 fullWidth
                                 id="email"
                                 label="Email Address"
                                 name="email"
                                 autoComplete="email"
                             />
+                            <Typography variant="body2" display="block" className={classes.errorText}>
+                                {props.errors.email}
+                            </Typography>
                         </Grid>
                         <Grid item xs={12}>
                             <TextField
                                 variant="outlined"
                                 required
+                                error={isError}
                                 fullWidth
                                 name="password"
                                 label="Password"
@@ -116,8 +130,9 @@ function SignUp(props) {
                                 id="password"
                                 autoComplete="current-password"
                             />
-                        </Grid>
-                        <Grid item xs={12}>
+                            <Typography variant="body2" display="block" className={classes.errorText}>
+                                {props.errors.password}
+                            </Typography>
                         </Grid>
                     </Grid>
                     <Button
@@ -128,13 +143,13 @@ function SignUp(props) {
                         className={classes.submit}
                         onClick={props.formSubmit}
                     >
-                        Sign Up
-          </Button>
+                            Sign Up
+                    </Button>
                     <Grid container justify="flex-end">
                         <Grid item>
-                            <Link href="./#/login" variant="body2">
+                            <Link href="./#/login" variant="body2" onClick={props.clearErrors}>
                                 Already have an account? Sign in
-              </Link>
+                            </Link>
                         </Grid>
                     </Grid>
                 </form>

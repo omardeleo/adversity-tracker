@@ -1,6 +1,15 @@
 import React from 'react';
 
 import Chart from './Chart';
+import './ChartData.css';
+
+function Placeholder() {
+    return (
+        <div className="placeholder">
+            Click on the <strong>&nbsp;Adversity Data Input&nbsp;</strong> tab to log your first adversity.
+        </div>
+    )
+}
 
 class ChartData extends React.Component {
     constructor(props) {
@@ -27,7 +36,7 @@ class ChartData extends React.Component {
             <Chart 
                 adversities={adversityData} 
                 onTitleClick={this.props.setTitle} 
-            /> : "";
+            /> : <Placeholder />;
         return chartDiv;
     }
 }
