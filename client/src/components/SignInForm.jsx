@@ -33,6 +33,9 @@ const useStyles = makeStyles(theme => ({
     submit: {
         margin: theme.spacing(3, 0, 2),
     },
+    errorText: {
+        color: 'red'
+    }
 }));
 
 class SignInForm extends React.Component {
@@ -43,21 +46,20 @@ class SignInForm extends React.Component {
 
     formSubmit(e) {
         e.preventDefault();
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        const user = { email, password };
+        const required = [...document.querySelectorAll('input[required]')]
+        const [email, password] = required;
+        const user = { email: email.value, password: password.value };
         this.props.login(user);
     }
 
     render() {
-        return <SignIn formSubmit={this.formSubmit} />;
+        return <SignIn formSubmit={this.formSubmit} errors={this.props.errors} clearErrors={this.props.clearErrors}/>;
     }
 }
 
-
 function SignIn(props) {
     const classes = useStyles();
-
+    const isError = Object.values(props.errors).some(error => error !== null);
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
@@ -67,13 +69,14 @@ function SignIn(props) {
                 </Avatar>
                 <Typography component="h1" variant="h5">
                     Sign in
-        </Typography>
-                <form className={classes.form} noValidate>
+                </Typography>
+                <form className={classes.form}>
                     <TextField
                         variant="outlined"
                         margin="normal"
                         required
                         fullWidth
+                        error={isError}
                         id="email"
                         label="Email Address"
                         name="email"
@@ -84,6 +87,7 @@ function SignIn(props) {
                         variant="outlined"
                         margin="normal"
                         required
+                        error={isError}
                         fullWidth
                         name="password"
                         label="Password"
@@ -91,6 +95,9 @@ function SignIn(props) {
                         id="password"
                         autoComplete="current-password"
                     />
+                    <Typography variant="body2" display="block" className={classes.errorText}>
+                        {props.errors.signIn }
+                    </Typography>
                     <Button
                         type="submit"
                         fullWidth
@@ -99,11 +106,11 @@ function SignIn(props) {
                         className={classes.submit}
                         onClick={props.formSubmit}
                     >
-                        Sign In
-          </Button>
+                    Sign In
+                    </Button>
                     <Grid container>
                         <Grid item>
-                            <Link href="#" variant="body2">
+                            <Link href="#" variant="body2" onClick={props.clearErrors}>
                                 {"Don't have an account? Sign Up"}
                             </Link>
                         </Grid>
