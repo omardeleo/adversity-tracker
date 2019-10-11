@@ -1,13 +1,15 @@
-.feelings-slider {
-  margin-left: 20px;
+.slider {
+  width: 100%;
   display: flex;
 }
 
-.slider-container {
-  min-width: 300px;
-  margin-left: 30px;
+.slider-wrapper {
   border: 1px solid #a9a9a9;
   border-radius: 5px;
+}
+
+.slider-container {
+  width: 100%;
   padding: 0 20px;
 }
 
@@ -25,3 +27,4 @@
   width: 33%;
   font-size: 12px;
 }
+

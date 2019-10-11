@@ -1,0 +1,126 @@
+.reflection {
+  width: 100%;
+  align-content: center;
+  justify-content: space-evenly;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 10px;
+  margin: 10px 0;
+  padding-right: 20px;
+  overflow: hidden;
+}
+
+.beliefs {
+  width: 80%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #a9a9a9;
+  border-radius: 10px;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.module-label {
+  align-self: flex-start;
+  margin-left: 40px;
+  padding: 10px;
+  width: 100px;
+  border: 2px solid #a9a9a9;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  margin-top: -1px;
+  color: #a9a9a9;
+  background: #181818;
+}
+
+.beliefs-sliders, .belief-text {
+  width: 80%;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.belief-text {
+  height: 300px;
+}
+.belief-text span {
+  align-self: baseline;
+  margin-bottom: 10px;
+}
+
+
+.belief-text textarea {
+  border: 1px solid #a9a9a9;
+  border-radius: 10px;
+  height: 80%;
+  width: 85%;
+  background: none;
+  color: #a9a9a9;
+  font-size: 18px;
+}
+
+.beliefs-sliders {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.belief .belief-data {
+  border: 1px solid #a9a9a9;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.belief {
+  border: none;
+  width: 45%;
+}
+
+.description {
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  margin: 10px 0;
+}
+
+.description span {
+  width: 90%;
+}
+
+.info {
+  text-align: center;
+  height: 20px;
+  width: 20px;
+  border: 1px solid #a9a9a9;
+  border-radius: 20px;
+}
+
+.description input {
+  border: 1px solid #a9a9a9;
+  border-radius: 10px;
+  background: none;
+  color: #a9a9a9;
+  font-size: 12px;
+}
+
+.slider-details {
+  width: 100%;
+  font-size: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.sub-detail {
+  width: 35%;
+  padding-inline-start: 10px;
+  text-align: left;
+}
+

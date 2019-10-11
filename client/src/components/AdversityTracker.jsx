@@ -2,15 +2,17 @@ import React from "react";
 
 import AdversityTitle from "./AdversityTitle";
 import Recognition from "./Recognition";
-import { createRecognition } from "../util/recognition_api_util"
-import { createFeeling } from "../util/feeling_api_util"
+import { Reflection } from "./reflection/Reflection";
+import { Retrospection } from "./retrospection/Retrospection";
+import { createRecognition } from "../util/recognition_api_util";
+import { createFeeling } from "../util/feeling_api_util";
 import './AdversityTracker.css';
 
 class AdversityTracker extends React.Component {
 
     handleAccept(e) {
         e.preventDefault();
-        const { title, story, feelings, adding, currentUser } = this.props
+        const { title, story, feelings, adding, currentUser } = this.props;
         const user_id = currentUser.id;
         if (adding) {
             createRecognition(this.props.adversity_id, story)
@@ -44,25 +46,52 @@ class AdversityTracker extends React.Component {
         }
     }
 
+    generateFormButtons(actions) {
+        let {accept, clear} = actions;
+        return(
+            <div className="accept-container">
+                <div className="accept-button" onClick={accept}>accept</div>
+                <div className="clear-button" onClick={clear}>clear</div>
+            </div>
+        )
+    }
+
+    generateInputFields() {
+
+        const { story, feelings, subtab } = this.props;
+        
+        if (subtab === 'Recognition') {
+            let action = { accept: this.handleAccept.bind(this), clear: this.props.clearForm }
+            let formButtons = this.generateFormButtons(action)
+            return <div className="tracker-container"> 
+                {formButtons}
+                <Recognition handleStory={this.props.updateStory}
+                story={story}
+                feelings={feelings}
+                handleAddSlider={this.props.addSlider}
+                handleFeelingTextChange={this.props.updateFeelingText}
+                handleSliderChange={this.props.updateFeelingValue}
+                />
+                </div>
+        } else if (subtab === 'Reflection') {
+            
+            return <div className="tracker-container">
+                <Reflection generateFormButtons={this.generateFormButtons}/>
+            </div>
+        } else {
+            return <Retrospection />
+        }
+
+    }
+
     render() {
-        const { adding, title, updateTitle, story, feelings } = this.props;
+        const { adding, title, updateTitle } = this.props;
+        const inputFields = this.generateInputFields();
+        
         return (
             <div className="tracker-container">
-                <div className="accept-container">
-                    <div className="accept-button" onClick={this.handleAccept.bind(this)}>accept</div>
-                </div>
-                <div className="clear-container">
-                    <div className="clear-button" onClick={this.props.clearForm}>clear</div>
-                </div>
                 <AdversityTitle adding={adding} title={title} handleTitle={updateTitle} />
-                <Recognition
-                    handleStory={this.props.updateStory}
-                    story={story}
-                    feelings={feelings}
-                    handleAddSlider={this.props.addSlider}
-                    handleFeelingTextChange={this.props.updateFeelingText}
-                    handleSliderChange={this.props.updateFeelingValue}
-                />
+                {inputFields}
             </div>
         );
     }
