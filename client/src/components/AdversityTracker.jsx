@@ -46,20 +46,38 @@ class AdversityTracker extends React.Component {
         }
     }
 
+    generateFormButtons(actions) {
+        let {accept, clear} = actions;
+        return(
+            <div className="accept-container">
+                <div className="accept-button" onClick={accept}>accept</div>
+                <div className="clear-button" onClick={clear}>clear</div>
+            </div>
+        )
+    }
+
     generateInputFields() {
 
         const { story, feelings, subtab } = this.props;
         
         if (subtab === 'Recognition') {
-            return <Recognition handleStory={this.props.updateStory}
+            let action = { accept: this.handleAccept.bind(this), clear: this.props.clearForm }
+            let formButtons = this.generateFormButtons(action)
+            return <div className="tracker-container"> 
+                {formButtons}
+                <Recognition handleStory={this.props.updateStory}
                 story={story}
                 feelings={feelings}
                 handleAddSlider={this.props.addSlider}
                 handleFeelingTextChange={this.props.updateFeelingText}
                 handleSliderChange={this.props.updateFeelingValue}
                 />
+                </div>
         } else if (subtab === 'Reflection') {
-            return <Reflection />;
+            
+            return <div className="tracker-container">
+                <Reflection generateFormButtons={this.generateFormButtons}/>
+            </div>
         } else {
             return <Retrospection />
         }
@@ -72,12 +90,6 @@ class AdversityTracker extends React.Component {
         
         return (
             <div className="tracker-container">
-                <div className="accept-container">
-                    <div className="accept-button" onClick={this.handleAccept.bind(this)}>accept</div>
-                </div>
-                <div className="clear-container">
-                    <div className="clear-button" onClick={this.props.clearForm}>clear</div>
-                </div>
                 <AdversityTitle adding={adding} title={title} handleTitle={updateTitle} />
                 {inputFields}
             </div>

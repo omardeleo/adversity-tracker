@@ -1,22 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CustomSlider } from '../ui/CustomSlider';
 
-export const Beliefs = () => {
+
+export const Beliefs = props => {
   const [beliefText, setBeliefText] = useState('');
 
-  const [control, setControl] = useState(0);
+  const [controlLevel, setControlLevel] = useState(0);
   const controlScale = ["External", "Internal"];
 
-  const [ability, setAbility] = useState(0);
+  const [abilityLevel, setAbilityLevel] = useState(0);
   const abilityScale = ["Can't", "Can"];
 
-  const [need, setNeed] = useState(0);
+  const [needLevel, setNeedLevel] = useState(0);
   const [needOption, setNeedOption] = useState();
   const [needText, setNeedText] = useState('');
   const needScale = ["Unmet", "Partially Met", "Met"];
 
-  const [pressure, setPressure] = useState(0);
+  const [pressureLevel, setPressureLevel] = useState(0);
+
   const pressureScale = ["Manageable", "Unsustainable", "Breaking Point"];
+
+  const beliefsForm = { form: "beliefsForm",
+                        beliefText: beliefText,
+                        controlLevel: controlLevel,
+                        abilityLevel: abilityLevel,
+                        needLevel: needLevel,
+                        pressureLevel: pressureLevel
+                      };
+
+  useEffect(() => {
+    props.updateForm(beliefsForm);
+  });
 
   const handleBeliefText = e => {
     setBeliefText(e.target.value);
@@ -29,10 +43,22 @@ export const Beliefs = () => {
   const handleNeedText = e => {
     setNeedText(e.target.value);
   };
+  
+  const handleAccept = () => {
+    return null;
+  };
+
+  const handleClear = () => {
+    return console.log('TEST');
+  };
+
+  const actions = {accept: handleAccept, clear: handleClear};
+
+  const formButtons = props.generateFormButtons(actions);
 
   return (
     <div className="beliefs">
-    
+      {formButtons}
       <div className='module-label'>Beliefs</div>
 
       <div className="belief-text">
@@ -51,8 +77,8 @@ export const Beliefs = () => {
             <div className="belief-data">
               <CustomSlider
                 scale={controlScale}
-                value={control}
-                handleChange={setControl}
+                value={controlLevel}
+                handleChange={setControlLevel}
               />
               <div className="slider-details">
                 <ul className="sub-detail">
@@ -77,8 +103,8 @@ export const Beliefs = () => {
             <div className="belief-data">
               <CustomSlider
                 scale={abilityScale}
-                value={ability}
-                handleChange={setAbility}
+                value={abilityLevel}
+                handleChange={setAbilityLevel}
               />
               <div className="slider-details">
                 <ul className="sub-detail">
@@ -111,8 +137,8 @@ export const Beliefs = () => {
           <div className="belief-data">
             <CustomSlider
               scale={needScale}
-              value={need}
-              handleChange={setNeed}
+              value={needLevel}
+              handleChange={setNeedLevel}
             />
           </div>
   
@@ -128,8 +154,8 @@ export const Beliefs = () => {
           <div className="belief-data">
             <CustomSlider
               scale={pressureScale}
-              value={pressure}
-              handleChange={setPressure}
+              value={pressureLevel}
+              handleChange={setPressureLevel}
             />
           </div>
 

@@ -1,13 +1,13 @@
 import React from 'react';
-import { Beliefs } from './Beliefs';
+import Beliefs from './BeliefsContainer';
 
 import '../stylesheets/Reflection.css';
 
-export const Reflection = () => {
-
+export const Reflection = props => {
+  
   return(
     <div className="reflection">
-      <Beliefs />
+      <Beliefs generateFormButtons={props.generateFormButtons}/>
     </div>
   );
 
