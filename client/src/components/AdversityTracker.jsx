@@ -48,8 +48,9 @@ class AdversityTracker extends React.Component {
 
     generateFormButtons(actions) {
         let {accept, clear} = actions;
+        
         return(
-            <div className="accept-container">
+            <div className="button-container">
                 <div className="accept-button" onClick={accept}>accept</div>
                 <div className="clear-button" onClick={clear}>clear</div>
             </div>
@@ -61,10 +62,14 @@ class AdversityTracker extends React.Component {
         const { story, feelings, subtab } = this.props;
         
         if (subtab === 'Recognition') {
+            const { adding, title, updateTitle } = this.props;
             let action = { accept: this.handleAccept.bind(this), clear: this.props.clearForm }
             let formButtons = this.generateFormButtons(action)
             return <div className="tracker-container"> 
-                {formButtons}
+                <div className="header-wrapper">
+                    <AdversityTitle adding={adding} title={title} handleTitle={updateTitle} />
+                    {formButtons}
+                </div>
                 <Recognition handleStory={this.props.updateStory}
                 story={story}
                 feelings={feelings}
@@ -76,7 +81,7 @@ class AdversityTracker extends React.Component {
         } else if (subtab === 'Reflection') {
             
             return <div className="tracker-container">
-                <Reflection generateFormButtons={this.generateFormButtons}/>
+                <Reflection adversityTitle={AdversityTitle}generateFormButtons={this.generateFormButtons}/>
             </div>
         } else {
             return <Retrospection />
@@ -85,12 +90,11 @@ class AdversityTracker extends React.Component {
     }
 
     render() {
-        const { adding, title, updateTitle } = this.props;
+        
         const inputFields = this.generateInputFields();
         
         return (
             <div className="tracker-container">
-                <AdversityTitle adding={adding} title={title} handleTitle={updateTitle} />
                 {inputFields}
             </div>
         );

@@ -2,8 +2,8 @@
   width: 100%;
 }
 
-.accept-container, .clear-container {
-  width: 100%;
+.button-container {
+  height: 35px;
   display: flex;
   justify-content: flex-end;
 }
@@ -20,4 +20,12 @@
 
 .accept-button:hover {
   border: 1px solid #606060;
+}
+
+.header-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
 }
