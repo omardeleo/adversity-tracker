@@ -6,12 +6,16 @@ import { useStyles } from '../util/ui_util';
 import { Add } from "@material-ui/icons";
 
 import FeelingsSlider from "./CustomSlider";
+import { CustomSlider } from './ui/CustomSlider';
 import './AdversityFeeling.css';
+import './stylesheets/recognition.css';
+
 
 
 const FeelingItem = props => {
     const { feeling, sliderVal } = props.feeling;
     const classes = useStyles();
+    const feelingScale = ["mildly", "moderately", "intensely"];
 
     return (
         <div className="feeling-row">

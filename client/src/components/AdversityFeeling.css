@@ -12,7 +12,7 @@
 }
 
 .feelings-tracker-label {
-  min-width: 200px;
+  /* min-width: 200px; */
   text-align: right;
   margin: 0 10px 0 40px;
 }
