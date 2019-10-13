@@ -81,7 +81,7 @@ class AdversityTracker extends React.Component {
         } else if (subtab === 'Reflection') {
             
             return <div className="tracker-container">
-                <Reflection adversityTitle={AdversityTitle}generateFormButtons={this.generateFormButtons}/>
+                <Reflection generateFormButtons={this.generateFormButtons}/>
             </div>
         } else {
             return <Retrospection />
