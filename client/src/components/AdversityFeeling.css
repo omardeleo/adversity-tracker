@@ -1,6 +1,5 @@
 .adv-feeling {
   display: flex;
-  align-items: center;
 }
 
 .adv-feeling-text input:focus {
@@ -8,7 +7,6 @@
 }
 
 .feeling-row {
-  width: 80%;
   display: flex;
   align-items: center;
 }
@@ -17,11 +15,12 @@
   width: 18%;
   text-align: left;
   margin: 0 10px 0 40px;
+  padding-top: 30px;
 }
 
 .feeling-main {
   display: flex;
-  align-items: center;
+  flex-direction: column;
 }
 
 .slider-label {

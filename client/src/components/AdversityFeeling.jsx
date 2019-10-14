@@ -76,7 +76,9 @@ class AdversityFeeling extends React.Component {
                     <span className="feelings-tracker-label">
                         I'm noticing I'm feeling...
                     </span>
-                    {feelingItems}
+                    <div className="feeling-main">
+                        {feelingItems}
+                    </div>
                 </div>
                 <Add className="add-feeling" onClick={this.props.handleAddSlider} />
             </div>
