@@ -1,7 +1,7 @@
 import React from 'react';
 import Beliefs from './BeliefsContainer';
 
-import '../stylesheets/reflection.css';
+import '../stylesheets/Reflection.css';
 
 export const Reflection = props => {
   
