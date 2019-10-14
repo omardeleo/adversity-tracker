@@ -23,7 +23,6 @@
 
 .header-wrapper {
   width: 80%;
-  margin: 10px;
   align-self: left;
   display: flex;
   flex-direction: row;
@@ -67,6 +66,10 @@
   justify-content: center;
 }
 
+.beliefs-sliders {
+  align-items: baseline;
+}
+
 .belief-text {
   height: 300px;
 }
@@ -84,6 +87,13 @@
   background: none;
   color: #a9a9a9;
   font-size: 18px;
+  outline: none;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+
+  resize: none;
 }
 
 .beliefs-sliders {
@@ -128,7 +138,10 @@
   border-radius: 10px;
   background: none;
   color: #a9a9a9;
-  font-size: 12px;
+  height: 30px;
+  width: 70%;
+  font-size: 18px;
+  outline: none;
 }
 
 .slider-details {

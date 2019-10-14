@@ -1,5 +1,6 @@
 .adv-feeling {
   display: flex;
+  align-items: center;
 }
 
 .adv-feeling-text input:focus {
@@ -7,19 +8,24 @@
 }
 
 .feeling-row {
+  width: 80%;
   display: flex;
   align-items: center;
 }
 
 .feelings-tracker-label {
-  /* min-width: 200px; */
-  text-align: right;
+  width: 18%;
+  text-align: left;
   margin: 0 10px 0 40px;
 }
 
 .feeling-main {
   display: flex;
   align-items: center;
+}
+
+.slider-label {
+  margin: 0 20px;
 }
 
 .add-feeling {

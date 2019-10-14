@@ -32,12 +32,26 @@ const FeelingItem = props => {
                     props.handleFeelingTextChange({index: props.index, feeling: e.target.value})
                 }}
             />
-            <FeelingsSlider
-                sliderVal={sliderVal}
-                handleChange={props.handleSliderChange}
-                className={classes.slider}
-                index={props.index}
-            />
+                <div className="slider-label">intensity</div>
+      
+            <div className="slider-wrapper">
+            <div className="slider">
+                <div className='slider-container'>
+                <FeelingsSlider
+                    sliderVal={sliderVal}
+                    handleChange={props.handleSliderChange}
+                    className={classes.slider}
+                    index={props.index}
+                />
+                <div className="slider-values">
+                <div className="slider-value">mildly</div>
+                    <div className="slider-value">moderately</div>
+                    <div className="slider-value">intensely</div>
+                </div>
+                    </div>
+            </div>
+
+            </div>
         </div>
     );
 };
@@ -62,12 +76,7 @@ class AdversityFeeling extends React.Component {
                     <span className="feelings-tracker-label">
                         I'm noticing I'm feeling...
                     </span>
-                    
-                    <div className="feeling-main">
-                        <div className="feelings-container">
-                            {feelingItems}
-                        </div>
-                    </div>
+                    {feelingItems}
                 </div>
                 <Add className="add-feeling" onClick={this.props.handleAddSlider} />
             </div>

@@ -21,11 +21,3 @@
 .accept-button:hover {
   border: 1px solid #606060;
 }
-
-.header-wrapper {
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  justify-content: space-between;
-  align-items: center;
-}
