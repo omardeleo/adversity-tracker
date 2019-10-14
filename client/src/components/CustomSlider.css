@@ -28,7 +28,12 @@
 
 .small-emotion-image {
   height: 40px;
-  width: 44px;
+  width: 43px;
+}
+
+.big-emotion-image {
+  height: 400px;
+  width: 430px;
 }
 
 .transparent-button{
