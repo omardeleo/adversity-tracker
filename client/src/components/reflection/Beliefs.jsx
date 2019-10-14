@@ -53,6 +53,8 @@ export const Beliefs = props => {
     return console.log('TEST');
   };
 
+  // const adversities = props.adversities.map(adv => adv.title);
+
   const title = "TEST TITLE";
 
   const actions = {accept: handleAccept, clear: handleClear};

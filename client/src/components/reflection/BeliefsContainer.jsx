@@ -2,8 +2,9 @@ import { connect } from 'react-redux';
 import { Beliefs } from './Beliefs';
 import { updateForm } from '../../actions/form_actions';
 
-const mapStateToProps = state => ({
-  beliefs: state.forms.beliefForm
+const mapStateToProps = ({entities, forms}) => ({
+  beliefs: forms.beliefForm
+  // adversities: Object.values(entities.adversities) 
 });
 
 const mapDispatchToProps = dispatch => ({
