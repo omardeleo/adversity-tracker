@@ -10,12 +10,16 @@ export default (state = [], action) => {
         case RECEIVE_SESSION_ERRORS:
             const errors = action.errors;
             const newState = {
-                name: null,
+                first_name: null,
+                last_name: null,
                 email: null,
                 password: null
             }
-            if (errors.includes("Name can't be blank")) {
-                newState.name = "Name can't be blank"
+            if (errors.includes("First name can't be blank")) {
+                newState.firstName = "First name can't be blank"
+            } 
+            if (errors.includes("Last name can't be blank")) {
+                newState.lastName = "Last name can't be blank"
             } 
             if (errors.includes("Email Invalid email")) {
                 newState.email = "Invalid email"
