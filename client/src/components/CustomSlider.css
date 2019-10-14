@@ -1,5 +1,5 @@
 .feelings-slider {
-  margin-left: 20px;
+  margin-left: 4px;
   display: flex;
 }
 
@@ -24,4 +24,25 @@
   justify-content: center;
   width: 33%;
   font-size: 12px;
+}
+
+.small-emotion-image {
+  height: 40px;
+  width: 44px;
+}
+
+.transparent-button{
+  background-color: transparent;
+  border: none;
+  padding-left: 0px;
+  margin-top: 15px;
+}
+
+.transparent-button:hover{
+  cursor: pointer;
+}
+
+.transparent-button:focus{
+  outline:none;
+  -webkit-appearance: none;
 }

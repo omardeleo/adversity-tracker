@@ -77,6 +77,7 @@ const FeelingsSlider = withStyles({
 export default function CustomizedSlider(props) {
     return (
         <div className="feelings-slider">
+            <button className="transparent-button"><img className="small-emotion-image" src={process.env.PUBLIC_URL + "/static/images/small.png"} /></button>
             <div className="slider-label">intensity</div>
             <div className="slider-container" data-order={props.order}>
                 <FeelingsSlider
