@@ -2,12 +2,12 @@ class User < ApplicationRecord
     
     attr_reader :password
 
-    validates :name, :email, :password_digest, :session_token, presence: true
+    validates :first_name, :last_name, :email, :password_digest, :session_token, presence: true
     validates :email, 
         uniqueness: true, 
         length: { maximum: 30 }, 
         format: { with: URI::MailTo::EMAIL_REGEXP, message: 'Invalid email' } 
-    validates :name, length: { maximum: 30 }
+    validates :first_name, :last_name, length: { maximum: 30 }
     validates :password, length: { minimum: 6, maximum: 30 }, allow_nil: true
 
     after_initialize :ensure_session_token
