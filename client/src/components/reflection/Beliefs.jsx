@@ -13,20 +13,22 @@ export const Beliefs = props => {
   const abilityScale = ["Can't", "Can"];
 
   const [needLevel, setNeedLevel] = useState(0);
-  const [needOption, setNeedOption] = useState();
-  const [needText, setNeedText] = useState('');
+  const [need, setNeed] = useState('Need Goes Here');
+  const [needReason, setNeedReason] = useState('');
   const needScale = ["Unmet", "Partially Met", "Met"];
 
   const [pressureLevel, setPressureLevel] = useState(0);
-
   const pressureScale = ["Manageable", "Unsustainable", "Breaking Point"];
 
   const beliefsForm = { form: "beliefsForm",
-                        beliefText: beliefText,
-                        controlLevel: controlLevel,
-                        abilityLevel: abilityLevel,
-                        needLevel: needLevel,
-                        pressureLevel: pressureLevel
+                        adversity_id: props.adversityId,
+                        belief_text: beliefText,
+                        control_level: controlLevel,
+                        ability_level: abilityLevel,
+                        need: need,
+                        need_level: needLevel,
+                        need_reason: needReason,
+                        pressure_level: pressureLevel
                       };
 
   useEffect(() => {
@@ -37,30 +39,30 @@ export const Beliefs = props => {
     setBeliefText(e.target.value);
   };
 
-  const handleNeedOption = e => {
-    setNeedOption(e.target.value);
+  const handleNeed = e => {
+    setNeed(e.target.value);
   };
 
-  const handleNeedText = e => {
-    setNeedText(e.target.value);
+  const handleNeedReason = e => {
+    setNeedReason(e.target.value);
   };
+
+  const { belief, createBelief } = props;
   
   const handleAccept = () => {
-    return null;
+    createBelief(belief);
   };
 
   const handleClear = () => {
     return console.log('TEST');
   };
-
-  // const adversities = props.adversities.map(adv => adv.title);
-
-  const title = "TEST TITLE";
-
+  
+  const title = props.adversityTitle;
+  
   const actions = {accept: handleAccept, clear: handleClear};
-
+  
   const formButtons = props.generateFormButtons(actions);
-
+  
   return (
     <div className="module-wrapper">
       <div className="header-wrapper">
@@ -136,7 +138,7 @@ export const Beliefs = props => {
             <div className="description">
               <div>
                 <span>I perceive my need...</span>
-                <option value={needOption} onChange={handleNeedOption}>SELECT</option>
+                <option value={need} onChange={handleNeed}>SELECT</option>
               </div>
                 <div className="info">i</div>
             </div>
@@ -150,7 +152,7 @@ export const Beliefs = props => {
               />
             </div>
     
-            <div className="description">because...<input value={needText} onChange={handleNeedText}></input></div>
+            <div className="description">because...<input value={needReason} onChange={handleNeedReason}></input></div>
           </div>
 
           <div className="belief">
