@@ -1,12 +1,12 @@
 import * as APIUtil from '../util/belief_api_util';
 
-export const RECEIVE_BELIEFS = 'RECEIVE_BELIEFS';
+// export const RECEIVE_BELIEFS = 'RECEIVE_BELIEFS';
 export const RECEIVE_BELIEF = 'RECEIVE_BELIEF';
 
-export const receiveBeliefs = beliefs => ({
-  type: RECEIVE_BELIEFS,
-  beliefs,
-});
+// export const receiveBeliefs = beliefs => ({
+//   type: RECEIVE_BELIEFS,
+//   beliefs,
+// });
 
 export const receiveBelief = belief => ({
   type: RECEIVE_BELIEF,

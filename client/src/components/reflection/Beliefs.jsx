@@ -47,9 +47,10 @@ export const Beliefs = props => {
     setNeedReason(e.target.value);
   };
 
-  const { belief, createBelief } = props;
   
   const handleAccept = () => {
+    const { belief, createBelief } = props;
+    debugger
     createBelief(belief);
   };
 
