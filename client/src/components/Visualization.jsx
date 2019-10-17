@@ -18,7 +18,7 @@ class Visualization extends React.Component {
     render() {
         return (
             <div>
-                <h1>Adversity Data for { this.props.currentUser.name } - { displayMonth() }</h1>
+                <h1>Adversity Data for { this.props.currentUser.first_name } - { displayMonth() }</h1>
                 <div className="chart-container">
                     <ChartContainer />
                 </div>

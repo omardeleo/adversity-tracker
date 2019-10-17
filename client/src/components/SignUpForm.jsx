@@ -46,11 +46,11 @@ class SignUpForm extends React.Component {
 
     formSubmit(e) {
         e.preventDefault();
-        const firstName = document.getElementById('firstName').value;
-        const lastName = document.getElementById('lastName').value;
+        const first_name = document.getElementById('firstName').value;
+        const last_name = document.getElementById('lastName').value;
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
-        const user = { name: `${firstName} ${lastName}`, email, password };
+        const user = { first_name, last_name, email, password };
         this.props.processForm(user);
     }
 
@@ -88,7 +88,7 @@ function SignUp(props) {
                                 autoFocus
                             />
                         <Typography variant="body2" display="block" className={classes.errorText}>
-                                {props.errors.name}
+                                {props.errors.firstName}
                         </Typography>
                         </Grid>
                         <Grid item xs={12} sm={6}>
@@ -102,6 +102,9 @@ function SignUp(props) {
                                 name="lastName"
                                 autoComplete="lname"
                             />
+                            <Typography variant="body2" display="block" className={classes.errorText}>
+                                {props.errors.lastName}
+                            </Typography>
                         </Grid>
                         <Grid item xs={12}>
                             <TextField

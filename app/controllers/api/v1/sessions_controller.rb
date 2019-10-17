@@ -19,7 +19,18 @@ module Api::V1
                 login(@user)
                 render json: @user
             else
-                render json: ["Invalid email/password combination"], status: 401
+                errors = []
+                if params[:user][:email] == ""
+                    errors.push("Email can't be blank")
+                end
+                if params[:user][:password] == ""
+                    errors.push("Password can't be blank")
+                end
+                puts 1
+                if params[:user][:email] != "" || params[:user][:password] != ""
+                    errors.push("Invalid email/password combination")
+                end
+                render json: errors, status: 401
             end
         end
 

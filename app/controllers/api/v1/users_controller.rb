@@ -20,22 +20,9 @@ module Api::V1
             end
         end
 
-    #   def update
-    #     @user = User.find_by(id: params[:user][:id])
-        
-    #     if @user.update_attributes(user_params)
-    #       render :show
-    #     else
-    #       render json: @user.errors.full_messages, status: 422
-    #     end
-    #   end
-
         private
         def user_params
-            params.require(:user).permit(:name, :password, :email)
+            params.require(:user).permit(:first_name, :last_name, :email, :password)
         end
-    #   def user_params
-    #     params.require(:user).permit(:name, :password, :email, :id)
-    #   end
     end
 end

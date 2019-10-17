@@ -8,14 +8,19 @@ export default (state = [], action) => {
     Object.freeze(state);
     switch (action.type) {
         case RECEIVE_SESSION_ERRORS:
+            // debugger
             const errors = action.errors;
             const newState = {
-                name: null,
+                first_name: null,
+                last_name: null,
                 email: null,
                 password: null
             }
-            if (errors.includes("Name can't be blank")) {
-                newState.name = "Name can't be blank"
+            if (errors.includes("First name can't be blank")) {
+                newState.firstName = "First name can't be blank"
+            } 
+            if (errors.includes("Last name can't be blank")) {
+                newState.lastName = "Last name can't be blank"
             } 
             if (errors.includes("Email Invalid email")) {
                 newState.email = "Invalid email"
@@ -25,6 +30,12 @@ export default (state = [], action) => {
             } 
             if (errors.includes("Password is too short (minimum is 6 characters)")) {
                 newState.password = "Password is too short (minimum is 6 characters)"
+            }
+            if (errors.includes("Email can't be blank")) {
+                newState.email = "Email can't be blank"
+            }
+            if (errors.includes("Password can't be blank")) {
+                newState.password = "Password can't be blank"
             }
             if (errors.includes("Invalid email/password combination")) {
                 newState.signIn = "Invalid email/password combination"
