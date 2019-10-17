@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { CustomSlider } from '../ui/CustomSlider';
 import AdversityTitle from "../AdversityTitle";
+import { fetchBeliefs } from "../../actions/belief_actions";
 
 
 export const Beliefs = props => {
@@ -20,20 +21,16 @@ export const Beliefs = props => {
   const [pressureLevel, setPressureLevel] = useState(0);
   const pressureScale = ["Manageable", "Unsustainable", "Breaking Point"];
 
-  const beliefsForm = { form: "beliefsForm",
-                        adversity_id: props.adversityId,
-                        belief_text: beliefText,
-                        control_level: controlLevel,
-                        ability_level: abilityLevel,
-                        need: need,
-                        need_level: needLevel,
-                        need_reason: needReason,
-                        pressure_level: pressureLevel
-                      };
-
-  useEffect(() => {
-    props.updateForm(beliefsForm);
-  });
+  const belief = { 
+                  adversity_id: props.adversityId,
+                  belief_text: beliefText,
+                  control_level: controlLevel,
+                  ability_level: abilityLevel,
+                  need: need,
+                  need_level: needLevel,
+                  need_reason: needReason,
+                  pressure_level: pressureLevel
+                  };
 
   const handleBeliefText = e => {
     setBeliefText(e.target.value);
@@ -49,8 +46,7 @@ export const Beliefs = props => {
 
   
   const handleAccept = () => {
-    const { belief, createBelief } = props;
-    debugger
+    const { createBelief } = props;
     createBelief(belief);
   };
 

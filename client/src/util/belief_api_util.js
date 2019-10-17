@@ -7,3 +7,10 @@ export const createBelief = belief => (
     data: { belief }
   })
 );
+
+export const fetchBeliefs = () => (
+  $.ajax({
+    method: 'GET',
+    url: `/api/v1/beliefs`
+  })
+);

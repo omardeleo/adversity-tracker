@@ -4,7 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import FeelingsSlider from "./CustomSlider";
 import { useStyles } from '../util/ui_util';
 import { Add } from "@material-ui/icons";
-import { CustomSlider } from './ui/CustomSlider';
+// import { CustomSlider } from './ui/CustomSlider';
 
 import './AdversityFeeling.css';
 import './stylesheets/recognition.css';
