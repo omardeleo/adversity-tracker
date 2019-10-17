@@ -1,10 +1,33 @@
 import React, { useState } from "react";
+import { makeStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 import { CustomSlider } from '../ui/CustomSlider';
 import AdversityTitle from "../AdversityTitle";
 import { fetchBeliefs } from "../../actions/belief_actions";
 
+import '../AdversityTitle.css';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+}));
+
 
 export const Beliefs = props => {
+
+  const [adversity, setAdversity] = useState(props.adversityTitle);
   const [beliefText, setBeliefText] = useState('');
 
   const [controlLevel, setControlLevel] = useState(0);
@@ -31,6 +54,20 @@ export const Beliefs = props => {
                   need_reason: needReason,
                   pressure_level: pressureLevel
                   };
+
+
+  const classes = useStyles();
+
+
+  const inputLabel = React.useRef(null);
+  const [labelWidth, setLabelWidth] = React.useState(0);
+  React.useEffect(() => {
+    setLabelWidth(inputLabel.current.offsetWidth);
+  }, []);
+
+  const handleAdversity = e => {
+    setAdversity(e.target.value);
+  };
 
   const handleBeliefText = e => {
     setBeliefText(e.target.value);
@@ -63,7 +100,26 @@ export const Beliefs = props => {
   return (
     <div className="module-wrapper">
       <div className="header-wrapper">
-        <AdversityTitle title={title}/>{formButtons}
+          <div className="adv-title">
+          <div className="adv-title-label">Adversity Experience Title...</div>
+                      <form className={classes.root} autoComplete="off">
+                        <FormControl variant="outlined" className={classes.formControl}>
+                          <Select
+                            value={adversity}
+                            onChange={handleAdversity}
+                            labelwidth={labelWidth}
+                          >
+                            <MenuItem value={adversity}>
+                              {adversity}
+                            </MenuItem>
+                            <MenuItem value={10}>Ten</MenuItem>
+                            <MenuItem value={20}>Twenty</MenuItem>
+                            <MenuItem value={30}>Thirty</MenuItem>
+                          </Select>
+                        </FormControl>
+                      </form> 
+        </div>
+        {formButtons}
       </div>
       <div className="beliefs">
         <div className='module-label'>Beliefs</div>
@@ -135,7 +191,29 @@ export const Beliefs = props => {
             <div className="description">
               <div>
                 <span>I perceive my need...</span>
-                <option value={need} onChange={handleNeed}>SELECT</option>
+                <form className={classes.root} autoComplete="off">
+                <FormControl variant="outlined" className={classes.formControl}>
+                  <InputLabel ref={inputLabel} htmlFor="outlined-age-simple">
+                    Need
+                  </InputLabel>
+                  <Select
+                    value={need}
+                    onChange={handleNeed}
+                    labelwidth={labelWidth}
+                    inputProps={{
+                      name: 'age',
+                      id: 'outlined-age-simple',
+                    }}
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    <MenuItem value={10}>Ten</MenuItem>
+                    <MenuItem value={20}>Twenty</MenuItem>
+                    <MenuItem value={30}>Thirty</MenuItem>
+                  </Select>
+                </FormControl>
+                </form>
               </div>
                 <div className="info">i</div>
             </div>
