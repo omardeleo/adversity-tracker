@@ -87,10 +87,15 @@ export const Beliefs = props => {
   };
 
   const handleClear = () => {
-    return console.log('TEST');
+    setAdversity('');
+    setBeliefText('');
+    setControlLevel(0);
+    setAbilityLevel(0);
+    setNeedLevel(0);
+    setNeed('Need Goes Here');
+    setNeedReason('');
+    setPressureLevel(0);
   };
-  
-  const title = props.adversityTitle;
   
   const actions = {accept: handleAccept, clear: handleClear};
   
@@ -191,7 +196,7 @@ export const Beliefs = props => {
               <div>
                 <span>I perceive my need...</span>
                 <form className={classes.root} autoComplete="off">
-                <FormControl variant="outlined" className={classes.formControl}>
+                <FormControl variant="filled" className={classes.formControl}>
                   <InputLabel ref={inputLabel} htmlFor="outlined-age-simple">
                     Need
                   </InputLabel>
