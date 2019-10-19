@@ -38,14 +38,15 @@
   flex-direction: column;
   align-items: center;
   border: 1px solid #a9a9a9;
-  border-radius: 10px;
-  margin: 10px 0;
+  border-radius: 6px;
+  margin: 10px;
+  padding: 0 0 20px 0;
   overflow: hidden;
 }
 
 .module-label {
   align-self: flex-start;
-  margin-left: 40px;
+  margin: 0 0 20px 40px;
   padding: 10px;
   width: 100px;
   border: 2px solid #a9a9a9;
@@ -72,6 +73,9 @@
 
 .belief-text {
   height: 300px;
+  padding: 10px;
+  border-radius: 6px;
+  box-shadow: 0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02);
 }
 .belief-text span {
   align-self: baseline;
@@ -81,7 +85,7 @@
 
 .belief-text textarea {
   border: 1px solid #a9a9a9;
-  border-radius: 10px;
+  border-radius: 6px;
   height: 80%;
   width: 85%;
   background: none;
@@ -103,10 +107,11 @@
 
 .belief, .belief-data {
   border: 1px solid #a9a9a9;
-  border-radius: 10px;
+  border-radius: 6px;
   padding: 10px;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02);
 }
 
 .belief {
@@ -126,6 +131,10 @@
   width: 90%;
 }
 
+.description input {
+  box-shadow: 0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02);
+}
+
 .info {
   text-align: center;
   height: 20px;
@@ -136,7 +145,7 @@
 
 .description input {
   border: 1px solid #a9a9a9;
-  border-radius: 10px;
+  border-radius: 6px;
   background: none;
   color: #a9a9a9;
   height: 30px;

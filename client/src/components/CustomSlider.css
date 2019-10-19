@@ -6,7 +6,8 @@
 .slider-wrapper {
   width: 300px;
   border: 1px solid #a9a9a9;
-  border-radius: 10px;
+  box-shadow: 0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02);
+  border-radius: 6px;
   padding: 10px;
   display: flex;
   flex-direction: column;

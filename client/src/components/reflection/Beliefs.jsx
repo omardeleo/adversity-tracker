@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
+// import NativeSelect from '@material-ui/core/NativeSelect';
 import Select from '@material-ui/core/Select';
 import { CustomSlider } from '../ui/CustomSlider';
-import AdversityTitle from "../AdversityTitle";
-import { fetchBeliefs } from "../../actions/belief_actions";
 
 import '../AdversityTitle.css';
 
@@ -27,8 +26,10 @@ const useStyles = makeStyles(theme => ({
 
 export const Beliefs = props => {
 
-  const [adversity, setAdversity] = useState(props.adversityTitle);
-  const [beliefText, setBeliefText] = useState('');
+  const classes = useStyles();
+
+  const inputLabel = useRef(null);
+  const [labelWidth, setLabelWidth] = useState(0);
 
   const [controlLevel, setControlLevel] = useState(0);
   const controlScale = ["External", "Internal"];
@@ -37,48 +38,36 @@ export const Beliefs = props => {
   const abilityScale = ["Can't", "Can"];
 
   const [needLevel, setNeedLevel] = useState(0);
-  const [need, setNeed] = useState('Need Goes Here');
-  const [needReason, setNeedReason] = useState('');
   const needScale = ["Unmet", "Partially Met", "Met"];
 
   const [pressureLevel, setPressureLevel] = useState(0);
   const pressureScale = ["Manageable", "Unsustainable", "Breaking Point"];
 
-  const belief = { 
-                  adversity_id: props.adversityId,
-                  belief_text: beliefText,
-                  control_level: controlLevel,
-                  ability_level: abilityLevel,
-                  need: need,
-                  need_level: needLevel,
-                  need_reason: needReason,
-                  pressure_level: pressureLevel
-                  };
 
+  const [input, setInput] = useState({
+    adversity_id: props.adversityId,
+    adversity: props.adversityTitle,
+    belief_text: '',
+    need: 'Need',
+    need_reason: '',
+  });
 
-  const classes = useStyles();
+  const belief = Object.assign(input, {
+    control_level: controlLevel,
+    ability_level: abilityLevel,
+    need_level: needLevel,
+    pressure_level: pressureLevel
+  });
 
-
-  const inputLabel = React.useRef(null);
-  const [labelWidth, setLabelWidth] = React.useState(0);
-  React.useEffect(() => {
+  useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
 
-  const handleAdversity = e => {
-    setAdversity(e.target.value);
-  };
-
-  const handleBeliefText = e => {
-    setBeliefText(e.target.value);
-  };
-
-  const handleNeed = e => {
-    setNeed(e.target.value);
-  };
-
-  const handleNeedReason = e => {
-    setNeedReason(e.target.value);
+  const handleChange = field => e => {
+    setInput({
+      ...input,
+      [field]: e.target.value
+    });
   };
 
   const handleAccept = () => {
@@ -87,14 +76,14 @@ export const Beliefs = props => {
   };
 
   const handleClear = () => {
-    setAdversity('');
-    setBeliefText('');
-    setControlLevel(0);
-    setAbilityLevel(0);
-    setNeedLevel(0);
-    setNeed('Need Goes Here');
-    setNeedReason('');
-    setPressureLevel(0);
+    // setAdversity('');
+    // setBeliefText('');
+    // setControlLevel(0);
+    // setAbilityLevel(0);
+    // setNeedLevel(0);
+    // setNeed('Need Goes Here');
+    // setNeedReason('');
+    // setPressureLevel(0);
   };
   
   const actions = {accept: handleAccept, clear: handleClear};
@@ -109,12 +98,16 @@ export const Beliefs = props => {
                       <form className={classes.root} autoComplete="off">
                         <FormControl variant="outlined" className={classes.formControl}>
                           <Select
-                            value={adversity}
-                            onChange={handleAdversity}
+                            value={input.adversity}
+                            onChange={handleChange('adversity')}
                             labelwidth={labelWidth}
+                            inputProps={{
+                                name: 'adversity',
+                                id: 'outlined-adversity-native-simple'
+                            }}
                           >
-                            <MenuItem value={adversity}>
-                              {adversity}
+                            <MenuItem value={input.adversity}>
+                              {input.adversity}
                             </MenuItem>
                             <MenuItem value={10}>Ten</MenuItem>
                             <MenuItem value={20}>Twenty</MenuItem>
@@ -122,15 +115,15 @@ export const Beliefs = props => {
                           </Select>
                         </FormControl>
                       </form> 
-        </div>
-        {formButtons}
+            </div>
+            {formButtons}
       </div>
       <div className="beliefs">
         <div className='module-label'>Beliefs</div>
 
         <div className="belief-text">
           <span>Why does this feel like an adversity?</span>
-          <textarea value={beliefText} onChange={handleBeliefText}></textarea>
+          <textarea value={input.belief_text} onChange={handleChange('belief_text')}></textarea>
         </div>
 
         <div className="beliefs-sliders">
@@ -201,8 +194,8 @@ export const Beliefs = props => {
                     Need
                   </InputLabel>
                   <Select
-                    value={need}
-                    onChange={handleNeed}
+                    value={input.need}
+                    onChange={handleChange('need')}
                     labelwidth={labelWidth}
                     inputProps={{
                       name: 'age',
@@ -231,7 +224,7 @@ export const Beliefs = props => {
               />
             </div>
     
-            <div className="description">because...<input value={needReason} onChange={handleNeedReason}></input></div>
+            <div className="description">because...<input value={belief.need_reason} onChange={handleChange('need_reason')}></input></div>
           </div>
 
           <div className="belief">

@@ -33,7 +33,7 @@ const StyledSlider = withStyles({
   thumb: {
     height: 20,
     width: 8,
-    borderRadius: 3,
+    borderRadius: 6,
     border: "1px solid black",
     backgroundColor: "#fff",
     boxShadow: feelingsBoxShadow,
