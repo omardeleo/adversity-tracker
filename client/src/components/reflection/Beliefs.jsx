@@ -3,8 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
-// import NativeSelect from '@material-ui/core/NativeSelect';
-import Select from '@material-ui/core/Select';
+import NativeSelect from '@material-ui/core/NativeSelect';
 import { CustomSlider } from '../ui/CustomSlider';
 
 import '../AdversityTitle.css';
@@ -13,6 +12,10 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
+    borderRadius: 3,
+    boxShadow: '0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02)',
+    color: 'white',
+    padding: '0 30px',
   },
   formControl: {
     margin: theme.spacing(1),
@@ -43,7 +46,6 @@ export const Beliefs = props => {
   const [pressureLevel, setPressureLevel] = useState(0);
   const pressureScale = ["Manageable", "Unsustainable", "Breaking Point"];
 
-
   const [input, setInput] = useState({
     adversity_id: props.adversityId,
     adversity: props.adversityTitle,
@@ -52,7 +54,8 @@ export const Beliefs = props => {
     need_reason: '',
   });
 
-  const belief = Object.assign(input, {
+  const belief = Object.assign(
+    input, {
     control_level: controlLevel,
     ability_level: abilityLevel,
     need_level: needLevel,
@@ -76,16 +79,16 @@ export const Beliefs = props => {
   };
 
   const handleClear = () => {
-    // setAdversity('');
-    // setBeliefText('');
-    // setControlLevel(0);
-    // setAbilityLevel(0);
-    // setNeedLevel(0);
-    // setNeed('Need Goes Here');
-    // setNeedReason('');
-    // setPressureLevel(0);
+    setControlLevel(0);
+    setAbilityLevel(0);
+    setNeedLevel(0);
+    setPressureLevel(0);
+    setInput({
+      belief_text: '',
+      need: 'Need',
+      need_reason: '',});
   };
-  
+
   const actions = {accept: handleAccept, clear: handleClear};
   
   const formButtons = props.generateFormButtons(actions);
@@ -97,7 +100,7 @@ export const Beliefs = props => {
           <div className="adv-title-label">Adversity Experience Title...</div>
                       <form className={classes.root} autoComplete="off">
                         <FormControl variant="outlined" className={classes.formControl}>
-                          <Select
+                          <NativeSelect
                             value={input.adversity}
                             onChange={handleChange('adversity')}
                             labelwidth={labelWidth}
@@ -106,13 +109,13 @@ export const Beliefs = props => {
                                 id: 'outlined-adversity-native-simple'
                             }}
                           >
-                            <MenuItem value={input.adversity}>
+                            <option value={input.adversity}>
                               {input.adversity}
-                            </MenuItem>
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
-                          </Select>
+                            </option>
+                            <option value={10}>Ten</option>
+                            <option value={20}>Twenty</option>
+                            <option value={30}>Thirty</option>
+                          </NativeSelect>
                         </FormControl>
                       </form> 
             </div>
@@ -193,7 +196,7 @@ export const Beliefs = props => {
                   <InputLabel ref={inputLabel} htmlFor="outlined-age-simple">
                     Need
                   </InputLabel>
-                  <Select
+                  <NativeSelect
                     value={input.need}
                     onChange={handleChange('need')}
                     labelwidth={labelWidth}
@@ -202,13 +205,13 @@ export const Beliefs = props => {
                       id: 'outlined-age-simple',
                     }}
                   >
-                    <MenuItem value="">
+                    <option value="">
                       <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
-                  </Select>
+                    </option>
+                    <option value={10}>Ten</option>
+                    <option value={20}>Twenty</option>
+                    <option value={30}>Thirty</option>
+                  </NativeSelect>
                 </FormControl>
                 </form>
               </div>
