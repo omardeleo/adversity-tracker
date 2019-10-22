@@ -1,14 +1,17 @@
-let currDate = new Date();
-let currYear = currDate.getFullYear();
-let currMonth = currDate.getMonth();
+let currentDate = new Date();
+let [thisMonth, today, thisYear] = [currentDate.getMonth(),
+    currentDate.getDate(),
+    currentDate.getFullYear()];
+let startDate = new Date(Date.UTC(thisYear, thisMonth, today - 30)).valueOf();
+let endDate = new Date(Date.UTC(thisYear, thisMonth, today + 1)).valueOf();
 
 export const getDateRange = () => {
     return {
-        start: new Date(Date.UTC(currYear, currMonth)).valueOf(),
-        end: new Date(Date.UTC(currYear, currMonth + 1, 0, 23, 59, 59, 999)).valueOf()
+        start: startDate,
+        end: endDate
     }
 }
 
 export const displayMonth = () => {
-    return currDate.toLocaleString('default', { month: 'long', year: 'numeric' });
+    return currentDate.toLocaleString('default', { month: 'long', year: 'numeric' });
 }
