@@ -19,7 +19,6 @@ class ChartData extends React.Component {
 
     componentDidMount() {     
         this.props.fetchAdversities(this.props.currentUser.id);
-        this.props.fetchBeliefs();
     }
 
     render() {

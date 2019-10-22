@@ -3,8 +3,8 @@ module Api::V1
         before_action :require_logged_in
 
         def index
-          @beliefs = Belief.all
-          render json: @beliefs
+          @beliefs = Belief.where(adversity_id: params[:adversity_id])
+          # render json: @beliefs
         end
         
         def create

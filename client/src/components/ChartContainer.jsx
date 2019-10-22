@@ -16,7 +16,6 @@ const mapStateToProps = ({ session, entities: { users, adversities } }) => {
 
 const mapDispatchToProps = dispatch => ({
     fetchAdversities: (id) => dispatch(fetchAdversities(id)),
-    fetchBeliefs: () => dispatch(fetchBeliefs()),
     setTitle: (title, id) => dispatch(setTitle(title, id))
 });
 
