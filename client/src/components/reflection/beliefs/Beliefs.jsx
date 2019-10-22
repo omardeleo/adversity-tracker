@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { CustomSlider } from '../ui/CustomSlider';
-import { needs } from '../inventory/needs';
-import '../AdversityTitle.css';
+import { CustomSlider } from '../../ui/CustomSlider';
+import { needs } from '../../inventory/needs';
+import '../../AdversityTitle.css';
 
 const defaultSlider = {
   control_level: 0,

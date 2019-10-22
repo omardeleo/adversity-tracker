@@ -1,5 +1,5 @@
 import React from 'react';
-import Beliefs from './BeliefsContainer';
+import Beliefs from './beliefs/BeliefsContainer';
 
 import '../stylesheets/Reflection.css';
 

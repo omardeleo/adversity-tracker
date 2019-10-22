@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { Beliefs } from './Beliefs';
-import { updateForm } from '../../actions/form_actions';
-import { createBelief } from '../../actions/belief_actions';
-import { fetchAdversities } from '../../actions/adversity_actions';
+import { updateForm } from '../../../actions/form_actions';
+import { createBelief } from '../../../actions/belief_actions';
+import { fetchAdversities } from '../../../actions/adversity_actions';
 
 const mapStateToProps = ({ui, forms, entities, session}) => ({
   currentUser: entities.users[session.id],
