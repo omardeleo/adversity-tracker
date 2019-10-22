@@ -78,7 +78,7 @@ const StyledSlider = withStyles({
 
 export const CustomSlider = props => {
 
-  let { scale, value, handleChange } = props;
+  let { scale, value, handleChange, field } = props;
   let scaleList = scale.map(value => <div key={value} className="slider-value">{value}</div>)
 
   return (
@@ -88,7 +88,7 @@ export const CustomSlider = props => {
           value={value}
           marks={marks}
           valueLabelDisplay="off"
-          onChange={(e, val) => handleChange(val)}
+          onChange={(e, val) => handleChange({field: field, value: val})}
         />
         <div className="slider-values">
           {scaleList}
