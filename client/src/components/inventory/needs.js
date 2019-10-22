@@ -1,4 +1,4 @@
-const needs = [
+export const needs = [
   "connection",
   "acceptance",
   "affection",

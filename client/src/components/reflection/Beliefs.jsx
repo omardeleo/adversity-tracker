@@ -1,38 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
-import { makeStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
+import React, { useState, useEffect } from "react";
 import NativeSelect from '@material-ui/core/NativeSelect';
 import { CustomSlider } from '../ui/CustomSlider';
+import { needs } from '../inventory/needs';
 
 import '../AdversityTitle.css';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    borderRadius: 3,
-    boxShadow: '0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02)',
-    color: 'white',
-    padding: '0 30px',
-  },
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
-}));
-
-
 export const Beliefs = props => {
-
-  const classes = useStyles();
-
-  const inputLabel = useRef(null);
-  const [labelWidth, setLabelWidth] = useState(0);
 
   const [controlLevel, setControlLevel] = useState(0);
   const controlScale = ["External", "Internal"];
@@ -47,8 +20,8 @@ export const Beliefs = props => {
   const pressureScale = ["Manageable", "Unsustainable", "Breaking Point"];
 
   const [input, setInput] = useState({
-    adversity_id: props.adversityId,
-    adversity: props.adversityTitle,
+    adversity_id: null,
+    adversity: '',
     belief_text: '',
     need: 'Need',
     need_reason: '',
@@ -63,8 +36,10 @@ export const Beliefs = props => {
   });
 
   useEffect(() => {
-    setLabelWidth(inputLabel.current.offsetWidth);
-  }, []);
+    if (props.adversities.length === 0) {
+      props.fetchAdversities(props.currentUser.id);
+    }
+  });
 
   const handleChange = field => e => {
     setInput({
@@ -85,12 +60,15 @@ export const Beliefs = props => {
     setPressureLevel(0);
     setInput({
       belief_text: '',
-      need: 'Need',
+      need: '',
       need_reason: '',});
   };
 
+  const adversitiesList = props.adversities.map((adv, i) => <option key={i} value={adv.id}>{adv.title}</option>);
+
+  const needsList = needs.map((need, i) => <option key={i} value={need}>{need}</option>);
+
   const actions = {accept: handleAccept, clear: handleClear};
-  
   const formButtons = props.generateFormButtons(actions);
   
   return (
@@ -98,26 +76,12 @@ export const Beliefs = props => {
       <div className="header-wrapper">
           <div className="adv-title">
           <div className="adv-title-label">Adversity Experience Title...</div>
-                      <form className={classes.root} autoComplete="off">
-                        <FormControl variant="outlined" className={classes.formControl}>
-                          <NativeSelect
-                            value={input.adversity}
-                            onChange={handleChange('adversity')}
-                            labelwidth={labelWidth}
-                            inputProps={{
-                                name: 'adversity',
-                                id: 'outlined-adversity-native-simple'
-                            }}
-                          >
-                            <option value={input.adversity}>
-                              {input.adversity}
-                            </option>
-                            <option value={10}>Ten</option>
-                            <option value={20}>Twenty</option>
-                            <option value={30}>Thirty</option>
-                          </NativeSelect>
-                        </FormControl>
-                      </form> 
+              <form>
+                <NativeSelect onChange={handleChange('adversity_id')}>
+                  <option value={props.adversityId}>{props.adversityTitle}</option>
+                  {adversitiesList}
+                </NativeSelect>
+              </form>
             </div>
             {formButtons}
       </div>
@@ -180,7 +144,6 @@ export const Beliefs = props => {
                   </ul>
                 </div>
               </div>
-
           </div>
 
         </div>
@@ -191,28 +154,11 @@ export const Beliefs = props => {
             <div className="description">
               <div>
                 <span>I perceive my need...</span>
-                <form className={classes.root} autoComplete="off">
-                <FormControl variant="filled" className={classes.formControl}>
-                  <InputLabel ref={inputLabel} htmlFor="outlined-age-simple">
-                    Need
-                  </InputLabel>
-                  <NativeSelect
-                    value={input.need}
-                    onChange={handleChange('need')}
-                    labelwidth={labelWidth}
-                    inputProps={{
-                      name: 'age',
-                      id: 'outlined-age-simple',
-                    }}
-                  >
-                    <option value="">
-                      <em>None</em>
-                    </option>
-                    <option value={10}>Ten</option>
-                    <option value={20}>Twenty</option>
-                    <option value={30}>Thirty</option>
+                <form>
+                  <NativeSelect onChange={handleChange('need')}>
+                    <option value=''>Select a Need</option>
+                    {needsList}
                   </NativeSelect>
-                </FormControl>
                 </form>
               </div>
                 <div className="info">i</div>
