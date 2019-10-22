@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
-import NativeSelect from '@material-ui/core/NativeSelect';
 import { CustomSlider } from '../ui/CustomSlider';
 import { needs } from '../inventory/needs';
-
 import '../AdversityTitle.css';
-
 
 const defaultSlider = {
   control_level: 0,
@@ -13,14 +10,13 @@ const defaultSlider = {
   pressure_level: 0
 };
 
-const defaultInput ={
+const defaultInput = {
   adversity_id: null,
   adversity: '',
   belief_text: '',
   need: 'Need',
   need_reason: '',
 };
-
 
 export const Beliefs = props => {
 
@@ -76,12 +72,12 @@ export const Beliefs = props => {
       <div className="header-wrapper">
           <div className="adv-title">
           <div className="adv-title-label">Adversity Experience Title...</div>
-              <form>
-                <NativeSelect onChange={handleInput('adversity_id')}>
+              <div className="belief-data">
+              <select onChange={handleInput('adversity_id')}>
                   <option value={props.adversityId}>{props.adversityTitle}</option>
                   {adversitiesList}
-                </NativeSelect>
-              </form>
+                </select>
+              </div>
             </div>
             {formButtons}
       </div>
@@ -155,15 +151,15 @@ export const Beliefs = props => {
           <div className="belief">
             <div className="description">
               <div>
-                <span>I perceive my need...</span>
-                <form>
-                  <NativeSelect onChange={handleInput('need')}>
-                    <option value=''>Select a Need</option>
+                <div className="description">I perceive my need...<div className="info">i</div></div>
+                <div className="belief-data">
+                  <select onChange={handleInput('need')}>
+                    <option value="">Select a Need</option>
                     {needsList}
-                  </NativeSelect>
-                </form>
+                  </select>
+                </div>
               </div>
-                <div className="info">i</div>
+                
             </div>
             <div className="description">is...</div>
 
@@ -176,7 +172,7 @@ export const Beliefs = props => {
               />
             </div>
     
-            <div className="description">because...<input value={belief.need_reason} onChange={handleInput('need_reason')}></input></div>
+            <div className="description">because...<input value={input.need_reason} onChange={handleInput('need_reason')}></input></div>
           </div>
 
           <div className="belief">
@@ -197,7 +193,6 @@ export const Beliefs = props => {
           </div>
 
         </div>
-        
 
       </div>
 

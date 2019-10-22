@@ -168,8 +168,17 @@
   text-align: left;
 }
 
-NativeSelect {
+.belief-data select {
+  background: none;
   color: #A9A9A9;
+  border: none;
+  font-size: 16px;
 }
+
+.belief-data select:focus {
+  outline: none;
+}
+
+
 
 
