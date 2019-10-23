@@ -3,22 +3,22 @@ import { CustomSlider } from '../../ui/CustomSlider';
 import { needs } from '../../inventory/needs';
 import '../../AdversityTitle.css';
 
-const defaultSlider = {
-  control_level: 0,
-  ability_level: 0,
-  need_level: 0,
-  pressure_level: 0
-};
-
-const defaultInput = {
-  adversity_id: null,
-  adversity: '',
-  belief_text: '',
-  need: 'Need',
-  need_reason: '',
-};
-
 export const Beliefs = props => {
+
+  const defaultSlider = {
+    control_level: 0,
+    ability_level: 0,
+    need_level: 0,
+    pressure_level: 0
+  };
+
+  const defaultInput = {
+    adversity_id: props.adversityId,
+    adversity: props.adversityTitle,
+    belief_text: '',
+    need: 'Need',
+    need_reason: '',
+  };
 
   const [slider, setSlider] = useState(defaultSlider);
   const [input, setInput] = useState(defaultInput);
