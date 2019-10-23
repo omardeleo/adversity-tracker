@@ -24,7 +24,6 @@ export const Beliefs = props => {
   const [input, setInput] = useState(defaultInput);
 
   const belief = Object.assign(input, slider);
-  debugger
 
   useEffect(() => {
     if (props.adversities.length === 0) {
