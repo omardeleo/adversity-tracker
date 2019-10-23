@@ -20,7 +20,6 @@ export const Beliefs = props => {
     need_reason: '',
   };
 
-
   const [slider, setSlider] = useState(defaultSlider);
   const [input, setInput] = useState(defaultInput);
 
