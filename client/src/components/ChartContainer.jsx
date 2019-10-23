@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-
 import { fetchAdversities } from '../actions/adversity_actions';
 import { getAllAdversities } from '../reducers/selectors';
 import { setTitle } from '../actions/ui_actions';
@@ -10,7 +9,7 @@ const mapStateToProps = ({ session, entities: { users, adversities } }) => {
     return {
         currentUser: users[session.id],
         adversities: getAllAdversities(adversities),
-    }
+    };
 };
 
 const mapDispatchToProps = dispatch => ({

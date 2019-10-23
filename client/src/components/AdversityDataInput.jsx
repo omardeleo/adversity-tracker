@@ -7,7 +7,6 @@ import './AdversityDataInput.css';
 class AdversityDataInput extends React.Component {
     constructor(props) {
         super(props);
-
         this.handleTabClick = this.handleTabClick.bind(this);
     }
 
@@ -18,9 +17,7 @@ class AdversityDataInput extends React.Component {
             selected.classList.remove("nav-selected");
         }
         e.target.classList.add("nav-selected");
-        this.setState(state => {
-            return { currentTab: currentTab };
-        });
+        this.props.setSubTab(currentTab);
     }
 
     render() {
@@ -33,7 +30,7 @@ class AdversityDataInput extends React.Component {
                             handleTabClick={this.handleTabClick}
                             selected={true}
                         />
-                        <Tab section="Introspection" handleTabClick={this.handleTabClick} />
+                        <Tab section="Reflection" handleTabClick={this.handleTabClick} />
                         <Tab section="Retrospection" handleTabClick={this.handleTabClick} />
                     </div>
                     { this.props ? 

@@ -15,9 +15,9 @@ export const receiveAdversity = adversity => ({
 
 export const fetchAdversities = id => dispatch => (
     APIUtil.fetchAdversities(id).then(adversities => {
-        dispatch(receiveAdversities(adversities))
+        dispatch(receiveAdversities(adversities));
     })
-)
+);
 
 export const createAdversity = (adversity) => dispatch => (
     APIUtil.createAdversity(adversity)

@@ -7,7 +7,7 @@ import './CustomSlider.css';
 const feelingsBoxShadow =
     "0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.13),0 0 0 1px rgba(0,0,0,0.02)";
 
-const marks = [
+export const marks = [
     {
         value: 0
     },
@@ -22,7 +22,7 @@ const marks = [
     }
 ];
 
-const FeelingsSlider = withStyles({
+export const CustomSlider = withStyles({
     root: {
         color: "#505050",
         height: 2,
@@ -75,23 +75,15 @@ const FeelingsSlider = withStyles({
 })(Slider);
 
 export default function CustomizedSlider(props) {
+    
     return (
-        <div className="feelings-slider">
-            <div className="slider-label">intensity</div>
-            <div className="slider-container" data-order={props.order}>
-                <FeelingsSlider
+                <CustomSlider
                     aria-label="feelings slider"
                     value={props.sliderVal}
                     marks={marks}
                     valueLabelDisplay="off"
                     onChange={(e, val) => props.handleChange({index: props.index, value: val})}
                 />
-                <div className="slider-values">
-                    <div className="slider-value">mildly</div>
-                    <div className="slider-value">moderately</div>
-                    <div className="slider-value">intensely</div>
-                </div>
-            </div>
-        </div>
+
     );
 }
