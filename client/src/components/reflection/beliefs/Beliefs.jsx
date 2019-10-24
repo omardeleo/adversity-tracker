@@ -56,20 +56,23 @@ export const Beliefs = props => {
 
   return (
     <div className="data-input-wrapper">
+
       <div className="header-wrapper">
           <div className="adv-title">
-          <div className="adv-title-label">Adversity Experience Title...</div>
-              <div className="data-wrapper">
+            <div className="adv-title-label">Adversity Experience Title...</div>
+            <div className="data-wrapper">
               <select onChange={handleInput('adversity_id')}>
                   <option value={state.adversity_id}>{defaultAdversity}</option>
-                  {adversitiesList}
-                </select>
-              </div>
+                    {adversitiesList}
+              </select>
             </div>
-            {formButtons}
+          </div>
+          {formButtons}
       </div>
+
       <div className="sub-tab-wrapper">
-        <div className='module-label'>Beliefs</div>
+
+        <div className='sub-tab-label'>Beliefs</div>
         <div className="data-module">
           <div className="description">
             <span>Why does this feel like an adversity?</span>
@@ -135,20 +138,14 @@ export const Beliefs = props => {
         <div className="data-module-row">
 
           <div className="data-module">
-            <div className="description">
-              <div>
-                <div className="description">I perceive my need...<div className="info">i</div></div>
-                <div className="data-wrapper">
-                  <select onChange={handleInput('need')}>
-                    <option value="">Select a Need</option>
-                    {needsList}
-                  </select>
-                </div>
-              </div>
-                
+            <div className="description">I perceive my need...<div className="info">i</div></div>
+            <div className="data-wrapper">
+              <select onChange={handleInput('need')}>
+                <option value="">Select a Need</option>
+                {needsList}
+              </select>
             </div>
             <div className="description">is...</div>
-
             <div className="data-wrapper">
               <CustomSlider
                 scale={scales.need}
@@ -156,7 +153,6 @@ export const Beliefs = props => {
                 handleChange={handleInput('need_level')}
               />
             </div>
-    
             <div className="description">because...<input value={state.need_reason} onChange={handleInput('need_reason')}></input></div>
           </div>
 
@@ -165,7 +161,6 @@ export const Beliefs = props => {
               <span>My perceived sense of pressure...</span>
               <div className="info">i</div>
             </div>
-
             <div className="data-wrapper">
               <CustomSlider
                 scale={scales.pressure}
@@ -173,7 +168,6 @@ export const Beliefs = props => {
                 handleChange={handleInput('pressure_level')}
               />
             </div>
-
           </div>
 
         </div>
