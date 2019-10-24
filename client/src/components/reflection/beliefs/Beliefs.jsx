@@ -5,25 +5,19 @@ import '../../AdversityTitle.css';
 
 export const Beliefs = props => {
 
-  const defaultSlider = {
+  const defaultState = {
+    adversity_id: props.adversityId,
+    adversity: props.adversityTitle,
     control_level: 0,
     ability_level: 0,
     need_level: 0,
-    pressure_level: 0
-  };
-
-  const defaultInput = {
-    adversity_id: props.adversityId,
-    adversity: props.adversityTitle,
+    pressure_level: 0,
     belief_text: '',
     need: 'Need',
     need_reason: '',
   };
 
-  const [slider, setSlider] = useState(defaultSlider);
-  const [input, setInput] = useState(defaultInput);
-
-  const belief = Object.assign(input, slider);
+  const [state, setState] = useState(defaultState);
 
   useEffect(() => {
     if (props.adversities.length === 0) {
@@ -32,27 +26,20 @@ export const Beliefs = props => {
   });
 
   const handleInput = field => e => {
-    setInput({
-      ...input,
-      [field]: e.target.value
-    });
-  };
-
-  const handleSlider = props => {
-    setSlider({
-      ...slider,
-      [props.field]: props.value
+    let value = e.target ? e.target.value : e.value;
+    setState({
+      ...state,
+      [field]: value
     });
   };
 
   const handleAccept = () => {
     const { createBelief } = props;
-    createBelief(belief);
+    createBelief(state);
   };
 
   const handleClear = () => {
-    setSlider(defaultSlider);
-    setInput(defaultInput);
+    setState(defaultState);
   };
 
   const actions = {accept: handleAccept, clear: handleClear};
@@ -86,7 +73,7 @@ export const Beliefs = props => {
 
         <div className="belief-text">
           <span>Why does this feel like an adversity?</span>
-          <textarea value={input.belief_text} onChange={handleInput('belief_text')}></textarea>
+          <textarea value={state.belief_text} onChange={handleInput('belief_text')}></textarea>
         </div>
 
         <div className="beliefs-sliders">
@@ -100,9 +87,8 @@ export const Beliefs = props => {
               <div className="belief-data">
                 <CustomSlider
                   scale={controlScale}
-                  value={slider.control_level}
-                  field={'control_level'}
-                  handleChange={handleSlider}
+                  value={state.control_level}
+                  handleChange={handleInput('control_level')}
                 />
                 <div className="slider-details">
                   <ul className="sub-detail">
@@ -127,9 +113,8 @@ export const Beliefs = props => {
               <div className="belief-data">
                 <CustomSlider
                   scale={abilityScale}
-                  value={slider.ability_level}
-                  field={'ability_level'}
-                  handleChange={handleSlider}
+                  value={state.adversitiesability_level}
+                  handleChange={handleInput({field:'ability_level'})}
                 />
                 <div className="slider-details">
                   <ul className="sub-detail">
@@ -166,13 +151,12 @@ export const Beliefs = props => {
             <div className="belief-data">
               <CustomSlider
                 scale={needScale}
-                value={slider.need_level}
-                field={'need_level'}
-                handleChange={handleSlider}
+                value={state.need_level}
+                handleChange={handleInput('need_level')}
               />
             </div>
     
-            <div className="description">because...<input value={input.need_reason} onChange={handleInput('need_reason')}></input></div>
+            <div className="description">because...<input value={state.need_reason} onChange={handleInput('need_reason')}></input></div>
           </div>
 
           <div className="belief">
@@ -184,9 +168,8 @@ export const Beliefs = props => {
             <div className="belief-data">
               <CustomSlider
                 scale={pressureScale}
-                value={slider.pressure_level}
-                field={'pressure_level'}
-                handleChange={handleSlider}
+                value={state.pressure_level}
+                handleChange={handleInput('pressure_level')}
               />
             </div>
 
