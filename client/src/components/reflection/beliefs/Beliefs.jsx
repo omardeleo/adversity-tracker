@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { CustomSlider } from '../../ui/CustomSlider';
-import { needs } from '../../inventory/needs';
+import * as Scales from '../../ui/scales';
+import { needsList } from '../../inventory/needs';
 import '../../AdversityTitle.css';
 
 export const Beliefs = props => {
-
+  // Define default state
   const defaultState = {
     adversity_id: props.adversityId,
     adversity: props.adversityTitle,
@@ -17,6 +18,7 @@ export const Beliefs = props => {
     need_reason: '',
   };
 
+  // Hook for [state variable, state action]
   const [state, setState] = useState(defaultState);
 
   useEffect(() => {
@@ -25,19 +27,22 @@ export const Beliefs = props => {
     }
   });
 
-  const handleInput = field => e => {
+  // handleInput Utility accepts a key as a string and sets input value in state
+  const handleInput = key => e => {
     let value = e.target ? e.target.value : e.value;
     setState({
       ...state,
-      [field]: value
+      [key]: value
     });
   };
 
+  // handle accept can be configured as necessary
   const handleAccept = () => {
     const { createBelief } = props;
     createBelief(state);
   };
 
+  // handle clear restores default state
   const handleClear = () => {
     setState(defaultState);
   };
@@ -45,15 +50,8 @@ export const Beliefs = props => {
   const actions = {accept: handleAccept, clear: handleClear};
   const formButtons = props.generateFormButtons(actions);
 
-  const controlScale = ["External", "Internal"];
-  const abilityScale = ["Can't", "Can"];
-  const needScale = ["Unmet", "Partially Met", "Met"];
-  const pressureScale = ["Manageable", "Unsustainable", "Breaking Point"];
-
   const adversitiesList = props.adversities.map((adv, i) => <option key={i} value={adv.id}>{adv.title}</option>);
-  const needsList = needs.map((need, i) => <option key={i} value={need}>{need}</option>);
 
-  
   return (
     <div className="module-wrapper">
       <div className="header-wrapper">
@@ -86,7 +84,7 @@ export const Beliefs = props => {
 
               <div className="belief-data">
                 <CustomSlider
-                  scale={controlScale}
+                  scale={Scales.control}
                   value={state.control_level}
                   handleChange={handleInput('control_level')}
                 />
@@ -112,7 +110,7 @@ export const Beliefs = props => {
             
               <div className="belief-data">
                 <CustomSlider
-                  scale={abilityScale}
+                  scale={Scales.ability}
                   value={state.adversitiesability_level}
                   handleChange={handleInput({field:'ability_level'})}
                 />
@@ -150,7 +148,7 @@ export const Beliefs = props => {
 
             <div className="belief-data">
               <CustomSlider
-                scale={needScale}
+                scale={Scales.need}
                 value={state.need_level}
                 handleChange={handleInput('need_level')}
               />
@@ -167,7 +165,7 @@ export const Beliefs = props => {
 
             <div className="belief-data">
               <CustomSlider
-                scale={pressureScale}
+                scale={Scales.pressure}
                 value={state.pressure_level}
                 handleChange={handleInput('pressure_level')}
               />
