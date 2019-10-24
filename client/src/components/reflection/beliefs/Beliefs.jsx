@@ -5,6 +5,7 @@ import { needsList } from '../../inventory/needs';
 import '../../AdversityTitle.css';
 
 export const Beliefs = props => {
+
   // Define default state
   const defaultState = {
     adversity_id: props.adversityId,
@@ -54,7 +55,7 @@ export const Beliefs = props => {
   let adversitiesList = props.adversities.map((adv, i) => <option key={i} value={adv.id}>{adv.title}</option>);
 
   return (
-    <div className="module-wrapper">
+    <div className="tab-wrapper">
       <div className="header-wrapper">
           <div className="adv-title">
           <div className="adv-title-label">Adversity Experience Title...</div>
