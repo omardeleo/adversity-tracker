@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { CustomSlider } from '../../ui/CustomSlider';
-import * as Scales from '../../ui/scales';
+import * as scales from '../../ui/scales';
 import { needsList } from '../../inventory/needs';
 import '../../AdversityTitle.css';
 
@@ -84,7 +84,7 @@ export const Beliefs = props => {
 
               <div className="belief-data">
                 <CustomSlider
-                  scale={Scales.control}
+                  scale={scales.control}
                   value={state.control_level}
                   handleChange={handleInput('control_level')}
                 />
@@ -110,7 +110,7 @@ export const Beliefs = props => {
             
               <div className="belief-data">
                 <CustomSlider
-                  scale={Scales.ability}
+                  scale={scales.ability}
                   value={state.adversitiesability_level}
                   handleChange={handleInput({field:'ability_level'})}
                 />
@@ -148,7 +148,7 @@ export const Beliefs = props => {
 
             <div className="belief-data">
               <CustomSlider
-                scale={Scales.need}
+                scale={scales.need}
                 value={state.need_level}
                 handleChange={handleInput('need_level')}
               />
@@ -165,7 +165,7 @@ export const Beliefs = props => {
 
             <div className="belief-data">
               <CustomSlider
-                scale={Scales.pressure}
+                scale={scales.pressure}
                 value={state.pressure_level}
                 handleChange={handleInput('pressure_level')}
               />
