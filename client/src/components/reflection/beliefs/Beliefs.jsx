@@ -59,7 +59,7 @@ export const Beliefs = props => {
       <div className="header-wrapper">
           <div className="adv-title">
           <div className="adv-title-label">Adversity Experience Title...</div>
-              <div className="belief-data">
+              <div className="data-wrapper">
               <select onChange={handleInput('adversity_id')}>
                   <option value={state.adversity_id}>{defaultAdversity}</option>
                   {adversitiesList}
@@ -70,21 +70,22 @@ export const Beliefs = props => {
       </div>
       <div className="sub-tab-wrapper">
         <div className='module-label'>Beliefs</div>
-
-        <div className="belief-text">
-          <span>Why does this feel like an adversity?</span>
+        <div className="data-module">
+          <div className="description">
+            <span>Why does this feel like an adversity?</span>
+          </div>
           <textarea value={state.belief_text} onChange={handleInput('belief_text')}></textarea>
         </div>
 
-        <div className="beliefs-sliders">
+        <div className="data-module-row">
 
-            <div className="belief">
+            <div className="data-module">
             <div className="description">
               <span>My perceived sense of control (locus of control) in reflecting on this adversity is that...</span>
               <div className="info">i</div>
             </div>
 
-              <div className="belief-data">
+              <div className="data-wrapper">
                 <CustomSlider
                   scale={scales.control}
                   value={state.control_level}
@@ -104,13 +105,13 @@ export const Beliefs = props => {
 
             </div>
 
-            <div className="belief">
+            <div className="data-module">
               <div className="description">
                 <span>My perceived sense of ability (self-efficacy) in reflecting on this adversity is that...</span>
                 <div className="info">i</div>
                 </div>
             
-              <div className="belief-data">
+              <div className="data-wrapper">
                 <CustomSlider
                   scale={scales.ability}
                   value={state.adversitiesability_level}
@@ -131,13 +132,13 @@ export const Beliefs = props => {
 
         </div>
 
-        <div className="beliefs-sliders">
+        <div className="data-module-row">
 
-          <div className="belief">
+          <div className="data-module">
             <div className="description">
               <div>
                 <div className="description">I perceive my need...<div className="info">i</div></div>
-                <div className="belief-data">
+                <div className="data-wrapper">
                   <select onChange={handleInput('need')}>
                     <option value="">Select a Need</option>
                     {needsList}
@@ -148,7 +149,7 @@ export const Beliefs = props => {
             </div>
             <div className="description">is...</div>
 
-            <div className="belief-data">
+            <div className="data-wrapper">
               <CustomSlider
                 scale={scales.need}
                 value={state.need_level}
@@ -159,13 +160,13 @@ export const Beliefs = props => {
             <div className="description">because...<input value={state.need_reason} onChange={handleInput('need_reason')}></input></div>
           </div>
 
-          <div className="belief">
+          <div className="data-module">
             <div className="description">
               <span>My perceived sense of pressure...</span>
               <div className="info">i</div>
             </div>
 
-            <div className="belief-data">
+            <div className="data-wrapper">
               <CustomSlider
                 scale={scales.pressure}
                 value={state.pressure_level}

@@ -23,9 +23,61 @@
   overflow: hidden;
 }
 
-
 .data-input-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.data-module {
+  flex-grow: inherit;
+  border-radius: 6px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02);
+}
+
+.data-module-row {
+  width: 80%;
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.data-module-row 
+.data-module {
+  width: 45%;
+}
+
+.data-module textarea {
+  border: 1px solid #a9a9a9;
+  border-radius: 6px;
+  height: 150px;
+  width: 500px;
+  background: none;
+  color: #a9a9a9;
+  font-size: 18px;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  resize: none;
+}
+
+.data-wrapper {
+  border: 1px solid #a9a9a9;
+  border-radius: 6px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02);
+}
+
+.data-wrapper select {
+  background: none;
+  color: #A9A9A9;
+  border: none;
+  font-size: 16px;
 }
