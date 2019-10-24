@@ -55,7 +55,7 @@ export const Beliefs = props => {
   let adversitiesList = props.adversities.map((adv, i) => <option key={i} value={adv.id}>{adv.title}</option>);
 
   return (
-    <div className="tab-wrapper">
+    <div className="data-input-wrapper">
       <div className="header-wrapper">
           <div className="adv-title">
           <div className="adv-title-label">Adversity Experience Title...</div>
@@ -68,7 +68,7 @@ export const Beliefs = props => {
             </div>
             {formButtons}
       </div>
-      <div className="beliefs">
+      <div className="sub-tab-wrapper">
         <div className='module-label'>Beliefs</div>
 
         <div className="belief-text">

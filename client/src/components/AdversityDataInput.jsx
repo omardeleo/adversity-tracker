@@ -3,6 +3,7 @@ import React from 'react';
 import AdversityTrackerContainer from "./AdversityTrackerContainer";
 import Tab from "./NavTab";
 import './AdversityDataInput.css';
+import './stylesheets/modules.css';
 
 class AdversityDataInput extends React.Component {
     constructor(props) {
@@ -22,8 +23,7 @@ class AdversityDataInput extends React.Component {
 
     render() {
         return (
-            <div>
-                <div className="AdversityDataInput">
+                <div className="tab-wrapper">
                     <div className="navigation">
                         <Tab
                             section="Recognition"
@@ -40,7 +40,6 @@ class AdversityDataInput extends React.Component {
                         <button onClick={this.props.logout}>LOG OUT</button>
                     </div>
                 </div>
-            </div>
         );
     }
 }

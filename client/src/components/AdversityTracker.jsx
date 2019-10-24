@@ -65,7 +65,7 @@ class AdversityTracker extends React.Component {
             const { adding, title, updateTitle } = this.props;
             let action = { accept: this.handleAccept.bind(this), clear: this.props.clearForm }
             let formButtons = this.generateFormButtons(action)
-            return <div className="tracker-container"> 
+            return <div className="data-input-wrapper"> 
                 <div className="header-wrapper">
                     <AdversityTitle adding={adding} title={title} handleTitle={updateTitle} />
                     {formButtons}
@@ -79,11 +79,11 @@ class AdversityTracker extends React.Component {
                 />
                 </div>
         } else if (subtab === 'Reflection') {
+
+            return <Reflection generateFormButtons={this.generateFormButtons}/>
             
-            return <div className="tracker-container">
-                <Reflection generateFormButtons={this.generateFormButtons}/>
-            </div>
         } else {
+
             return <Retrospection />
         }
 
