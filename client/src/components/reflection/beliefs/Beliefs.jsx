@@ -50,7 +50,8 @@ export const Beliefs = props => {
   const actions = {accept: handleAccept, clear: handleClear};
   const formButtons = props.generateFormButtons(actions);
 
-  const adversitiesList = props.adversities.map((adv, i) => <option key={i} value={adv.id}>{adv.title}</option>);
+  const defaultAdversity = (state.adversity === '') ? 'Select Adversity' : state.adversity;
+  let adversitiesList = props.adversities.map((adv, i) => <option key={i} value={adv.id}>{adv.title}</option>);
 
   return (
     <div className="module-wrapper">
@@ -59,7 +60,7 @@ export const Beliefs = props => {
           <div className="adv-title-label">Adversity Experience Title...</div>
               <div className="belief-data">
               <select onChange={handleInput('adversity_id')}>
-                  <option value={props.adversityId}>{props.adversityTitle}</option>
+                  <option value={state.adversity_id}>{defaultAdversity}</option>
                   {adversitiesList}
                 </select>
               </div>
