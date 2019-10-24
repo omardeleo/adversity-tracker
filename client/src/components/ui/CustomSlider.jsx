@@ -63,7 +63,7 @@ const StyledSlider = withStyles({
   rail: {
     height: 2,
     opacity: 0.5,
-    backgroundColor: "#bfbfbf",
+    backgroundColor: "currentColor",
   },
   mark: {
     backgroundColor: "#bfbfbf",
@@ -72,7 +72,7 @@ const StyledSlider = withStyles({
     marginTop: -3
   },
   markActive: {
-    backgroundColor: "currentColor"
+    backgroundColor: "#bfbfbf"
   }
 })(Slider);
 
@@ -87,6 +87,7 @@ export const CustomSlider = props => {
         <StyledSlider
           value={value}
           marks={marks}
+          track="inverted"
           valueLabelDisplay="off"
           onChange={(e, val) => handleChange({field: field, value: val})}
         />
