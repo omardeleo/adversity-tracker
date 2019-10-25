@@ -14,6 +14,7 @@ class AdversityTracker extends React.Component {
         e.preventDefault();
         const { title, story, feelings, adding, currentUser } = this.props;
         const user_id = currentUser.id;
+        
         if (adding) {
             createRecognition(this.props.adversity_id, story)
                 .then(recognition => {
@@ -29,9 +30,11 @@ class AdversityTracker extends React.Component {
                 .then(() => this.props.clearForm())
                 .then(() => this.props.history.push('/analyzer'));
         } else {
+            
             this.props.createAdversity({ title, user_id })
                 .then(({ adversity }) => {
-                    return createRecognition(adversity.id, story)
+                    
+                    return createRecognition(adversity.id, story);
                 }).then(recognition => {
                     for (let feel of feelings) {
                         const { feeling, sliderVal } = feel;
