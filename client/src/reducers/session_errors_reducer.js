@@ -8,7 +8,6 @@ export default (state = [], action) => {
     Object.freeze(state);
     switch (action.type) {
         case RECEIVE_SESSION_ERRORS:
-            // 
             const errors = action.errors;
             const newState = {
                 first_name: null,
