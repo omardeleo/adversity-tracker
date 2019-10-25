@@ -15,6 +15,7 @@ module Api::V1
 
     @adversity = Adversity.create(adversity_params)
       if @adversity.save
+        debugger
       render json: @adversities.to_json(:include => { :beliefs => {}, 
                                                       :recognitions => {
                                                             :include => [:feelings] } 
