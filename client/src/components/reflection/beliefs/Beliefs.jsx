@@ -62,7 +62,7 @@ export const Beliefs = props => {
   const abilityScale = ["Can't", "Can"];
   const needScale = ["Unmet", "Partially Met", "Met"];
   const pressureScale = ["Manageable", "Unsustainable", "Breaking Point"];
-  debugger
+  
   const adversitiesList = props.adversities.map((adv, i) => <option key={i} value={adv.id}>{adv.title}</option>);
   const needsList = needs.map((need, i) => <option key={i} value={need}>{need}</option>);
 

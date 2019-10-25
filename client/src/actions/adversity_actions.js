@@ -20,10 +20,10 @@ export const fetchAdversities = id => dispatch => (
 );
 
 export const createAdversity = (adversity) => dispatch => {
-    debugger
+    
     return (APIUtil.createAdversity(adversity)
     .then(adversity => { 
-        debugger
+        
        return dispatch(receiveAdversity(adversity));
         }
     ));
