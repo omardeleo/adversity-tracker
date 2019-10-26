@@ -33,7 +33,7 @@
   border-radius: 8px;
   cursor: pointer;
   box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.2);
-  background: #383838;
+  background: #323232;
 }
 
 .action-button:hover {
@@ -115,7 +115,7 @@
 }
 
 .data-module textarea:hover {
-  border-color: #383838;
+  border-color: #323232;
 }
 
 .input-wrapper {
@@ -132,7 +132,7 @@
 }
 
 .input-wrapper:hover {
-  border-color: #383838;
+  border-color: #323232;
 }
 
 .input-wrapper select {
@@ -175,7 +175,7 @@
 }
 
 .text input:hover {
-  border-color: #383838;
+  border-color: #323232;
 }
 
 .info {
