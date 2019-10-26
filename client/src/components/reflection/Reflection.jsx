@@ -7,7 +7,7 @@ import '../stylesheets/modules.css'
 export const Reflection = props => {
   
   return(
-    <div className="data-input-wrapper">
+    <div className="form-wrapper">
       <Beliefs generateFormButtons={props.generateFormButtons}/>
     </div>
   );

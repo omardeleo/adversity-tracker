@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-export const createAdversity = (adversity) => (
+export const createAdversity = adversity => (
     $.ajax({
         method: 'POST',
         url: `/api/v1/users/${adversity.user_id}/adversities`,
@@ -8,9 +8,9 @@ export const createAdversity = (adversity) => (
     })
 );
 
-export const fetchAdversities = id => {
-    return $.ajax({
+export const fetchAdversities = id => (
+    $.ajax({
         method: 'GET',
         url: `/api/v1/users/${id}/adversities`,
-    });
-};
+    })
+);

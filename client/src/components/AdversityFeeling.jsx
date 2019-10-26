@@ -34,7 +34,7 @@ const FeelingItem = props => {
             />
                 <div className="slider-label">intensity</div>
       
-            <div className="slider-wrapper">
+            <div className="input-wrapper">
             <div className="slider">
                 <div className='slider-container'>
                 <FeelingsSlider

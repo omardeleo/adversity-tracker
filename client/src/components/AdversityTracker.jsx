@@ -53,9 +53,9 @@ class AdversityTracker extends React.Component {
         let {accept, clear} = actions;
         
         return(
-            <div className="button-container">
-                <div className="accept-button" onClick={accept}>accept</div>
-                <div className="clear-button" onClick={clear}>clear</div>
+            <div className="action-button-wrapper">
+                <div className="action-button" onClick={accept}>accept</div>
+                <div className="action-button" onClick={clear}>clear</div>
             </div>
         )
     }
@@ -68,7 +68,7 @@ class AdversityTracker extends React.Component {
             const { adding, title, updateTitle } = this.props;
             let action = { accept: this.handleAccept.bind(this), clear: this.props.clearForm }
             let formButtons = this.generateFormButtons(action)
-            return <div className="data-input-wrapper"> 
+            return <div className="form-wrapper"> 
                 <div className="header-wrapper">
                     <AdversityTitle adding={adding} title={title} handleTitle={updateTitle} />
                     {formButtons}

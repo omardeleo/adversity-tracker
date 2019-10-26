@@ -10,6 +10,36 @@
   overflow: hidden;
 }
 
+.header-wrapper {
+  width: 80%;
+  align-self: left;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.action-button-wrapper {
+  height: 35px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.action-button {
+  margin-right: 40px;
+  border: 1px solid #a9a9a9;
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.2);
+  background: #383838;
+}
+
+.action-button:hover {
+  border: 1px solid #606060;
+}
+
 .sub-tab-wrapper {
   width: 80%;
   text-align: center;
@@ -37,7 +67,7 @@
   background: #181818;
 }
 
-.data-input-wrapper {
+.form-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,29 +108,45 @@
   -moz-box-shadow: none;
   box-shadow: none;
   resize: none;
+    transition: border-color 0.1s linear;
+    -moz-transition: border-color 0.1s linear;   
+    -o-transition: border-color 0.1s linear;     
+    -webkit-transition: border-color 0.1s linear; 
 }
 
-.data-wrapper {
+.data-module textarea:hover {
+  border-color: #383838;
+}
+
+.input-wrapper {
   border: 1px solid #a9a9a9;
   border-radius: 6px;
   padding: 10px;
   display: flex;
   flex-direction: column;
   box-shadow: 0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02);
+  transition: border-color 0.1s linear;
+    -moz-transition: border-color 0.1s linear;   
+    -o-transition: border-color 0.1s linear;     
+    -webkit-transition: border-color 0.1s linear; 
 }
 
-.data-wrapper select {
+.input-wrapper:hover {
+  border-color: #383838;
+}
+
+.input-wrapper select {
   background: none;
   color: #A9A9A9;
   border: none;
   font-size: 16px;
 }
 
-.data-wrapper select:focus {
+.input-wrapper select:focus {
   outline: none;
 }
 
-.description {
+.text {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -108,11 +154,11 @@
   margin: 10px 0;
 }
 
-.description span {
+.text span {
   width: 90%;
 }
 
-.description input {
+.text input {
   border: 1px solid #a9a9a9;
   box-shadow: 0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02);
   border-radius: 6px;
@@ -122,6 +168,14 @@
   width: 70%;
   font-size: 18px;
   outline: none;
+  transition: border-color 0.1s linear;
+    -moz-transition: border-color 0.1s linear;   
+    -o-transition: border-color 0.1s linear;     
+    -webkit-transition: border-color 0.1s linear; 
+}
+
+.text input:hover {
+  border-color: #383838;
 }
 
 .info {
