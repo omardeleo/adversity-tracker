@@ -1,17 +1,17 @@
 import React from 'react';
-import { QuestionModule } from './QuestionModule';
+import { PromptModule } from './PromptModule';
 
 export const TextModule = props => {
 
-  const { question, info, value, handleInput, placeholder } = props;
+  const { prompt, info, value, handleInput, placeholder } = props;
 
   const textSubModule = <textarea value={value} placeholder={placeholder} onChange={handleInput}></textarea>
 
-  if (question) {
+  if (prompt) {
     return (
       <div className="data-module">
-        <QuestionModule
-          question={question}
+        <PromptModule
+          prompt={prompt}
           info={info}
         />
         {textSubModule}

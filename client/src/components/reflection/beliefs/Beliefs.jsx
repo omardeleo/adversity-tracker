@@ -3,7 +3,7 @@ import HeaderModule from "../../modules/HeaderModule";
 import { SliderModule } from "../../modules/SliderModule";
 import { SelectModule } from "../../modules/SelectModule";
 import { TextModule } from "../../modules/TextModule";
-import { QuestionModule } from "../../modules/QuestionModule";
+import { PromptModule } from "../../modules/QuestionModule";
 import * as scales from "../../ui/slider_scales";
 import { needsList } from "../../inventory/needs";
 
@@ -62,7 +62,7 @@ export const Beliefs = props => {
         <div className="sub-tab-label">Beliefs</div>
 
           <TextModule 
-            question={"Why does this feel like an adversity?"}
+            prompt={"Why does this feel like an adversity?"}
             info={null}
             value={state.belief_text}
             handleInput={handleInput("belief_text")}
@@ -73,7 +73,7 @@ export const Beliefs = props => {
         <div className="data-module-row">
 
           <SliderModule 
-            question={"My perceived sense of control (locus of control) in reflecting on this adversity is that..."}
+            prompt={"My perceived sense of control (locus of control) in reflecting on this adversity is that..."}
             info={null}
             scale={scales.control}
             value={state.control_level}
@@ -83,7 +83,7 @@ export const Beliefs = props => {
           />
 
           <SliderModule
-            question={"My perceived sense of ability (self-efficacy) in reflecting on this adversity is that..."}
+            prompt={"My perceived sense of ability (self-efficacy) in reflecting on this adversity is that..."}
             info={null}
             scale={scales.ability}
             value={state.ability_level}
@@ -98,13 +98,13 @@ export const Beliefs = props => {
 
           <div className="data-module">
 
-            <QuestionModule 
-              question={"I perceive my need..."}
+            <PromptModule 
+              prompt={"I perceive my need..."}
               info={null}
             />
 
             <SelectModule
-              question={null}
+              prompt={null}
               info={null}
               handleInput={handleInput("need")}
               placeholder={"Select a Need"}
@@ -114,7 +114,7 @@ export const Beliefs = props => {
             <div className="text">is...</div>
 
             <SliderModule 
-              question={null}
+              prompt={null}
               info={null}
               scale={scales.need}
               value={state.need_level}
@@ -126,7 +126,7 @@ export const Beliefs = props => {
           </div>
 
           <SliderModule
-            question={"My perceived sense of pressure..."}
+            prompt={"My perceived sense of pressure..."}
             info={null}
             scale={scales.pressure}
             value={state.pressure_level}

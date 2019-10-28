@@ -1,9 +1,9 @@
 import React from 'react';
-import { QuestionModule } from './QuestionModule';
+import { PromptModule } from './PromptModule';
 
 export const SelectModule = props => {
 
-  const { question, info, handleInput, placeholder, options } = props;
+  const { prompt, info, handleInput, placeholder, options } = props;
 
   const selectSubModule = 
         <div className="input-wrapper">
@@ -13,11 +13,11 @@ export const SelectModule = props => {
           </select>
         </div>
 
-  if (question) {
+  if (prompt) {
     return (
       <div className="data-module">
-        <QuestionModule
-          question={question}
+        <PromptModule
+          prompt={prompt}
           info={info}
         />
         {selectSubModule}

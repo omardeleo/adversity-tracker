@@ -82,11 +82,8 @@ class AdversityTracker extends React.Component {
                 />
                 </div>
         } else if (subtab === 'Reflection') {
-
             return <Reflection />
-            
         } else {
-
             return <Retrospection />
         }
 

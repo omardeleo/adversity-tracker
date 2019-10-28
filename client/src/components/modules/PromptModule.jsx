@@ -1,11 +1,11 @@
 import React from 'react';
 
-export const QuestionModule = props => {
-  const { question, info } = props;
+export const PromptModule = props => {
+  const { prompt, info } = props;
 
   return (
     <div className="text">
-      <span>{question}</span>
+      <span>{prompt}</span>
       <div className="info">i</div>
     </div>
   );

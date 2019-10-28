@@ -1,10 +1,10 @@
 import React from 'react';
 import { CustomSlider } from '../ui/CustomSlider';
-import { QuestionModule } from './QuestionModule';
+import { PromptModule } from './PromptModule';
 
 export const SliderModule = props => {
 
-  const { question, info, scale, value, handleInput, leftDetail, rightDetail} = props;
+  const { prompt, info, scale, value, handleInput, leftDetail, rightDetail} = props;
 
 
   const generateSubDetail = detail => {
@@ -38,11 +38,11 @@ export const SliderModule = props => {
     </div>
 
 
-  if (question) {
+  if (prompt) {
     return(
       <div className="data-module">
-        <QuestionModule
-          question={question}
+        <PromptModule
+          prompt={prompt}
           info={info}
         />
         {sliderSubModule}
