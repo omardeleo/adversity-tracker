@@ -9,7 +9,7 @@ export const Reflection = props => {
   
   return(
     <div className="form-wrapper">
-      <Beliefs generateFormButtons={props.generateFormButtons}/>
+      <Beliefs />
     </div>
   );
 
