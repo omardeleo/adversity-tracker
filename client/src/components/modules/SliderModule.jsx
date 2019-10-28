@@ -3,14 +3,26 @@ import { CustomSlider } from '../ui/CustomSlider';
 
 export const SliderModule = props => {
 
-  const {scale, value, handleChange, leftDetail, rightDetail} = props;
+  const {scale, value, handleInput, leftDetail, rightDetail} = props;
 
-  const generateSubDetail = detail=> {
-    if (detail) {
+  const generateSubDetail = detail => {
       let subDetail = detail.map((detail, i) => <li key={i}>{detail}</li>);
       return subDetail
-    }
-    return null;
+  };
+
+  const sliderDetails = () => { 
+      if (leftDetail || rightDetail) {
+        return (
+        <div className="slider-details">
+          <ul className="sub-detail">
+            {generateSubDetail(leftDetail)}
+          </ul>
+          <ul className="sub-detail">
+            {generateSubDetail(rightDetail)}
+          </ul>
+        </div>
+        )
+      }
   };
 
   return(
@@ -19,16 +31,9 @@ export const SliderModule = props => {
       <CustomSlider
         scale={scale}
         value={value}
-        handleChange={handleChange}
+        handleChange={handleInput}
       />
-      <div className="slider-details">
-        <ul className="sub-detail">
-          {generateSubDetail(leftDetail)}
-        </ul>
-        <ul className="sub-detail">
-          {generateSubDetail(rightDetail)}
-        </ul>
-      </div>
+      {sliderDetails()}
     </div>
 
   );
