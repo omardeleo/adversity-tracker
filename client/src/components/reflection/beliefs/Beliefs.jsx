@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { CustomSlider } from '../../ui/CustomSlider';
+import Header from '../../nav/Header';
 import * as scales from '../../ui/scales';
 import { needsList } from '../../inventory/needs';
 import '../../AdversityTitle.css';
@@ -49,15 +50,15 @@ export const Beliefs = props => {
   };
 
   const actions = {accept: handleAccept, clear: handleClear};
-  const formButtons = props.generateFormButtons(actions);
+  // const formButtons = props.generateFormButtons(actions);
 
-  const defaultAdversity = (state.adversity === '') ? 'Select Adversity' : state.adversity;
-  let adversitiesList = props.adversities.map((adv, i) => <option key={i} value={adv.id}>{adv.title}</option>);
+  // const defaultAdversity = (state.adversity === '') ? 'Select Adversity' : state.adversity;
+  // let adversitiesList = props.adversities.map((adv, i) => <option key={i} value={adv.id}>{adv.title}</option>);
 
   return (
     <div className="form-wrapper">
 
-      <div className="header-wrapper">
+      {/* <div className="header-wrapper">
           <div className="adv-title">
             <div className="adv-title-label">Adversity Experience Title...</div>
             <div className="input-wrapper">
@@ -68,7 +69,9 @@ export const Beliefs = props => {
             </div>
           </div>
           {formButtons}
-      </div>
+      </div> */}
+
+      <Header state={state} actions={actions} handleInput={handleInput('adversity_id')}/>
 
       <div className="sub-tab-wrapper">
 
