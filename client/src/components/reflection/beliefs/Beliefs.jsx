@@ -6,7 +6,6 @@ import { TextModule } from "../../modules/TextModule";
 import { QuestionModule } from "../../modules/QuestionModule";
 import * as scales from "../../ui/scales";
 import { needsList } from "../../inventory/needs";
-import "../../AdversityTitle.css";
 
 export const Beliefs = props => {
 
