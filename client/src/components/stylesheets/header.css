@@ -1,3 +1,13 @@
+.header-wrapper {
+  width: 80%;
+  align-self: left;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .header {
   display: flex;
   align-items: center;
@@ -15,4 +25,24 @@
   min-width: 200px;
   text-align: right;
   margin: 0 10px 0 40px;
+}
+
+.action-button-wrapper {
+  height: 35px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.action-button {
+  margin-right: 40px;
+  border: 1px solid #a9a9a9;
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.2);
+  background: #323232;
+}
+
+.action-button:hover {
+  border: 1px solid #606060;
 }

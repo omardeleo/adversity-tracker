@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { CustomSlider } from '../../ui/CustomSlider';
-import Header from '../../nav/Header';
+import Header from '../../modules/Header';
 import * as scales from '../../ui/scales';
 import { needsList } from '../../inventory/needs';
 import '../../AdversityTitle.css';
@@ -23,12 +23,6 @@ export const Beliefs = props => {
   // Hook for [state variable, state action]
   const [state, setState] = useState(defaultState);
 
-  useEffect(() => {
-    if (props.adversities.length === 0) {
-      props.fetchAdversities(props.currentUser.id);
-    }
-  });
-
   // handleInput Utility accepts a key as a string and sets input value in state
   const handleInput = key => e => {
     let value = e.target ? e.target.value : e.value;
@@ -41,7 +35,7 @@ export const Beliefs = props => {
   // handle accept can be configured as necessary
   const handleAccept = () => {
     const { createBelief } = props;
-    createBelief(state);
+    createBelief(state).then(props.fetchAdversities(props.currentUser.id));
   };
 
   // handle clear restores default state
@@ -50,26 +44,9 @@ export const Beliefs = props => {
   };
 
   const actions = {accept: handleAccept, clear: handleClear};
-  // const formButtons = props.generateFormButtons(actions);
-
-  // const defaultAdversity = (state.adversity === '') ? 'Select Adversity' : state.adversity;
-  // let adversitiesList = props.adversities.map((adv, i) => <option key={i} value={adv.id}>{adv.title}</option>);
 
   return (
     <div className="form-wrapper">
-
-      {/* <div className="header-wrapper">
-          <div className="adv-title">
-            <div className="adv-title-label">Adversity Experience Title...</div>
-            <div className="input-wrapper">
-              <select onChange={handleInput('adversity_id')}>
-                  <option value={state.adversity_id}>{defaultAdversity}</option>
-                    {adversitiesList}
-              </select>
-            </div>
-          </div>
-          {formButtons}
-      </div> */}
 
       <Header state={state} actions={actions} handleInput={handleInput('adversity_id')}/>
 
@@ -86,10 +63,11 @@ export const Beliefs = props => {
         <div className="data-module-row">
 
             <div className="data-module">
-            <div className="text">
-              <span>My perceived sense of control (locus of control) in reflecting on this adversity is that...</span>
-              <div className="info">i</div>
-            </div>
+
+              <div className="text">
+                <span>My perceived sense of control (locus of control) in reflecting on this adversity is that...</span>
+                <div className="info">i</div>
+              </div>
 
               <div className="input-wrapper">
                 <CustomSlider
@@ -121,9 +99,9 @@ export const Beliefs = props => {
                 <CustomSlider
                   scale={scales.ability}
                   value={state.adversitiesability_level}
-                  handleChange={handleInput({field:'ability_level'})}
+                  handleChange={handleInput('ability_level')}
                 />
-                <div className="slider-details">
+                <div className="slider-details">x
                   <ul className="sub-detail">
                     <li>The adversity is too much for me</li>
                     <li>I'm not strong enough</li>

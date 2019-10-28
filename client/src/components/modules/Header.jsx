@@ -1,14 +1,13 @@
 import React, { useEffect } from "react";
 import { connect } from 'react-redux';
 import { fetchAdversities } from '../../actions/adversity_actions';
-import '../stylesheets/header.css';
 
 const Header = props => {
 
-  let {state, actions, handleInput} = props;
+  const {state, actions, handleInput} = props;
  
   const defaultAdversity = (state.adversity === '') ? 'Select Adversity' : state.adversity;
-  let adversitiesList = props.adversities.map((adv, i) => <option key={i} value={adv.id}>{adv.title}</option>);
+  const adversitiesList = props.adversities.map((adv, i) => <option key={i} value={adv.id}>{adv.title}</option>);
 
   useEffect(() => {
     if (props.adversities.length === 0) {
@@ -38,8 +37,6 @@ const Header = props => {
 
 const mapStateToProps = ({ ui, entities, session }) => ({
   currentUser: entities.users[session.id],
-  adversityId: ui.adversity_id,
-  adversityTitle: ui.recognition_form.title,
   adversities: Object.values(entities.adversities)
 });
 

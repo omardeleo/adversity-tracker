@@ -2,7 +2,8 @@ import React from 'react';
 import Beliefs from './beliefs/BeliefsContainer';
 
 import '../stylesheets/Reflection.css';
-import '../stylesheets/modules.css'
+import '../stylesheets/modules.css';
+import '../stylesheets/header.css';
 
 export const Reflection = props => {
   
