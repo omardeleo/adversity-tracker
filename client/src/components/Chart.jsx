@@ -4,24 +4,30 @@ import * as am4charts from "@amcharts/amcharts4/charts";
 import { Redirect } from 'react-router-dom';
 
 import { getDateRange } from '../util/date_util';
+import './Chart.css';
 const equal = require('deep-equal');
 
 class Chart extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            redirect: false
+            redirect: false,
+            // isTooltipOpen: false,
+            isStoryExpanded: false
         };
+        this.thing = this.thing.bind(this);
     }
 
     renderChart() {
         let chart = am4core.create("chartdiv", am4charts.XYChart);
         this.chart = chart;
+
         const { adversities } = this.props;
+        // console.log('Chart.jsx', adversities);
         chart.data = adversities;
         chart.background.fill = "#282828";
         chart.paddingRight = 50;
-       
+
         // create y axis
         let yAxis = chart.yAxes.push(new am4charts.CategoryAxis());
         yAxis.dataFields.category = "title"
@@ -37,6 +43,12 @@ class Chart extends React.Component {
         xAxis.min = dateMin;
         xAxis.max = dateMax;
         xAxis.strictMinMax = true;
+        xAxis.renderer.labels.template.fill = am4core.color("#a9a9a9");
+        xAxis.renderer.grid.template.stroke = am4core.color("#a9a9a9");
+        xAxis.renderer.line.strokeOpacity = 1;
+        xAxis.renderer.line.strokeWidth = 2;
+        xAxis.renderer.line.stroke = am4core.color("#a9a9a9");
+
         yAxis.renderer.labels.template.fill = am4core.color("#a9a9a9");
         yAxis.renderer.labels.template.cursorOverStyle = am4core.MouseCursorStyle.pointer;
         yAxis.renderer.labels.template.events.on("hit", function (ev) {
@@ -54,36 +66,65 @@ class Chart extends React.Component {
             this.props.onTitleClick(title, id);
             this.setState(({ redirect: true }))
         }, this);
-        xAxis.renderer.labels.template.fill = am4core.color("#a9a9a9");
-        xAxis.renderer.grid.template.stroke = am4core.color("#a9a9a9");
-        xAxis.renderer.line.strokeOpacity = 1;
-        xAxis.renderer.line.strokeWidth = 2;
-        xAxis.renderer.line.stroke = am4core.color("#a9a9a9");
 
-        
         for (let adversity of adversities) {
+            // console.log('adversity', adversity)
             let data = [];
+
             for (let recognition of adversity.recognitions) {
-                 let obj = {title: adversity.title, recognition: recognition}
-                 data.push(obj)
+                // console.log('recognition', recognition)
+                let obj = {
+                    title: adversity.title, timestamp: recognition.timestamp,
+                    story: recognition.story,
+                    story_trunc: recognition.story.slice(0, 120)
+                }
+                data.push(obj)
             }
             let series = chart.series.push(new am4charts.LineSeries());
             series.name = "Adversity";
-            series.dataFields.dateX = "recognition";
+            series.dataFields.dateX = "timestamp";
             series.dataFields.categoryY = "title";
             series.strokeWidth = 3;
             series.sequencedInterpolation = true;
-            series.bullets.create(am4charts.CircleBullet);
+            let circleBullet = series.bullets.create(am4charts.CircleBullet);
+            // create a helper function like generateTooltip()
+            let storee = this.state.isStoryExpanded ? "story" : "story_trunc";
+            // let storee = !this.state.isStoryExpanded ? "story_trunc" : ;
+            circleBullet.interactionsEnabled = true;
+            circleBullet.tooltipHTML = `<p class="tooltip">{${storee}}</p><input type="button" value="More info" />`;
+            series.tooltip.keepTargetHover = true
+            series.tooltip.pointerOrientation = "vertical";
+            series.tooltip.label.interactionsEnabled = true;
             series.data = data;
         }
+    }
+
+    thing(e) {
+        // console.log('this.state', this.state)
+        // console.log('CLICKING ON CIRCLE');
+        console.log('targ', e.target.tagName)
+        if (e.target.tagName !== 'INPUT') return;
+        // console.log('targ', e.target.tagName)
+        var closest = e.target.closest('div');
+        var pp = closest.querySelector('p');
+
+        // console.log('pp',pp)
+        pp.innerHTML = "HAHAHAHAHAHA"
+        // this.setState({isStoryExpanded: true});
+
     }
 
     componentDidMount() {
         this.renderChart();
     }
 
-    componentDidUpdate(prevProps) {
-        if (!equal(prevProps.adversities, this.props.adversities)) {
+    componentDidUpdate(prevProps, prevState) {
+        // console.log('prevPros', prevProps)
+        // console.log(this.state);
+        // console.log('prevState', prevState)
+        if (!equal(prevProps.adversities, this.props.adversities) ||
+            !equal(prevState.isStoryExpanded, this.state.isStoryExpanded)) {
+            this.chart.dispose();
             this.renderChart();
         }
     }
@@ -95,7 +136,7 @@ class Chart extends React.Component {
     }
 
     render() {
-        
+
         const { redirect } = this.state;
 
         if (redirect) {
@@ -104,7 +145,7 @@ class Chart extends React.Component {
         }
 
         return (
-            <div id="chartdiv" style={{ width: "940px", height: "500px" }}></div>
+            <div id="chartdiv" onClick={this.thing} style={{ width: "940px", height: "500px" }}></div>
         );
     }
 }
