@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { CustomSlider } from '../../ui/CustomSlider';
-import Header from '../../modules/Header';
+import { SliderModule } from '../../modules/SliderModule';
+import HeaderModule from '../../modules/HeaderModule';
 import * as scales from '../../ui/scales';
 import { needsList } from '../../inventory/needs';
 import '../../AdversityTitle.css';
@@ -48,7 +49,7 @@ export const Beliefs = props => {
   return (
     <div className="form-wrapper">
 
-      <Header state={state} actions={actions} handleInput={handleInput('adversity_id')}/>
+      <HeaderModule state={state} actions={actions} handleInput={handleInput('adversity_id')}/>
 
       <div className="sub-tab-wrapper">
 
@@ -69,23 +70,13 @@ export const Beliefs = props => {
                 <div className="info">i</div>
               </div>
 
-              <div className="input-wrapper">
-                <CustomSlider
-                  scale={scales.control}
-                  value={state.control_level}
-                  handleChange={handleInput('control_level')}
-                />
-                <div className="slider-details">
-                  <ul className="sub-detail">
-                    <li>The outcome is out of my control</li>
-                    <li>Things happen to me</li>
-                  </ul>
-                  <ul className="sub-detail">
-                    <li>The outcome is within my control</li>
-                    <li>I make things happen</li>
-                  </ul>
-                </div>
-              </div>
+              <SliderModule 
+                scale={scales.control}
+                value={state.control_level}
+                handleChange={handleInput('control_level')}
+                leftDetail={['The outcome is out of my control','Things happen to me']}
+                rightDetail={['The outcome is within my control', 'I make things happen']}
+              />
 
             </div>
 

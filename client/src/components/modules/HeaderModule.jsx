@@ -35,7 +35,7 @@ const Header = props => {
 
 };
 
-const mapStateToProps = ({ ui, entities, session }) => ({
+const mapStateToProps = ({ entities, session }) => ({
   currentUser: entities.users[session.id],
   adversities: Object.values(entities.adversities)
 });
