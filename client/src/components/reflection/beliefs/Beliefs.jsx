@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import HeaderModule from "../../modules/HeaderModule";
 import { SliderModule } from "../../modules/SliderModule";
 import { SelectModule } from "../../modules/SelectModule";
+import { TextModule } from "../../modules/TextModule";
 import * as scales from "../../ui/scales";
 import { needsList } from "../../inventory/needs";
 import "../../AdversityTitle.css";
@@ -59,12 +60,12 @@ export const Beliefs = props => {
 
         <div className="sub-tab-label">Beliefs</div>
         
-        <div className="data-module">
-          <div className="text">
-            <span>Why does this feel like an adversity?</span>
-          </div>
-          <textarea value={state.belief_text} onChange={handleInput("belief_text")}></textarea>
-        </div>
+          <TextModule 
+            question={"Why does this feel like an adversity?"}
+            value={state.belief_text}
+            handleInput={handleInput("belief_text")}
+          />
+       
 
         <div className="data-module-row">
 
