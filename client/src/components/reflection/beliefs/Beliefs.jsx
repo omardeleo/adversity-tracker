@@ -4,7 +4,7 @@ import { SliderModule } from "../../modules/SliderModule";
 import { SelectModule } from "../../modules/SelectModule";
 import { TextModule } from "../../modules/TextModule";
 import { QuestionModule } from "../../modules/QuestionModule";
-import * as scales from "../../ui/scales";
+import * as scales from "../../ui/slider_scales";
 import { needsList } from "../../inventory/needs";
 
 export const Beliefs = props => {
@@ -51,7 +51,8 @@ export const Beliefs = props => {
     <div className="form-wrapper">
 
       <HeaderModule 
-        state={state} 
+        state={state}
+        defaultState={defaultState} 
         actions={actions} 
         handleInput={handleInput("adversity_id")}
       />
@@ -65,11 +66,11 @@ export const Beliefs = props => {
             info={null}
             value={state.belief_text}
             handleInput={handleInput("belief_text")}
+            placeholder={"Discuss an adversity"}
           />
        
 
         <div className="data-module-row">
-
 
           <SliderModule 
             question={"My perceived sense of control (locus of control) in reflecting on this adversity is that..."}

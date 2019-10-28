@@ -3,9 +3,9 @@ import { QuestionModule } from './QuestionModule';
 
 export const TextModule = props => {
 
-  const { question, info, value, handleInput } = props;
+  const { question, info, value, handleInput, placeholder } = props;
 
-  const textSubModule = <textarea value={value} onChange={handleInput}></textarea>
+  const textSubModule = <textarea value={value} placeholder={placeholder} onChange={handleInput}></textarea>
 
   if (question) {
     return (

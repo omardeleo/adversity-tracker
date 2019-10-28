@@ -68,11 +68,12 @@
 .data-module textarea {
   border: 1px solid #a9a9a9;
   border-radius: 6px;
+  padding: 10px;
   height: 150px;
   width: 500px;
   background: none;
   color: #a9a9a9;
-  font-size: 18px;
+  font-size: 16px;
   outline: none;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
@@ -136,7 +137,7 @@
   color: #a9a9a9;
   height: 30px;
   width: 70%;
-  font-size: 18px;
+  font-size: 16px;
   outline: none;
   transition: border-color 0.1s linear;
     -moz-transition: border-color 0.1s linear;   
