@@ -1,18 +1,24 @@
 import React from 'react';
+import { QuestionModule } from './QuestionModule';
 
 export const TextModule = props => {
 
-  const { question, value, handleInput } = props;
+  const { question, info, value, handleInput } = props;
 
-  return (
+  const textSubModule = <textarea value={value} onChange={handleInput}></textarea>
 
-    <div className="data-module">
-      <div className="text">
-        <span>{question}</span>
+  if (question) {
+    return (
+      <div className="data-module">
+        <QuestionModule
+          question={question}
+          info={info}
+        />
+        {textSubModule}
       </div>
-      <textarea value={value} onChange={handleInput}></textarea>
-    </div>
-
-  );
+    );
+  } else {
+    return textSubModule;
+  }
 
 };

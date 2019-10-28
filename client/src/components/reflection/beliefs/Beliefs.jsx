@@ -3,6 +3,7 @@ import HeaderModule from "../../modules/HeaderModule";
 import { SliderModule } from "../../modules/SliderModule";
 import { SelectModule } from "../../modules/SelectModule";
 import { TextModule } from "../../modules/TextModule";
+import { QuestionModule } from "../../modules/QuestionModule";
 import * as scales from "../../ui/scales";
 import { needsList } from "../../inventory/needs";
 import "../../AdversityTitle.css";
@@ -59,9 +60,10 @@ export const Beliefs = props => {
       <div className="sub-tab-wrapper">
 
         <div className="sub-tab-label">Beliefs</div>
-        
+
           <TextModule 
             question={"Why does this feel like an adversity?"}
+            info={null}
             value={state.belief_text}
             handleInput={handleInput("belief_text")}
           />
@@ -69,38 +71,26 @@ export const Beliefs = props => {
 
         <div className="data-module-row">
 
-            <div className="data-module">
 
-              <div className="text">
-                <span>My perceived sense of control (locus of control) in reflecting on this adversity is that...</span>
-                <div className="info">i</div>
-              </div>
+          <SliderModule 
+            question={"My perceived sense of control (locus of control) in reflecting on this adversity is that..."}
+            info={null}
+            scale={scales.control}
+            value={state.control_level}
+            handleInput={handleInput("control_level")}
+            leftDetail={["The outcome is out of my control","Things happen to me"]}
+            rightDetail={["The outcome is within my control", "I make things happen"]}
+          />
 
-              <SliderModule 
-                scale={scales.control}
-                value={state.control_level}
-                handleInput={handleInput("control_level")}
-                leftDetail={["The outcome is out of my control","Things happen to me"]}
-                rightDetail={["The outcome is within my control", "I make things happen"]}
-              />
-
-            </div>
-
-            <div className="data-module">
-              <div className="text">
-                <span>My perceived sense of ability (self-efficacy) in reflecting on this adversity is that...</span>
-                <div className="info">i</div>
-              </div>
-
-              <SliderModule
-                scale={scales.ability}
-                value={state.ability_level}
-                handleInput={handleInput("ability_level")}
-                leftDetail={["The adversity is too much for me", "I'm not strong enough"]}
-                rightDetail={["It won't be easy but I can do this", "I am strong enough"]}
-              />
-
-          </div>
+          <SliderModule
+            question={"My perceived sense of ability (self-efficacy) in reflecting on this adversity is that..."}
+            info={null}
+            scale={scales.ability}
+            value={state.ability_level}
+            handleInput={handleInput("ability_level")}
+            leftDetail={["The adversity is too much for me", "I'm not strong enough"]}
+            rightDetail={["It won't be easy but I can do this", "I am strong enough"]}
+          />
 
         </div>
 
@@ -108,9 +98,14 @@ export const Beliefs = props => {
 
           <div className="data-module">
 
-            <div className="text">I perceive my need...<div className="info">i</div></div>
+            <QuestionModule 
+              question={"I perceive my need..."}
+              info={null}
+            />
 
-            <SelectModule 
+            <SelectModule
+              question={null}
+              info={null}
               handleInput={handleInput("need")}
               placeholder={"Select a Need"}
               options={needsList}
@@ -118,7 +113,9 @@ export const Beliefs = props => {
 
             <div className="text">is...</div>
 
-            <SliderModule
+            <SliderModule 
+              question={null}
+              info={null}
               scale={scales.need}
               value={state.need_level}
               handleInput={handleInput("need_level")}
@@ -128,20 +125,13 @@ export const Beliefs = props => {
             
           </div>
 
-          <div className="data-module">
-
-            <div className="text">
-              <span>My perceived sense of pressure...</span>
-              <div className="info">i</div>
-            </div>
-
-              <SliderModule
-                scale={scales.pressure}
-                value={state.pressure_level}
-                handleInput={handleInput("pressure_level")}
-              />
-
-          </div>
+          <SliderModule
+            question={"My perceived sense of pressure..."}
+            info={null}
+            scale={scales.pressure}
+            value={state.pressure_level}
+            handleInput={handleInput("pressure_level")}
+          />
 
         </div>
 
