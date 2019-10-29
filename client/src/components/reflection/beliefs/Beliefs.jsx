@@ -37,7 +37,7 @@ export const Beliefs = props => {
   // handle accept can be configured as necessary
   const handleAccept = () => {
     const { createBelief } = props;
-    createBelief(state).then(props.fetchAdversities(props.currentUser.id));
+    createBelief(state).then(() => props.fetchAdversities(props.currentUser.id));
   };
 
   // handle clear restores default state

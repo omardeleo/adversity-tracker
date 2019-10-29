@@ -34,7 +34,7 @@ class AdversityTracker extends React.Component {
             
             this.props.createAdversity({ title, user_id })
                 .then(({ adversity }) => {
-                    
+                    debugger
                     return createRecognition(adversity.id, story);
                 }).then(recognition => {
                     for (let feel of feelings) {
