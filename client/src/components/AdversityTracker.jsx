@@ -7,6 +7,7 @@ import { Retrospection } from "./retrospection/Retrospection";
 import { createRecognition } from "../util/recognition_api_util";
 import { createFeeling } from "../util/feeling_api_util";
 import './AdversityTracker.css';
+import './stylesheets/modules.css';
 
 class AdversityTracker extends React.Component {
 
@@ -68,7 +69,7 @@ class AdversityTracker extends React.Component {
             const { adding, title, updateTitle } = this.props;
             let action = { accept: this.handleAccept.bind(this), clear: this.props.clearForm }
             let formButtons = this.generateFormButtons(action)
-            return <div className="form-wrapper"> 
+            return <div className="tracker-container"> 
                 <div className="header-wrapper">
                     <AdversityTitle adding={adding} title={title} handleTitle={updateTitle} />
                     {formButtons}
