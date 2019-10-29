@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Tab from "./Tab";
 import '../../AdversityDataInput.css';
 
-export const ReflectionNav = props => {
+const ReflectionNav = props => {
   const { setDataTab } = props;
   const [tab, setTab] = useState("Motivation");
 
@@ -20,3 +20,8 @@ export const ReflectionNav = props => {
   )
 };
 
+const mapDispatchToProps = dispatch => ({
+  setDataTab: tab => dispatch(setDataTab(tab))
+});
+
+export default connect(null, mapDispatchToProps)(ReflectionNav);
