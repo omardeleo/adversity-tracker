@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const needs = [
   "connection",
   "acceptance",
@@ -82,3 +84,6 @@ export const needs = [
   "to matter",
   "understanding"
 ];
+
+// A list of needs as options for a Select element
+export const needsList = needs.map((need, i) => <option key={i} value={need}>{need}</option>);
