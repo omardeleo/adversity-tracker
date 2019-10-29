@@ -9,7 +9,6 @@ const adversitiesReducer = (state = {}, action) => {
         case RECEIVE_ADVERSITIES:
             return action.adversities;
         case RECEIVE_ADVERSITY:
-            
             return [...Array.from(state), action.adversity];
         default:
             return state;

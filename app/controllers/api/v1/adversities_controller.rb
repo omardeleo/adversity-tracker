@@ -15,6 +15,7 @@ module Api::V1
 
     @adversity = Adversity.create(adversity_params)
       if @adversity.save
+        
       render json: @adversity.to_json(:include => { :beliefs => {}, 
                                                       :recognitions => {
                                                             :include => [:feelings] } 
@@ -38,4 +39,3 @@ module Api::V1
     end
   end
 end
-
