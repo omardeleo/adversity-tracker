@@ -4,16 +4,14 @@ import { fetchAdversities } from '../../actions/adversity_actions';
 
 const Header = props => {
 
-  const {state, actions, handleInput} = props;
+  const {state, actions, handleInput, fetchAdversities, currentUser} = props;
  
   const defaultAdversity = (state.adversity === '') ? 'Select Adversity' : state.adversity;
   const adversitiesList = props.adversities.map((adv, i) => <option key={i} value={adv.id}>{adv.title}</option>);
-
+  
   useEffect(() => {
-    if (props.adversities.length === 0) {
-      props.fetchAdversities(props.currentUser.id);
-    }
-  });
+    fetchAdversities(currentUser.id)
+  },[fetchAdversities, currentUser.id]);
 
   return (
       <div className="header-wrapper">

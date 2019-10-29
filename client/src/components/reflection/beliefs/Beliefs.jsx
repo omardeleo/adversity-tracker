@@ -3,7 +3,7 @@ import HeaderModule from "../../modules/HeaderModule";
 import { SliderModule } from "../../modules/SliderModule";
 import { SelectModule } from "../../modules/SelectModule";
 import { TextModule } from "../../modules/TextModule";
-import { PromptModule } from "../../modules/QuestionModule";
+import { PromptModule } from "../../modules/PromptModule";
 import * as scales from "../../ui/slider_scales";
 import { needsList } from "../../inventory/needs";
 
