@@ -75,8 +75,12 @@ export const CustomSlider = withStyles({
 })(Slider);
 
 export default function CustomizedSlider(props) {
+
+    
     
     return (
+        <div className="slider">
+            <div className="slider-container" data-order={props.order}>
                 <CustomSlider
                     aria-label="feelings slider"
                     value={props.sliderVal}
@@ -84,6 +88,8 @@ export default function CustomizedSlider(props) {
                     valueLabelDisplay="off"
                     onChange={(e, val) => props.handleChange({index: props.index, value: val})}
                 />
+            </div>
+        </div>
 
     );
-}
+};

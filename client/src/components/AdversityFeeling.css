@@ -31,3 +31,28 @@
   cursor: pointer;
 }
 
+.small-emotion-image {
+  height: 40px;
+  width: 43px;
+}
+
+.big-emotion-image {
+  height: 400px;
+  width: 430px;
+}
+
+.transparent-button{
+  background-color: transparent;
+  border: none;
+  margin-top: 15px;
+}
+
+.transparent-button:hover{
+  cursor: pointer;
+}
+
+.transparent-button:focus{
+  outline:none;
+  -webkit-appearance: none;
+}
+
