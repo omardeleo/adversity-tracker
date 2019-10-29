@@ -7,7 +7,7 @@ export default function NavTab(props) {
   return (
     <div
       className={`navigation-button${selected}`}
-      onClick={props.handleTabClick}
+      onClick={props.handleClick}
     >
       {props.section}
     </div>

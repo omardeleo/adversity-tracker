@@ -5,23 +5,18 @@ import '../../AdversityDataInput.css';
 
 export const ReflectionNav = props => {
   const { setDataTab } = props;
-  const [tab, setTab] = useState(0);
+  const [tab, setTab] = useState("Motivation");
 
   useEffect(() => {
     setDataTab(tab);
   }, [tab]);
 
-
   return(
     <div className="navigation">
-      <Tab
-        section="Beliefs"
-        handleTabClick={setTab}
-        selected={true}
-      />
-      <Tab section="Motivation" handleTabClick={setTab} />
-      <Tab section="Retrospection" handleTabClick={setTab} />
+      <Tab section="Motivation" handleClick={setTab}/>
+      <Tab section="Energy" handleClick={setTab} />
+      <Tab section="Recovery" handleClick={setTab} />
     </div>
-
   )
 };
+
