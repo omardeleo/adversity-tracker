@@ -1,13 +1,13 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
-import { Slider, Popover } from '@material-ui/core';
+import { Slider } from '@material-ui/core';
 
 import './CustomSlider.css';
 
 const feelingsBoxShadow =
     "0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.13),0 0 0 1px rgba(0,0,0,0.02)";
 
-const marks = [
+export const marks = [
     {
         value: 0
     },
@@ -22,7 +22,7 @@ const marks = [
     }
 ];
 
-const FeelingsSlider = withStyles({
+export const CustomSlider = withStyles({
     root: {
         color: "#505050",
         height: 2,
@@ -76,56 +76,20 @@ const FeelingsSlider = withStyles({
 
 export default function CustomizedSlider(props) {
 
-    const [anchorEl, setAnchorEl] = React.useState(null);
-
-    const handleClick = event => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
-    const open = Boolean(anchorEl);
-    const id = open ? 'simple-popover' : undefined;
+    
     
     return (
-        <div className="feelings-slider">
-            <button className="transparent-button" aria-describedby={id} variant="contained" onClick={handleClick}>
-                <img className="small-emotion-image" src={process.env.PUBLIC_URL + "/static/images/small.png"} />
-            </button>
-                <Popover
-                    id={id}
-                    open={open}
-                    anchorEl={anchorEl}
-                    onClose={handleClose}
-                    anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'center',
-                    }}
-                    transformOrigin={{
-                    vertical: 'center',
-                    horizontal: 'left',
-                    }}
-                >
-                    <img className="big-emotion-image" src={process.env.PUBLIC_URL + "/static/images/big.png"} />
-                 </Popover>
-            
-            <div className="slider-label">intensity</div>
+        <div className="slider">
             <div className="slider-container" data-order={props.order}>
-                <FeelingsSlider
+                <CustomSlider
                     aria-label="feelings slider"
                     value={props.sliderVal}
                     marks={marks}
                     valueLabelDisplay="off"
                     onChange={(e, val) => props.handleChange({index: props.index, value: val})}
                 />
-                <div className="slider-values">
-                    <div className="slider-value">mildly</div>
-                    <div className="slider-value">moderately</div>
-                    <div className="slider-value">intensely</div>
-                </div>
             </div>
         </div>
+
     );
-}
+};

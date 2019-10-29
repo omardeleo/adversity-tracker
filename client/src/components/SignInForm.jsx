@@ -83,6 +83,9 @@ function SignIn(props) {
                         autoComplete="email"
                         autoFocus
                     />
+                    <Typography variant="body2" display="block" className={classes.errorText}>
+                        {props.errors.email}
+                    </Typography>
                     <TextField
                         variant="outlined"
                         margin="normal"
@@ -96,7 +99,7 @@ function SignIn(props) {
                         autoComplete="current-password"
                     />
                     <Typography variant="body2" display="block" className={classes.errorText}>
-                        {props.errors.signIn }
+                        {props.errors.password || props.errors.signIn }
                     </Typography>
                     <Button
                         type="submit"

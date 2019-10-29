@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_11_040025) do
+ActiveRecord::Schema.define(version: 2019_10_15_030937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,19 @@ ActiveRecord::Schema.define(version: 2019_10_11_040025) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_adversities_on_user_id"
+  end
+
+  create_table "beliefs", force: :cascade do |t|
+    t.integer "adversity_id", null: false
+    t.text "belief_text"
+    t.integer "control_level"
+    t.integer "ability_level"
+    t.integer "need_level"
+    t.integer "pressure_level"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "need"
+    t.string "need_reason"
   end
 
   create_table "feelings", force: :cascade do |t|
@@ -39,7 +52,7 @@ ActiveRecord::Schema.define(version: 2019_10_11_040025) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name", limit: 30, null: false
+    t.string "name", limit: 30
     t.string "email", limit: 30, null: false
     t.string "password_digest", null: false
     t.string "session_token"

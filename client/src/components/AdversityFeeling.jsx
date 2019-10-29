@@ -1,37 +1,20 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-
-import { Add } from "@material-ui/icons";
-
 import FeelingsSlider from "./CustomSlider";
-import './AdversityFeeling.css';
+import { FeelingPopover } from "./ui/FeelingPopover";
+import { useStyles } from '../util/ui_util';
+import { Add } from "@material-ui/icons";
+// import { CustomSlider } from './ui/CustomSlider';
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        "& .MuiOutlinedInput-root": {
-            "& fieldset": {
-                borderColor: "#a9a9a9"
-            },
-            "&:hover fieldset": {
-                borderColor: "#606060"
-            },
-            "&.Mui-focused fieldset": {
-                borderColor: "darkGrey"
-            }
-        },
-        color: "white",
-        background: "#181818",
-        boxShadow: "5px 5px 8px 0px rgba(0,0,0,0.3)"
-    },
-    input: {
-        color: "#a9a9a9"
-    }
-}));
+import './AdversityFeeling.css';
+import './stylesheets/recognition.css';
+
+
 
 const FeelingItem = props => {
     const { feeling, sliderVal } = props.feeling;
     const classes = useStyles();
+    // const feelingScale = ["mildly", "moderately", "intensely"];
 
     return (
         <div className="feeling-row">
@@ -48,43 +31,61 @@ const FeelingItem = props => {
                 onChange={(e) => {
                     props.handleFeelingTextChange({index: props.index, feeling: e.target.value})
                 }}
-            />
-            <FeelingsSlider
-                sliderVal={sliderVal}
-                handleChange={props.handleSliderChange}
-                className={classes.slider}
-                index={props.index}
-            />
+            />  
+                <FeelingPopover />
+                <div className="slider-label">intensity</div>
+      
+            <div className="slider-wrapper">
+            <div className="slider">
+                <div className='slider-container'>
+                <FeelingsSlider
+                    sliderVal={sliderVal}
+                    handleChange={props.handleSliderChange}
+                    className={classes.slider}
+                    index={props.index}
+                />
+                <div className="slider-values">
+                <div className="slider-value">mildly</div>
+                    <div className="slider-value">moderately</div>
+                    <div className="slider-value">intensely</div>
+                </div>
+                    </div>
+            </div>
+
+            </div>
         </div>
     );
 };
 
-class AdversityFeeling extends React.Component {  
+class AdversityFeeling extends React.Component { 
+    
     render() {
+
+        const feelingItems = this.props.feelings.map((feeling, i) => (
+            <FeelingItem
+                key={i}
+                index={i}
+                feeling={feeling}
+                handleSliderChange={this.props.handleSliderChange}
+                handleFeelingTextChange={this.props.handleFeelingTextChange}
+            />
+        ));
+
         return (
             <div className="adv-feeling-container">
                 <div className="adv-feeling">
-                    <div className="feelings-tracker-label">
+                    <span className="feelings-tracker-label">
                         I'm noticing I'm feeling...
-          </div>
+                    </span>
                     <div className="feeling-main">
-                        <div className="feelings-container">
-                            {this.props.feelings.map((feeling, i) => (
-                                <FeelingItem
-                                    key={i}
-                                    index={i}
-                                    feeling={feeling}
-                                    handleSliderChange={this.props.handleSliderChange}
-                                    handleFeelingTextChange={this.props.handleFeelingTextChange}
-                                />
-                            ))}
-                        </div>
+                        {feelingItems}
                     </div>
                 </div>
                 <Add className="add-feeling" onClick={this.props.handleAddSlider} />
             </div>
         );
-    }
-}
+    };
+
+};
 
 export default AdversityFeeling;

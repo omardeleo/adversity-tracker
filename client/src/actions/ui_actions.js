@@ -1,4 +1,5 @@
 export const CLICK_MAIN_NAV = 'CLICK_MAIN_NAV';
+export const CLICK_SUB_NAV = 'CLICK_SUB_NAV';
 export const CLICK_TITLE = 'CLICK_TITLE';
 export const CLEAR_TITLE = 'CLEAR_TITLE';
 export const UPDATE_TITLE = 'UPDATE_TITLE';
@@ -8,10 +9,19 @@ export const UPDATE_FEELING_VALUE = 'UPDATE_FEELING_VALUE';
 export const ADD_SLIDER = 'ADD_SLIDER';
 export const CLEAR_FORM = 'CLEAR_FORM';
 
-export const setCurrentTab = tab => ({
+// Navigation Actions
+
+export const setMainTab = tab => ({
     type: CLICK_MAIN_NAV,
     tab
 });
+
+export const setSubTab = tab => ({
+    type: CLICK_SUB_NAV,
+    tab
+});
+
+// Data Input Actions
 
 export const setCurrentTitle = (payload) => ({
     type: CLICK_TITLE,
@@ -48,10 +58,9 @@ export const updateFeelingValue = (feeling) => ({
 
 export const setTitle = (title, id) => dispatch => {
     dispatch(setCurrentTitle({title, id}))
-    dispatch(setCurrentTab('AdversityDataInput'))
+    dispatch(setMainTab('AdversityDataInput'))
 };
 
 export const addSlider = () => {
-   return{ type: ADD_SLIDER}
-}
-
+   return{ type: ADD_SLIDER};
+};

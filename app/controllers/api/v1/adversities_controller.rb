@@ -5,16 +5,21 @@ module Api::V1
     def index
       @adversities = Adversity.where(user_id: params[:user_id])
 
-      render json: @adversities.to_json(:include => { :recognitions => {
-                                                        :include => [:feelings] } })
+      render json: @adversities.to_json(:include => { :beliefs => {}, 
+                                                      :recognitions => {
+                                                            :include => [:feelings] } 
+                                                    })
     end
 
     def create
 
     @adversity = Adversity.create(adversity_params)
       if @adversity.save
-        render json: @adversity.to_json(:include => { :recognitions => {
-                                                        :include => [:feelings] } })
+        
+      render json: @adversity.to_json(:include => { :beliefs => {}, 
+                                                      :recognitions => {
+                                                            :include => [:feelings] } 
+                                                    })
       else
         render json: @adversity.errors.full_messages, status: 422
       end

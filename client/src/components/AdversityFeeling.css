@@ -12,16 +12,47 @@
 }
 
 .feelings-tracker-label {
-  min-width: 200px;
-  text-align: right;
+  width: 18%;
+  text-align: left;
   margin: 0 10px 0 40px;
+  padding-top: 30px;
 }
 
 .feeling-main {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+}
+
+.slider-label {
+  margin: 0 20px;
 }
 
 .add-feeling {
   cursor: pointer;
 }
+
+.small-emotion-image {
+  height: 40px;
+  width: 43px;
+}
+
+.big-emotion-image {
+  height: 400px;
+  width: 430px;
+}
+
+.transparent-button{
+  background-color: transparent;
+  border: none;
+  margin-top: 15px;
+}
+
+.transparent-button:hover{
+  cursor: pointer;
+}
+
+.transparent-button:focus{
+  outline:none;
+  -webkit-appearance: none;
+}
+
