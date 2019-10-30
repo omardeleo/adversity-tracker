@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import HeaderModule from "../../modules/HeaderModule";
+import JournalNav from "../../ui/nav/JournalNav";
 import { SliderModule } from "../../modules/SliderModule";
 import { SelectModule } from "../../modules/SelectModule";
 import { TextModule } from "../../modules/TextModule";
@@ -59,7 +60,7 @@ export const Beliefs = props => {
 
       <div className="sub-tab-wrapper">
 
-        <div className="sub-tab-label">Beliefs</div>
+        <JournalNav />
 
           <TextModule 
             prompt={"Why does this feel like an adversity?"}

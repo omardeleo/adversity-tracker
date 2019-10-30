@@ -1,6 +1,7 @@
 import {
     CLICK_MAIN_NAV,
     CLICK_SUB_NAV,
+    CLICK_JOURNAL_NAV,
     CLICK_TITLE,
     CLEAR_TITLE,
     UPDATE_TITLE,
@@ -22,7 +23,7 @@ const initialState = {
         story: "",
         feelings: [{ feeling: "", sliderVal: 0 }]
     }
-}
+};
 
 const uiReducer = (state = initialState, action) => {
     Object.freeze(state);
@@ -35,6 +36,8 @@ const uiReducer = (state = initialState, action) => {
             return Object.assign({}, state, { tab: action.tab });
         case CLICK_SUB_NAV:
             return Object.assign({}, state, { subtab: action.tab });
+        case CLICK_JOURNAL_NAV:
+            return Object.assign({}, state, { journal_tab: action.tab });
         case CLICK_TITLE:
             newFormData = Object.assign({}, oldFormData, { title: action.payload.title });
             return Object.assign({}, state, { recognition_form: newFormData,

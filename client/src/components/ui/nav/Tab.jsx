@@ -5,11 +5,12 @@ import '../../NavTab.css';
 export default function NavTab(props) {
   const selected = props.selected ? " nav-selected" : "";
   return (
-    <div
+    <button
       className={`navigation-button${selected}`}
+      value={props.section}
       onClick={props.handleClick}
     >
       {props.section}
-    </div>
+    </button>
   );
 }
