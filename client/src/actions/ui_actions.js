@@ -63,8 +63,8 @@ export const updateFeelingValue = (feeling) => ({
 }); 
 
 export const setTitle = (title, id) => dispatch => {
-    dispatch(setCurrentTitle({title, id}))
-    dispatch(setMainTab('AdversityDataInput'))
+    dispatch(setCurrentTitle({title, id}));
+    dispatch(setMainTab('AdversityDataInput'));
 };
 
 export const addSlider = () => {

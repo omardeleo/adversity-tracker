@@ -22,10 +22,10 @@ export const Beliefs = props => {
     need: "Need",
     need_reason: "",
   };
-
+  
   // Hook for [state variable, state action]
   const [state, setState] = useState(defaultState);
-
+  
   // handleInput Utility accepts a key as a string and sets input value in state
   const handleInput = key => e => {
     let value = e.target ? e.target.value : e.value;
@@ -94,7 +94,7 @@ export const Beliefs = props => {
           />
 
         </div>
-
+        
         <div className="data-module-row">
 
           <div className="data-module">

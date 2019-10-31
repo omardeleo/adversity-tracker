@@ -1,12 +1,12 @@
 import React from "react";
 
-import '../../NavTab.css';
-
 export default function NavTab(props) {
-  const selected = props.selected ? " nav-selected" : "";
+  const active = props.default ? "selected" : "";
+
   return (
     <button
-      className={`navigation-button${selected}`}
+      id={props.section}
+      className={`journal-tab ${active}`}
       value={props.section}
       onClick={props.handleClick}
     >
