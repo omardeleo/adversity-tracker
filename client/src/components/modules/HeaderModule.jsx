@@ -1,13 +1,18 @@
 import React, { useEffect } from "react";
 import { connect } from 'react-redux';
 import { fetchAdversities } from '../../actions/adversity_actions';
+import { setAdversity } from '../../actions/ui_actions';
 
 const Header = props => {
 
-  const {state, active, actions, handleInput, fetchAdversities, currentUser} = props;
+  const {active, actions, adversities, setAdversity, fetchAdversities, currentUser} = props;
  
-  const defaultAdversity = (state.adversity === '') ? 'Select Adversity' : state.adversity;
-  const adversitiesList = props.adversities.map((adv, i) => <option key={i} value={adv.id}>{adv.title}</option>);
+  const defaultAdversity = active ? active : 'Select Adversity';
+  const adversitiesList = adversities.map(adv => <option key={adv.id} value={adv.id}>{adv.title}</option>);
+
+  const handleInput = e => {
+    setAdversity(e.target.value);
+  }
   
   useEffect(() => {
     fetchAdversities(currentUser.id)
@@ -19,7 +24,7 @@ const Header = props => {
           <div className="header-label">Adversity Experience Title...</div>
           <div className="input-wrapper">
             <select onChange={handleInput}>
-              <option value={state.adversity_id}>{defaultAdversity}</option>
+              <option value={active}>{defaultAdversity}</option>
               {adversitiesList}
             </select>
           </div>
@@ -40,7 +45,9 @@ const mapStateToProps = ({ entities, session, ui }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchAdversities: id => dispatch(fetchAdversities(id))
+  fetchAdversities: id => dispatch(fetchAdversities(id)),
+  setAdversity: id => dispatch(setAdversity(id))
+
 });
 
 export default connect(

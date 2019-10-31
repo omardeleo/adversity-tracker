@@ -10,10 +10,9 @@ import { needsList } from "../../inventory/needs";
 
 export const Beliefs = props => {
 
+  const { submitForm } = props;
   // Define default state
   const defaultState = {
-    adversity_id: props.adversityId,
-    adversity: props.adversityTitle,
     control_level: 0,
     ability_level: 0,
     need_level: 0,
@@ -25,8 +24,11 @@ export const Beliefs = props => {
   
   // Hook for [state variable, state action]
   const [state, setState] = useState(defaultState);
+
+  // Attaches form to currently selected Adversity/Event
+  const form = Object.assign({}, state, { adversity_id: props.adversityId });
   
-  // handleInput Utility accepts a key as a string and sets input value in state
+  // handleInput accepts a key as a string and sets input value in state
   const handleInput = key => e => {
     let value = e.target ? e.target.value : e.value;
     setState({
@@ -35,13 +37,12 @@ export const Beliefs = props => {
     });
   };
 
-  // handle accept can be configured as necessary
+  // handleAccept can be configured as necessary
   const handleAccept = () => {
-    const { createBelief } = props;
-    createBelief(state).then(() => props.fetchAdversities(props.currentUser.id));
+    submitForm(form).then(() => props.fetchAdversities(props.currentUser.id));
   };
 
-  // handle clear restores default state
+  // handleClear restores default state
   const handleClear = () => {
     setState(defaultState);
   };
@@ -52,10 +53,7 @@ export const Beliefs = props => {
     <div className="form-wrapper">
 
       <HeaderModule 
-        state={state}
-        defaultState={defaultState} 
         actions={actions} 
-        handleInput={handleInput("adversity_id")}
       />
 
       <div className="sub-tab-wrapper">

@@ -7,6 +7,7 @@ export const UPDATE_TITLE = 'UPDATE_TITLE';
 export const UPDATE_STORY = 'UPDATE_STORY';
 export const UPDATE_FEELING_TEXT = 'UPDATE_FEELING_TEXT';
 export const UPDATE_FEELING_VALUE = 'UPDATE_FEELING_VALUE';
+export const SET_ADVERSITY = 'SET_ADVERSITY';
 export const ADD_SLIDER = 'ADD_SLIDER';
 export const CLEAR_FORM = 'CLEAR_FORM';
 
@@ -66,6 +67,11 @@ export const setTitle = (title, id) => dispatch => {
     dispatch(setCurrentTitle({title, id}));
     dispatch(setMainTab('AdversityDataInput'));
 };
+
+export const setAdversity = adversity => ({
+    type: SET_ADVERSITY,
+    adversity
+});
 
 export const addSlider = () => {
    return{ type: ADD_SLIDER};

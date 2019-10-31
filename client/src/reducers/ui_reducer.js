@@ -8,6 +8,7 @@ import {
     UPDATE_STORY,
     UPDATE_FEELING_TEXT,
     UPDATE_FEELING_VALUE,
+    SET_ADVERSITY,
     ADD_SLIDER,
     CLEAR_FORM
 } from '../actions/ui_actions';
@@ -61,6 +62,8 @@ const uiReducer = (state = initialState, action) => {
             newFeelings[action.feeling.index].sliderVal = action.feeling.value;
             newFormData = Object.assign({}, oldFormData, { feelings: newFeelings });
             return Object.assign({}, state, { recognition_form: newFormData });
+        case SET_ADVERSITY:
+            return Object.assign({}, state, {adversity_id: action.adversity});
         case ADD_SLIDER: 
             newFeelings.push({ feeling: "", sliderVal: 0 });
             newFormData = Object.assign({}, oldFormData, { feelings: newFeelings });
