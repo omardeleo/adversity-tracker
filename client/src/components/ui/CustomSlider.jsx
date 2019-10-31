@@ -63,7 +63,7 @@ const StyledSlider = withStyles({
   rail: {
     height: 2,
     opacity: 0.5,
-    backgroundColor: "#bfbfbf",
+    backgroundColor: "currentColor",
   },
   mark: {
     backgroundColor: "#bfbfbf",
@@ -72,13 +72,12 @@ const StyledSlider = withStyles({
     marginTop: -3
   },
   markActive: {
-    backgroundColor: "currentColor"
+    backgroundColor: "#bfbfbf"
   }
 })(Slider);
 
 export const CustomSlider = props => {
-
-  let { scale, value, handleChange, field } = props;
+  let { scale, value, handleChange } = props;
   let scaleList = scale.map(value => <div key={value} className="slider-value">{value}</div>)
 
   return (
@@ -88,7 +87,7 @@ export const CustomSlider = props => {
           value={value}
           marks={marks}
           valueLabelDisplay="off"
-          onChange={(e, val) => handleChange({field: field, value: val})}
+          onChange={(e, val) => handleChange({value: val})}
         />
         <div className="slider-values">
           {scaleList}
