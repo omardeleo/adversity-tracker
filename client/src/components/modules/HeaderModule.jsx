@@ -4,7 +4,7 @@ import { fetchAdversities } from '../../actions/adversity_actions';
 
 const Header = props => {
 
-  const {state, actions, handleInput, fetchAdversities, currentUser} = props;
+  const {state, active, actions, handleInput, fetchAdversities, currentUser} = props;
  
   const defaultAdversity = (state.adversity === '') ? 'Select Adversity' : state.adversity;
   const adversitiesList = props.adversities.map((adv, i) => <option key={i} value={adv.id}>{adv.title}</option>);
@@ -33,9 +33,10 @@ const Header = props => {
 
 };
 
-const mapStateToProps = ({ entities, session }) => ({
+const mapStateToProps = ({ entities, session, ui }) => ({
   currentUser: entities.users[session.id],
-  adversities: Object.values(entities.adversities)
+  adversities: Object.values(entities.adversities),
+  active: ui.adversity_id
 });
 
 const mapDispatchToProps = dispatch => ({

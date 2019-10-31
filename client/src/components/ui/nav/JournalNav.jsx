@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { setJournalTab } from '../../../actions/ui_actions';
 import Tab from "./Tab";
-import '../../AdversityDataInput.css';
 
 const JournalNav = props => {
   const { setJournalTab } = props;
