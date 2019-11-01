@@ -10,7 +10,8 @@ import { needsList } from "../../inventory/needs";
 
 export const Beliefs = props => {
 
-  const { submitForm } = props;
+  const { stageForm, submitForm } = props;
+
   // Define default state
   const defaultState = {
     control_level: 0,
@@ -39,7 +40,7 @@ export const Beliefs = props => {
 
   // handleAccept can be configured as necessary
   const handleAccept = () => {
-    submitForm(form).then(() => props.fetchAdversities(props.currentUser.id));
+    stageForm(form);
   };
 
   // handleClear restores default state
@@ -47,7 +48,7 @@ export const Beliefs = props => {
     setState(defaultState);
   };
 
-  const actions = {accept: handleAccept, clear: handleClear};
+  const actions = {accept: handleAccept, clear: handleClear, submit: submitForm};
 
   return (
     <div className="form-wrapper">

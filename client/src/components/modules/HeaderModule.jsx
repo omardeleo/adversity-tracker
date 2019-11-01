@@ -13,7 +13,7 @@ const Header = props => {
   const handleInput = e => {
     setAdversity(e.target.value);
   }
-  
+
   useEffect(() => {
     fetchAdversities(currentUser.id)
   },[fetchAdversities, currentUser.id]);
@@ -41,7 +41,8 @@ const Header = props => {
 const mapStateToProps = ({ entities, session, ui }) => ({
   currentUser: entities.users[session.id],
   adversities: Object.values(entities.adversities),
-  active: ui.adversity_id
+  active: ui.adversity_id,
+  forms: ui.forms
 });
 
 const mapDispatchToProps = dispatch => ({

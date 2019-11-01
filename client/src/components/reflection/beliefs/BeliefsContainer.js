@@ -13,8 +13,8 @@ const mapStateToProps = ({ui, forms, entities, session}) => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchAdversities: id => dispatch(fetchAdversities(id)), 
-  updateForm: beliefsForm => dispatch(updateForm(beliefsForm)),
-  submitForm: belief => dispatch(createBelief(belief))
+  stageForm: form => dispatch(updateForm(form)),
+  submitForm: form => dispatch(createBelief(form))
 });
 
 export default connect(
