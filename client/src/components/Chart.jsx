@@ -12,10 +12,9 @@ class Chart extends React.Component {
         super(props);
         this.state = {
             redirect: false,
-            // isTooltipOpen: false,
-            isStoryExpanded: false
         };
-        this.thing = this.thing.bind(this);
+        // this.bulletClick = this.bulletClick.bind(this);
+        // this.openPopup = this.openPopup.bind(this);
     }
 
     renderChart() {
@@ -70,13 +69,14 @@ class Chart extends React.Component {
         for (let adversity of adversities) {
             // console.log('adversity', adversity)
             let data = [];
-
+            // let { story } = adversity;
             for (let recognition of adversity.recognitions) {
                 // console.log('recognition', recognition)
+                console.log('length', recognition.story.length)
                 let obj = {
                     title: adversity.title, timestamp: recognition.timestamp,
                     story: recognition.story,
-                    story_trunc: recognition.story.slice(0, 120)
+                    story_trunc: recognition.story.length > 140 ? recognition.story.slice(0, 140) + "..." : recognition.story.slice(0,140)
                 }
                 data.push(obj)
             }
@@ -87,32 +87,51 @@ class Chart extends React.Component {
             series.strokeWidth = 3;
             series.sequencedInterpolation = true;
             let circleBullet = series.bullets.create(am4charts.CircleBullet);
-            // create a helper function like generateTooltip()
-            let storee = this.state.isStoryExpanded ? "story" : "story_trunc";
-            // let storee = !this.state.isStoryExpanded ? "story_trunc" : ;
             circleBullet.interactionsEnabled = true;
-            circleBullet.tooltipHTML = `<p class="tooltip">{${storee}}</p><input type="button" value="More info" />`;
+            circleBullet.tooltipHTML = `<p class="tooltip">{story_trunc}</p><input type="button" value="Click for more" />`;
             series.tooltip.keepTargetHover = true
             series.tooltip.pointerOrientation = "vertical";
             series.tooltip.label.interactionsEnabled = true;
+            series.tooltip.events.on("hit", function (ev) {
+                const { title, story, timestamp } = ev.target.dataItem.dataContext
+                const displayDate = new Date(timestamp).toLocaleString()
+                // console.log("clicked on ", ev.target);
+                // if (ev.target.tagName !== 'INPUT') return;
+                // console.log('ev', ev.target.dataItem.dataContext)
+                if (ev.event.target.tagName !== 'INPUT') return;
+                this.chart.openModal(`
+                <div><strong>Adversity</strong>: ${title}</div>
+                <div><strong>Recognition</strong>: ${story}</div>
+                <div><strong>Date</strong>: ${displayDate}</div>
+                `);
+                // if (ev.target.tagName == 'INPUT') {
+                //     
+                // }
+                // this.chart.openPopup("Hello there!");
+            }, this);
             series.data = data;
         }
     }
 
-    thing(e) {
-        // console.log('this.state', this.state)
-        // console.log('CLICKING ON CIRCLE');
-        console.log('targ', e.target.tagName)
-        if (e.target.tagName !== 'INPUT') return;
-        // console.log('targ', e.target.tagName)
-        var closest = e.target.closest('div');
-        var pp = closest.querySelector('p');
+    // openPopup(e, chart) {
+    //     if (e.target.tagName !== 'INPUT') return;
+    // }
 
-        // console.log('pp',pp)
-        pp.innerHTML = "HAHAHAHAHAHA"
-        // this.setState({isStoryExpanded: true});
+    // bulletClick(e) {
+    //     // console.log('this.state', this.state)
+    //     // console.log('CLICKING ON CIRCLE');
+    //     // console.log('targ', e.target.tagName)
+    //     if (e.target.tagName !== 'INPUT') return;
+    //     alert("open modal")
+    //     // console.log('targ', e.target.tagName)
+    //     // var closest = e.target.closest('div');
+    //     // var pp = closest.querySelector('p');
 
-    }
+    //     // console.log('pp',pp)
+    //     // pp.innerHTML = "HAHAHAHAHAHA"
+    //     // this.setState({isStoryExpanded: true});
+
+    // }
 
     componentDidMount() {
         this.renderChart();
@@ -145,7 +164,7 @@ class Chart extends React.Component {
         }
 
         return (
-            <div id="chartdiv" onClick={this.thing} style={{ width: "940px", height: "500px" }}></div>
+            <div id="chartdiv" style={{ width: "940px", height: "500px" }}></div>
         );
     }
 }
