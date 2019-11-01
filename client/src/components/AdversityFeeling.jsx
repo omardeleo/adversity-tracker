@@ -1,7 +1,7 @@
 import React from "react";
-
 import TextField from "@material-ui/core/TextField";
 import FeelingsSlider from "./CustomSlider";
+import { FeelingPopover } from "./ui/FeelingPopover";
 import { useStyles } from '../util/ui_util';
 import { Add } from "@material-ui/icons";
 // import { CustomSlider } from './ui/CustomSlider';
@@ -31,7 +31,8 @@ const FeelingItem = props => {
                 onChange={(e) => {
                     props.handleFeelingTextChange({index: props.index, feeling: e.target.value})
                 }}
-            />
+            />  
+                <FeelingPopover />
                 <div className="slider-label">intensity</div>
       
             <div className="slider-wrapper">
