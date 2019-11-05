@@ -20,6 +20,7 @@
   left: 0;
   z-index: 2001;
   background: #fff;
+  /* background: pink !important; */
   opacity: 1;
 }
 
@@ -29,27 +30,77 @@
 }
 
 .ampopup-content {
-  padding: 1em 2em;
+  /* padding: 1em 2em; */
+  padding: 0 !important;
+  margin: 0 !important;
   background: rgb(255, 255, 255);
   background-color: rgba(255, 255, 255, 1) !important;
-  display: inline-block;
-  position: absolute;
-  max-width: 90%;
-  height: auto !important;
-  max-height: 90%;
+  /* display: inline-block; */
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  display: flex !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  /* height: auto !important; */
+  max-height: 100% !important;
   overflow: auto;
-  z-index: 2002
+  z-index: 2002;
+  background: purple !important;
+  border: 1px solid gray;
+  /* border-radius: 5px; */
 }
 
 .ampopup-close {
   display: block;
-  position: absolute;
-  top: 0.3em;
-  right: 0.3em;
+  /* position: fixed !important; */
+  /* top: 0.3em;
+  right: 0.3em; */
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  left: 100% !important;
+  /* right: 0px !important; */
   background-color: rgb(100, 100, 100);
   background: rgba(100, 100, 100, 0.1) url(data:image/svg+xml;charset=utf-8;base64,PHN2ZyBoZWlnaHQ9IjUxMiIgdmVyc2lvbj0iMSIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHdpZHRoPSI1MTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTQ0NS4yIDEwOS4ybC00Mi40LTQyLjRMMjU2IDIxMy42IDEwOS4yIDY2LjhsLTQyLjQgNDIuNEwyMTMuNiAyNTYgNjYuOCA0MDIuOGw0Mi40IDQyLjRMMjU2IDI5OC40bDE0Ni44IDE0Ni44IDQyLjQtNDIuNEwyOTguNCAyNTYiLz48L3N2Zz4=) no-repeat center;
   background-size: 80%;
   width: 1.2em;
   height: 1.2em;
   cursor: pointer
+}
+
+.modal {
+  display: flex;
+  flex-direction: row;
+  width: 900px;
+}
+
+.modal > div {
+  padding: 10px;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+  background: green;
+}
+
+.feelings-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: blue;
+}
+
+.feeling-header, .feeling-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.feeling-header > div, .feeling-container > div {
+  flex: 1;
+}
+
+.info-container > div {
+  margin-bottom: 5px;
 }
