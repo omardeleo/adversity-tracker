@@ -99,11 +99,110 @@ class Chart extends React.Component {
                 // if (ev.target.tagName !== 'INPUT') return;
                 // console.log('ev', ev.target.dataItem.dataContext)
                 if (ev.event.target.tagName !== 'INPUT') return;
-                this.chart.openModal(`
-                <div><strong>Adversity</strong>: ${title}</div>
-                <div><strong>Recognition</strong>: ${story}</div>
-                <div><strong>Date</strong>: ${displayDate}</div>
-                `);
+                
+
+                let htmll = `
+                    <div class="modal">
+                        <div class="info-container">
+                            <div><strong>Adversity: </strong>${title}</div>
+                            <div><strong>Date</strong>: ${displayDate}</div>
+                            <div><strong>Recognition:</strong> ${story}</div>
+                        </div>
+            
+                        <div class="feelings-container">
+                        <div class="feeling-header">
+                        <div><strong>Feeling</strong></div>
+                        <div><strong>Intensity</strong></div>
+                        </div>
+                            <div class="feeling-container">
+                            <div class="feeling">Eager</div>
+                            <div class="score">moderately</div>
+                        </div>
+                        <div class="feeling-container">
+                        <div class="feeling">Confused</div>
+                        <div class="score">moderately</div>
+                        </div>
+                        <div class="feeling-container">
+                        <div class="feeling">Bemused</div>
+                        <div class="score">extremely</div>
+                        </div>
+                        <div class="feeling-container">
+                        <div class="feeling">Eager</div>
+                        <div class="score">moderately</div>
+                        </div>
+                        <div class="feeling-container">
+                        <div class="feeling">Confused</div>
+                        <div class="score">moderately</div>
+                        </div>
+                        <div class="feeling-container">
+                        <div class="feeling">Bemused</div>
+                        <div class="score">extremely</div>
+                        </div>
+                        <div class="feeling-container">
+                        <div class="feeling">Eager</div>
+                        <div class="score">moderately</div>
+                        </div>
+                        <div class="feeling-container">
+                        <div class="feeling">Confused</div>
+                        <div class="score">moderately</div>
+                        </div>
+                        <div class="feeling-container">
+                        <div class="feeling">Bemused</div>
+                        <div class="score">extremely</div>
+                        </div>
+                        <div class="feeling-container">
+                        <div class="feeling">Eager</div>
+                        <div class="score">moderately</div>
+                        </div>
+                        <div class="feeling-container">
+                        <div class="feeling">Confused</div>
+                        <div class="score">moderately</div>
+                        </div>
+                        <div class="feeling-container">
+                        <div class="feeling">Bemused</div>
+                        <div class="score">extremely</div>
+                        </div>
+                        <div class="feeling-container">
+                        <div class="feeling">Eager</div>
+                        <div class="score">moderately</div>
+                        </div>
+                        <div class="feeling-container">
+                        <div class="feeling">Confused</div>
+                        <div class="score">moderately</div>
+                        </div>
+                        <div class="feeling-container">
+                        <div class="feeling">Bemused</div>
+                        <div class="score">extremely</div>
+                        </div>
+                        <div class="feeling-container">
+                        <div class="feeling">Eager</div>
+                        <div class="score">moderately</div>
+                        </div>
+                        <div class="feeling-container">
+                        <div class="feeling">Confused</div>
+                        <div class="score">moderately</div>
+                        </div>
+                        <div class="feeling-container">
+                        <div class="feeling">Bemused</div>
+                        <div class="score">extremely</div>
+                        </div>
+                        <div class="feeling-container">
+                        <div class="feeling">Confused</div>
+                        <div class="score">moderately</div>
+                        </div>
+                        <div class="feeling-container">
+                        <div class="feeling">Bemused</div>
+                        <div class="score">extremely</div>
+                        </div>
+            </div>
+            </div>
+                `
+                // this.chart.openModal(`
+                //     <div><strong>Adversity</strong>: ${title}</div>
+                //     <div><strong>Recognition</strong>: ${story}</div>
+                //     <div><strong>Date</strong>: ${displayDate}</div>
+                // `);
+                this.chart.openModal(htmll);
                 // if (ev.target.tagName == 'INPUT') {
                 //     
                 // }
