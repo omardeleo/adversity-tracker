@@ -1,27 +1,17 @@
 import React, { useState, useEffect } from "react";
-import HeaderModule from "../../modules/HeaderModule";
-import JournalNav from "../../ui/nav/JournalNav";
-import { SliderModule } from "../../modules/SliderModule";
-import { SelectModule } from "../../modules/SelectModule";
-import { TextModule } from "../../modules/TextModule";
-import { PromptModule } from "../../modules/PromptModule";
-import * as scales from "../../ui/slider_scales";
-import { needsList } from "../../inventory/needs";
+import { SliderModule } from "../../../modules/SliderModule";
+import { SelectModule } from "../../../modules/SelectModule";
+import { TextModule } from "../../../modules/TextModule";
+import { PromptModule } from "../../../modules/PromptModule";
+import * as scales from "../../../ui/slider_scales";
+import { needsList } from "../../../inventory/needs";
 
 export const Beliefs = props => {
 
   const { updateForm } = props;
 
   // Define default state
-  const defaultState = {
-    // control_level: 0,
-    // ability_level: 0,
-    // need_level: 0,
-    // pressure_level: 0,
-    // belief_text: "",
-    // need: "Need",
-    // need_reason: "",
-  };
+  const defaultState = {};
   
   // Hook for [state variable, state action]
   const [state, setState] = useState(defaultState);
@@ -35,27 +25,12 @@ export const Beliefs = props => {
     });
   };
 
-  // // handleClear restores default state
-  // const handleClear = () => {
-  //   setState(defaultState);
-  // };
-
   useEffect(() => {
     updateForm(state);
   }, [updateForm, state]);
 
-  // const actions = {accept: handleAccept, clear: handleClear, submit: submitForm};
-
   return (
     <div className="form-wrapper">
-
-      <HeaderModule 
-        // actions={actions} 
-      />
-
-      <div className="sub-tab-wrapper">
-
-        <JournalNav />
 
           <TextModule 
             prompt={"Why does this feel like an adversity?"}
@@ -130,8 +105,6 @@ export const Beliefs = props => {
           />
 
         </div>
-
-      </div>
 
     </div>
   );

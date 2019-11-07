@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { connect } from 'react-redux';
-import { fetchAdversities } from '../../actions/adversity_actions';
-import { setAdversity } from '../../actions/ui_actions';
-import { updateForm } from '../../actions/form_actions';
-import { createBelief } from '../../actions/belief_actions';
 
-const Header = props => {
+export const Header = props => {
 
-  const {active, adversities, setAdversity, fetchAdversities, currentUser, form, submitForm, updateForm} = props;
+  const { active, 
+          adversities, 
+          setAdversity, 
+          fetchAdversities, 
+          currentUser, 
+          forms, 
+          submitForm, 
+          updateForm 
+        } = props;
 
   const defaultState = { adversity_id: active };
   const [state, setState] = useState(defaultState);
@@ -24,8 +27,10 @@ const Header = props => {
     setAdversity(value);
   };
 
+  debugger
   const handleAccept = () => {
-    submitForm(form);
+    debugger
+    submitForm(forms);
   };
 
   const handleClear = () => {
@@ -37,7 +42,6 @@ const Header = props => {
   },[fetchAdversities, currentUser.id]);
 
   useEffect(() => {
-    debugger
     updateForm(state);
   }, [updateForm, state]);
 
@@ -60,22 +64,3 @@ const Header = props => {
   );
 
 };
-
-const mapStateToProps = ({ entities, session, ui }) => ({
-  currentUser: entities.users[session.id],
-  adversities: Object.values(entities.adversities),
-  active: ui.adversity_id,
-  form: ui.forms
-});
-
-const mapDispatchToProps = dispatch => ({
-  fetchAdversities: id => dispatch(fetchAdversities(id)),
-  setAdversity: id => dispatch(setAdversity(id)),
-  updateForm: data => dispatch(updateForm(data)),
-  submitForm: form => dispatch(createBelief(form))
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Header);
