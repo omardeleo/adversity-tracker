@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import HeaderModule from "../../modules/HeaderModule";
 import JournalNav from "../../ui/nav/JournalNav";
 import { SliderModule } from "../../modules/SliderModule";
@@ -14,20 +14,17 @@ export const Beliefs = props => {
 
   // Define default state
   const defaultState = {
-    control_level: 0,
-    ability_level: 0,
-    need_level: 0,
-    pressure_level: 0,
-    belief_text: "",
-    need: "Need",
-    need_reason: "",
+    // control_level: 0,
+    // ability_level: 0,
+    // need_level: 0,
+    // pressure_level: 0,
+    // belief_text: "",
+    // need: "Need",
+    // need_reason: "",
   };
   
   // Hook for [state variable, state action]
   const [state, setState] = useState(defaultState);
-
-  // Attaches form to currently selected Adversity/Event
-  const form = Object.assign({}, state, { adversity_id: props.adversityId });
   
   // handleInput accepts a key as a string and sets input value in state
   const handleInput = key => e => {
@@ -40,13 +37,17 @@ export const Beliefs = props => {
 
   // handleAccept can be configured as necessary
   const handleAccept = () => {
-    stageForm(form);
+    stageForm(state);
   };
 
   // handleClear restores default state
   const handleClear = () => {
     setState(defaultState);
   };
+
+  useEffect(() => {
+    stageForm(state);
+  }, [state]);
 
   const actions = {accept: handleAccept, clear: handleClear, submit: submitForm};
 
