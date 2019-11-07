@@ -1,18 +1,35 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux';
 import { fetchAdversities } from '../../actions/adversity_actions';
 import { setAdversity } from '../../actions/ui_actions';
 import { updateForm } from '../../actions/form_actions';
+import { createBelief } from '../../actions/belief_actions';
 
 const Header = props => {
 
-  const {active, actions, adversities, setAdversity, fetchAdversities, currentUser, form} = props;
- 
+  const {active, adversities, setAdversity, fetchAdversities, currentUser, form, submitForm, updateForm} = props;
+
+  const defaultState = { adversity_id: active };
+  const [state, setState] = useState(defaultState);
+
   const defaultAdversity = active ? active : 'Select Adversity';
   const adversitiesList = adversities.map(adv => <option key={adv.id} value={adv.id}>{adv.title}</option>);
 
-  const handleInput = e => {
-    setAdversity(e.target.value);
+  const handleInput = key => e => {
+    let value = e.target ? e.target.value : e.value;
+    setState({
+      ...state,
+      [key]: value
+    });
+    setAdversity(value);
+  };
+
+  const handleAccept = () => {
+    submitForm(form);
+  };
+
+  const handleClear = () => {
+    console.log('clear');
   }
 
   useEffect(() => {
@@ -20,23 +37,24 @@ const Header = props => {
   },[fetchAdversities, currentUser.id]);
 
   useEffect(() => {
-    updateForm({pending_form: {['adversity_id']: active}})
-  }, [active])
+    debugger
+    updateForm(state);
+  }, [updateForm, state]);
 
   return (
       <div className="header-wrapper">
         <div className="header">
           <div className="header-label">Adversity Experience Title...</div>
           <div className="input-wrapper">
-            <select onChange={handleInput}>
+            <select onChange={handleInput('adversity_id')}>
               <option value={active}>{defaultAdversity}</option>
               {adversitiesList}
             </select>
           </div>
         </div>
         <div className="action-button-wrapper">
-          <div className="action-button" onClick={actions.accept}>accept</div>
-          <div className="action-button" onClick={actions.clear}>clear</div>
+          <div className="action-button" onClick={handleAccept}>accept</div>
+          <div className="action-button" onClick={handleClear}>clear</div>
         </div>
       </div>
   );
@@ -53,7 +71,8 @@ const mapStateToProps = ({ entities, session, ui }) => ({
 const mapDispatchToProps = dispatch => ({
   fetchAdversities: id => dispatch(fetchAdversities(id)),
   setAdversity: id => dispatch(setAdversity(id)),
-  updateForm: data => dispatch(updateForm(data))
+  updateForm: data => dispatch(updateForm(data)),
+  submitForm: form => dispatch(createBelief(form))
 });
 
 export default connect(

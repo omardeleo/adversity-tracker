@@ -10,7 +10,7 @@ import { needsList } from "../../inventory/needs";
 
 export const Beliefs = props => {
 
-  const { stageForm, submitForm } = props;
+  const { updateForm } = props;
 
   // Define default state
   const defaultState = {
@@ -35,27 +35,22 @@ export const Beliefs = props => {
     });
   };
 
-  // handleAccept can be configured as necessary
-  const handleAccept = () => {
-    stageForm(state);
-  };
-
-  // handleClear restores default state
-  const handleClear = () => {
-    setState(defaultState);
-  };
+  // // handleClear restores default state
+  // const handleClear = () => {
+  //   setState(defaultState);
+  // };
 
   useEffect(() => {
-    stageForm(state);
-  }, [state]);
+    updateForm(state);
+  }, [updateForm, state]);
 
-  const actions = {accept: handleAccept, clear: handleClear, submit: submitForm};
+  // const actions = {accept: handleAccept, clear: handleClear, submit: submitForm};
 
   return (
     <div className="form-wrapper">
 
       <HeaderModule 
-        actions={actions} 
+        // actions={actions} 
       />
 
       <div className="sub-tab-wrapper">

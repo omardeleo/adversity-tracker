@@ -13,7 +13,7 @@ const mapStateToProps = ({ui, forms, entities, session}) => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchAdversities: id => dispatch(fetchAdversities(id)), 
-  stageForm: form => dispatch(updateForm(form)),
+  updateForm: form => dispatch(updateForm(form)),
   submitForm: form => dispatch(createBelief(form))
 });
 
