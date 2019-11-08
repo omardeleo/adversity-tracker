@@ -25,15 +25,15 @@ class ChartData extends React.Component {
 
     render() {
         const { adversities } = this.props;
-        console.log('ChartData.jsx', adversities)
         const adversityData = [];
         for (let adversity of adversities) {
             let recognitions = [];
             for (let recognition of adversity.recognitions) {
-                // console.log('recognnn CHartDate.jsx', recognition)
-                // let trunc_story = recognition.story.length > 120 ? recognition.story.slice(0, 120) + "..." : recognition.story;
-                // recognitions.push({timestamp: recognition.created_at, story: trunc_story}) 
-                recognitions.push({ timestamp: recognition.created_at, story: recognition.story })
+                recognitions.push({ 
+                    timestamp: recognition.created_at, 
+                    story: recognition.story, 
+                    feelings: recognition.feelings 
+                })
             }
             let point = { adv_id: adversity.id, title: adversity.title, recognitions }
             adversityData.push(point);
