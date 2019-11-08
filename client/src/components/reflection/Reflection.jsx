@@ -1,5 +1,6 @@
 import React from 'react';
 import Beliefs from './beliefs/BeliefsContainer';
+import Energy from './energy/EnergyContainer';
 
 import '../stylesheets/Reflection.css';
 import '../stylesheets/modules.css';
@@ -9,7 +10,7 @@ export const Reflection = () => {
   
   return(
     <div className="form-wrapper">
-      <Beliefs />
+      <Energy />
     </div>
   );
 
