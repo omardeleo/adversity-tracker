@@ -13,8 +13,6 @@ class Chart extends React.Component {
         this.state = {
             redirect: false,
         };
-        // this.bulletClick = this.bulletClick.bind(this);
-        // this.openPopup = this.openPopup.bind(this);
     }
 
     renderChart() {
@@ -22,7 +20,7 @@ class Chart extends React.Component {
         this.chart = chart;
 
         const { adversities } = this.props;
-        // console.log('Chart.jsx', adversities);
+
         chart.data = adversities;
         chart.background.fill = "#282828";
         chart.paddingRight = 50;
@@ -67,17 +65,23 @@ class Chart extends React.Component {
         }, this);
 
         for (let adversity of adversities) {
-            // console.log('adversity', adversity)
             let data = [];
-            // let { story } = adversity;
             for (let recognition of adversity.recognitions) {
-                // console.log('recognition', recognition)
-                console.log('length', recognition.story.length)
+
+                // REFACTOR THIS
+                function extractFeelings(feelings) {
+                    return feelings.map(feeling => {
+                        return {name: feeling.name, intensity: feeling.intensity}
+                    })
+                }
+
                 let obj = {
                     title: adversity.title, timestamp: recognition.timestamp,
                     story: recognition.story,
-                    story_trunc: recognition.story.length > 140 ? recognition.story.slice(0, 140) + "..." : recognition.story.slice(0,140)
+                    story_trunc: recognition.story.length > 140 ? recognition.story.slice(0, 140) + "..." : recognition.story.slice(0,140),
+                    feelings: extractFeelings(recognition.feelings)
                 }
+  
                 data.push(obj)
             }
             let series = chart.series.push(new am4charts.LineSeries());
@@ -93,153 +97,54 @@ class Chart extends React.Component {
             series.tooltip.pointerOrientation = "vertical";
             series.tooltip.label.interactionsEnabled = true;
             series.tooltip.events.on("hit", function (ev) {
-                const { title, story, timestamp } = ev.target.dataItem.dataContext
-                const displayDate = new Date(timestamp).toLocaleString()
-                // console.log("clicked on ", ev.target);
-                // if (ev.target.tagName !== 'INPUT') return;
-                // console.log('ev', ev.target.dataItem.dataContext)
+                const { title, story, timestamp, feelings } = ev.target.dataItem.dataContext
+                let dateOptions = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true };
+                const displayDate = new Date(timestamp).toLocaleString('en-US', dateOptions)
                 if (ev.event.target.tagName !== 'INPUT') return;
-                
 
-                let htmll = `
+                function generateFeelingsHtml(feelings) {
+                    let markup = '';
+                    feelings.forEach(feeling => {
+                        markup += `
+                            <div class="feeling-container">
+                                <div class="feeling">${feeling.name}</div>
+                                <div class="score">${feeling.intensity}</div>
+                            </div>
+                        `
+                    })
+                    return markup;
+                }
+
+                let feelingsHtml = generateFeelingsHtml(feelings)
+                let modalHtml = `
                     <div class="modal">
                         <div class="info-container">
-                            <div><strong>Adversity: </strong>${title}</div>
-                            <div><strong>Date</strong>: ${displayDate}</div>
-                            <div><strong>Recognition:</strong> ${story}</div>
+                            <div><h2>${title}</h2></div>
+                            <div>${displayDate}</div>
+                            <div><h3>Story</h3>${story}</div>
                         </div>
             
                         <div class="feelings-container">
-                        <div class="feeling-header">
-                        <div><strong>Feeling</strong></div>
-                        <div><strong>Intensity</strong></div>
+                            <div class="feeling-header">
+                                <div><h3>Feeling</h3></div>
+                                <div><h3>Intensity</h3></div>
+                            </div>
+                            ${feelingsHtml}
                         </div>
-                            <div class="feeling-container">
-                            <div class="feeling">Eager</div>
-                            <div class="score">moderately</div>
-                        </div>
-                        <div class="feeling-container">
-                        <div class="feeling">Confused</div>
-                        <div class="score">moderately</div>
-                        </div>
-                        <div class="feeling-container">
-                        <div class="feeling">Bemused</div>
-                        <div class="score">extremely</div>
-                        </div>
-                        <div class="feeling-container">
-                        <div class="feeling">Eager</div>
-                        <div class="score">moderately</div>
-                        </div>
-                        <div class="feeling-container">
-                        <div class="feeling">Confused</div>
-                        <div class="score">moderately</div>
-                        </div>
-                        <div class="feeling-container">
-                        <div class="feeling">Bemused</div>
-                        <div class="score">extremely</div>
-                        </div>
-                        <div class="feeling-container">
-                        <div class="feeling">Eager</div>
-                        <div class="score">moderately</div>
-                        </div>
-                        <div class="feeling-container">
-                        <div class="feeling">Confused</div>
-                        <div class="score">moderately</div>
-                        </div>
-                        <div class="feeling-container">
-                        <div class="feeling">Bemused</div>
-                        <div class="score">extremely</div>
-                        </div>
-                        <div class="feeling-container">
-                        <div class="feeling">Eager</div>
-                        <div class="score">moderately</div>
-                        </div>
-                        <div class="feeling-container">
-                        <div class="feeling">Confused</div>
-                        <div class="score">moderately</div>
-                        </div>
-                        <div class="feeling-container">
-                        <div class="feeling">Bemused</div>
-                        <div class="score">extremely</div>
-                        </div>
-                        <div class="feeling-container">
-                        <div class="feeling">Eager</div>
-                        <div class="score">moderately</div>
-                        </div>
-                        <div class="feeling-container">
-                        <div class="feeling">Confused</div>
-                        <div class="score">moderately</div>
-                        </div>
-                        <div class="feeling-container">
-                        <div class="feeling">Bemused</div>
-                        <div class="score">extremely</div>
-                        </div>
-                        <div class="feeling-container">
-                        <div class="feeling">Eager</div>
-                        <div class="score">moderately</div>
-                        </div>
-                        <div class="feeling-container">
-                        <div class="feeling">Confused</div>
-                        <div class="score">moderately</div>
-                        </div>
-                        <div class="feeling-container">
-                        <div class="feeling">Bemused</div>
-                        <div class="score">extremely</div>
-                        </div>
-                        <div class="feeling-container">
-                        <div class="feeling">Confused</div>
-                        <div class="score">moderately</div>
-                        </div>
-                        <div class="feeling-container">
-                        <div class="feeling">Bemused</div>
-                        <div class="score">extremely</div>
-                        </div>
-            </div>
-            </div>
-                `
-                // this.chart.openModal(`
-                //     <div><strong>Adversity</strong>: ${title}</div>
-                //     <div><strong>Recognition</strong>: ${story}</div>
-                //     <div><strong>Date</strong>: ${displayDate}</div>
-                // `);
-                this.chart.openModal(htmll);
-                // if (ev.target.tagName == 'INPUT') {
-                //     
-                // }
-                // this.chart.openPopup("Hello there!");
+                    </div>
+                `;
+
+                this.chart.openModal(modalHtml);
             }, this);
             series.data = data;
         }
     }
-
-    // openPopup(e, chart) {
-    //     if (e.target.tagName !== 'INPUT') return;
-    // }
-
-    // bulletClick(e) {
-    //     // console.log('this.state', this.state)
-    //     // console.log('CLICKING ON CIRCLE');
-    //     // console.log('targ', e.target.tagName)
-    //     if (e.target.tagName !== 'INPUT') return;
-    //     alert("open modal")
-    //     // console.log('targ', e.target.tagName)
-    //     // var closest = e.target.closest('div');
-    //     // var pp = closest.querySelector('p');
-
-    //     // console.log('pp',pp)
-    //     // pp.innerHTML = "HAHAHAHAHAHA"
-    //     // this.setState({isStoryExpanded: true});
-
-    // }
 
     componentDidMount() {
         this.renderChart();
     }
 
     componentDidUpdate(prevProps, prevState) {
-        // console.log('prevPros', prevProps)
-        // console.log(this.state);
-        // console.log('prevState', prevState)
         if (!equal(prevProps.adversities, this.props.adversities) ||
             !equal(prevState.isStoryExpanded, this.state.isStoryExpanded)) {
             this.chart.dispose();
