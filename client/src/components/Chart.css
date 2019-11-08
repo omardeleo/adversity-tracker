@@ -46,7 +46,7 @@
   max-height: 100% !important;
   overflow: auto;
   z-index: 2002;
-  background: purple !important;
+  background: #181818 !important;
   border: 1px solid gray;
   /* border-radius: 5px; */
 }
@@ -72,6 +72,7 @@
   display: flex;
   flex-direction: row;
   width: 900px;
+  color: #a9a9a9;
 }
 
 .modal > div {
@@ -82,14 +83,14 @@
   display: flex;
   flex-direction: column;
   flex: 2;
-  background: green;
+  /* background: green; */
 }
 
 .feelings-container {
   display: flex;
   flex-direction: column;
   flex: 1;
-  background: blue;
+  /* background: blue; */
 }
 
 .feeling-header, .feeling-container {
