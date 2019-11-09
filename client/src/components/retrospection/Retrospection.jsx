@@ -4,7 +4,7 @@ import React from 'react';
 //import { Redirect } from 'react-router-dom';
 
 
-import CylinderGauge from '../dataVisuals/cylinderGauge';
+import CylinderGauge from '../dataVisualModules/cylinderGauge';
 //import { displayMonth } from '../../util/date_util';
 
 
