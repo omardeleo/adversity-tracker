@@ -19,13 +19,14 @@ class Chart extends React.Component {
         this.chart = chart;
         const { adversities } = this.props;
         chart.data = adversities;
-        chart.background.fill = "#282828";
+        chart.background.fill = "#181818";
         chart.paddingRight = 50;
        
         // create y axis
         let yAxis = chart.yAxes.push(new am4charts.CategoryAxis());
         yAxis.dataFields.category = "title"
         yAxis.renderer.grid.template.disabled = true;
+        yAxis.renderer.minGridDistance = 10;
         yAxis.renderer.line.strokeOpacity = 1;
         yAxis.renderer.line.strokeWidth = 2;
         yAxis.renderer.line.stroke = am4core.color("#a9a9a9");
@@ -59,6 +60,36 @@ class Chart extends React.Component {
         xAxis.renderer.line.strokeOpacity = 1;
         xAxis.renderer.line.strokeWidth = 2;
         xAxis.renderer.line.stroke = am4core.color("#a9a9a9");
+
+        chart.scrollbarX = new am4core.Scrollbar();
+        chart.scrollbarY = new am4core.Scrollbar();
+
+        chart.scrollbarX.background.fill = am4core.color("#181818");
+        chart.scrollbarX.thumb.background.fill = am4core.color("#181818");
+        chart.scrollbarX.startGrip.background.fill = am4core.color("#181818");
+        chart.scrollbarX.endGrip.background.fill = am4core.color("#181818");
+        chart.scrollbarX.stroke = am4core.color("#181818");
+        chart.scrollbarX.strokeWidth = .4;
+
+        chart.scrollbarY.background.fill = am4core.color("#181818");
+        chart.scrollbarY.thumb.background.fill = am4core.color("#181818");
+        chart.scrollbarY.startGrip.background.fill = am4core.color("#181818");
+        chart.scrollbarY.endGrip.background.fill = am4core.color("#181818");
+        chart.scrollbarY.stroke = am4core.color("#181818");
+        chart.scrollbarY.strokeWidth = .4;
+
+        chart.scrollbarX.thumb.background.states.getKey('hover').properties.fill = am4core.color("#121212");
+        chart.scrollbarX.thumb.background.states.getKey('down').properties.fill = am4core.color("#121212");
+        chart.scrollbarX.startGrip.background.states.getKey('hover').properties.fill = am4core.color("#121212");
+        chart.scrollbarX.endGrip.background.states.getKey('hover').properties.fill = am4core.color("#121212");
+
+        chart.scrollbarY.thumb.background.states.getKey('hover').properties.fill = am4core.color("#121212");
+        chart.scrollbarY.thumb.background.states.getKey('down').properties.fill = am4core.color("#121212");
+        chart.scrollbarY.startGrip.background.states.getKey('hover').properties.fill = am4core.color("#121212");
+        chart.scrollbarY.endGrip.background.states.getKey('hover').properties.fill = am4core.color("#121212");
+
+        chart.cursor = new am4charts.XYCursor();
+        chart.cursor.behavior = "zoomY";
 
         
         for (let adversity of adversities) {
@@ -104,7 +135,7 @@ class Chart extends React.Component {
         }
 
         return (
-            <div id="chartdiv" style={{ width: "940px", height: "500px" }}></div>
+            <div id="chartdiv" style={{ width: "1000px", height: "500px" }}></div>
         );
     }
 }
