@@ -27,9 +27,7 @@ export const Header = props => {
     setAdversity(value);
   };
 
-  debugger
   const handleAccept = () => {
-    debugger
     submitForm(forms);
   };
 
