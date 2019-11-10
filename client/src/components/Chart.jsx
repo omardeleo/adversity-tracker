@@ -130,9 +130,9 @@ class Chart extends React.Component {
       series.name = "Adversity";
       series.dataFields.dateX = "recognition";
       series.dataFields.categoryY = "title";
-      series.strokeWidth = 0.4;
+      series.strokeWidth = 1;
       series.strokeOpacity = 0.8;
-      series.strokeDasharray = 20;
+      series.strokeDasharray = 12;
       series.sequencedInterpolation = true;
 
       let circleBullet = series.bullets.create(am4charts.CircleBullet);
@@ -141,6 +141,9 @@ class Chart extends React.Component {
       series.showOnInit = false;
     }
 
+    chart.dateFormatter.inputDateFormat = "yyyy-MM-dd HH:mm";
+    let dateOffset = getDateRange().tzOffset;
+    chart.dateFormatter.timezoneOffset = dateOffset;
     chart.events.on("ready", function() {
       xAxis.zoomToDates(getDateRange().zoom, getDateRange().end);
     });
