@@ -4,10 +4,12 @@ let [thisMonth, today, thisYear] = [currentDate.getMonth(),
     currentDate.getFullYear()];
 let startDate = new Date(Date.UTC(thisYear, thisMonth, today - 30)).valueOf();
 let endDate = new Date(Date.UTC(thisYear, thisMonth, today + 2)).valueOf();
+let zoomDate = new Date(Date.UTC(thisYear, thisMonth, today - 7)).valueOf();
 
 export const getDateRange = () => {
     return {
         start: startDate,
+        zoom: zoomDate,
         end: endDate
     }
 }
