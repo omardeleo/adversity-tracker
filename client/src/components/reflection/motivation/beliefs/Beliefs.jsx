@@ -42,37 +42,46 @@ export const Beliefs = props => {
        
 
         <div className="data-module-row">
-
-          <SliderModule 
-            prompt={"My perceived sense of control (locus of control) in reflecting on this adversity is that..."}
+          <SliderModule
+            prompt={
+              "My perceived sense of control (locus of control) in reflecting on this adversity is that..."
+            }
             info={null}
             scale={scales.control}
             value={state.control_level}
             handleInput={handleInput("control_level")}
-            leftDetail={["The outcome is out of my control","Things happen to me"]}
-            rightDetail={["The outcome is within my control", "I make things happen"]}
+            leftDetail={[
+              "The outcome is out of my control",
+              "Things happen to me"
+            ]}
+            rightDetail={[
+              "The outcome is within my control",
+              "I make things happen"
+            ]}
           />
 
           <SliderModule
-            prompt={"My perceived sense of ability (self-efficacy) in reflecting on this adversity is that..."}
+            prompt={
+              "My perceived sense of ability (self-efficacy) in reflecting on this adversity is that..."
+            }
             info={null}
             scale={scales.ability}
             value={state.ability_level}
             handleInput={handleInput("ability_level")}
-            leftDetail={["The adversity is too much for me", "I'm not strong enough"]}
-            rightDetail={["It won't be easy but I can do this", "I am strong enough"]}
+            leftDetail={[
+              "The adversity is too much for me",
+              "I'm not strong enough"
+            ]}
+            rightDetail={[
+              "It won't be easy but I can do this",
+              "I am strong enough"
+            ]}
           />
-
         </div>
         
         <div className="data-module-row">
-
           <div className="data-module">
-
-            <PromptModule 
-              prompt={"I perceive my need..."}
-              info={null}
-            />
+            <PromptModule prompt={"I perceive my need..."} info={null} />
 
             <SelectModule
               prompt={null}
@@ -84,7 +93,7 @@ export const Beliefs = props => {
 
             <div className="text">is...</div>
 
-            <SliderModule 
+            <SliderModule
               prompt={null}
               info={null}
               scale={scales.need}
@@ -92,8 +101,13 @@ export const Beliefs = props => {
               handleInput={handleInput("need_level")}
             />
 
-            <div className="text">because...<input value={state.need_reason} onChange={handleInput("need_reason")}></input></div>
-            
+            <div className="text">
+              because...
+              <input
+                value={state.need_reason}
+                onChange={handleInput("need_reason")}
+              ></input>
+            </div>
           </div>
 
           <SliderModule
@@ -103,9 +117,7 @@ export const Beliefs = props => {
             value={state.pressure_level}
             handleInput={handleInput("pressure_level")}
           />
-
         </div>
-
     </div>
   );
 };

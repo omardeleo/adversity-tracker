@@ -2,15 +2,17 @@ import React from "react";
 import { connect } from "react-redux";
 import JournalNav from "../../ui/nav/JournalNav";
 import Beliefs from "./beliefs/BeliefsContainer";
+import Energy from "../energy/EnergyContainer";
+
 
 const Motivation = props => {
 
   const generateJournalPage = () => {
     switch (props.journalTab) {
-      case "Motivation":
-        return <Beliefs />;
+      case "Energy":
+        return <Energy />;
       default:
-        return <div className="place-holder">Module in Development</div>;
+        return <Beliefs />;
     }
   };
 

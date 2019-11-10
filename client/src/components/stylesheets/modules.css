@@ -56,13 +56,28 @@
   width: 80%;
   margin: 10px;
   display: flex;
+/* padding-left: 100px; */
   justify-content: space-between;
   align-items: baseline;
 }
 
 .data-module-row 
 .data-module {
-  width: 45%;
+  width: 40%;
+}
+
+.cylinder-gauge1 {
+  width: 300px;
+  height: 400px;
+  margin-top: auto;
+  padding-right: 40px;
+}
+
+.cylinder-gauge2 {
+  width: 300px;
+  height: 400px;
+  margin-top: auto;
+  padding-right: 40px;
 }
 
 .data-module textarea {
