@@ -6,7 +6,7 @@ const formsReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case UPDATE_FORM:
-      return Object.assign({}, state, { [action.form.form]: action.form });
+      return Object.assign({}, state, action.form);
     default:
       return state;
   }
