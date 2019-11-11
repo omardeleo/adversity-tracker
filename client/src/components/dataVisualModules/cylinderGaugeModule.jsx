@@ -1,19 +1,19 @@
-import React, { useEffect} from "react";
+import React, { useEffect } from "react";
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 
 export default function CylinderGaugeModule(props) {
-
   useEffect(() => {
     renderCylinderGauge();
-    console.log (props.value)
+    // return function cleanup() {
+    //   am4core.Disposer();
+    // };
   }, [props.value]);
 
   function renderCylinderGauge() {
-    let chart = []
+    let chart = [];
     chart[props.id] = am4core.create(props.cName, am4charts.XYChart3D);
 
-    console.log (props.id)
     let val1 = 100 - props.value;
     let val2 = 100 - val1;
 
