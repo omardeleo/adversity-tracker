@@ -31,6 +31,8 @@ module Api::V1
                         :need,
                         :need_level,
                         :need_reason,
+                        :control_energy_level,
+                        :physical_energy_level,
                         :pressure_level)
         end
     end
