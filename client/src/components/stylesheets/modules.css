@@ -56,7 +56,6 @@
   width: 80%;
   margin: 10px;
   display: flex;
-/* padding-left: 100px; */
   justify-content: space-between;
   align-items: baseline;
 }
@@ -66,18 +65,49 @@
   width: 40%;
 }
 
+.data-visual-module-row {
+  width: 100%;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.data-visual-module-row
+.data-module {
+  margin: 10px;
+  width: 100%;
+  float: left;
+}
+
+
 .cylinder-gauge1 {
-  width: 300px;
-  height: 400px;
+  float:right;
+  flex-grow: inherit;
+  margin: 10px;
   margin-top: auto;
-  padding-right: 40px;
+  width: 100%;
+  height: 360px;
+  border-radius: 6px;
+  border: 60px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02);
 }
 
 .cylinder-gauge2 {
-  width: 300px;
-  height: 400px;
+  float:right;
+  flex-grow: inherit;
+  margin: 10px;
   margin-top: auto;
-  padding-right: 40px;
+  width: 100%;
+  height: 360px;
+  border-radius: 6px;
+  border: 60px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02);
 }
 
 .data-module textarea {

@@ -30,7 +30,7 @@ export const Energy = props => {
 
   return (
     <div className="form-wrapper">
-      <div className="data-module-row">
+      <div className="data-visual-module-row">
         <SliderModule
           prompt={"My perceived energy level for self-control..."}
           info={null}
@@ -47,7 +47,7 @@ export const Energy = props => {
         />
       </div>
 
-      <div className="data-module-row">
+      <div className="data-visual-module-row">
         <SliderModule
           prompt={"My perceived physical energy level..."}
           info={null}
