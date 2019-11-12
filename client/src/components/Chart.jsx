@@ -74,9 +74,12 @@ class Chart extends React.Component {
                         return {name: feeling.name, intensity: feeling.intensity}
                     })
                 }
-
+                let dateOptions = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true };
+               
                 let obj = {
-                    title: adversity.title, timestamp: recognition.timestamp,
+                    title: adversity.title, 
+                    timestamp: recognition.timestamp,
+                    displayDate: new Date(recognition.timestamp).toLocaleString('en-US', dateOptions),
                     story: recognition.story,
                     story_trunc: recognition.story.length > 140 ? recognition.story.slice(0, 140) + "..." : recognition.story.slice(0,140),
                     feelings: extractFeelings(recognition.feelings)
@@ -92,10 +95,15 @@ class Chart extends React.Component {
             series.sequencedInterpolation = true;
             let circleBullet = series.bullets.create(am4charts.CircleBullet);
             circleBullet.interactionsEnabled = true;
-            circleBullet.tooltipHTML = `<p class="tooltip">{story_trunc}</p><input type="button" value="Click for more" />`;
+            circleBullet.tooltipHTML = `
+                <div class="tooltip-date">{displayDate}</div>
+                <div class="tooltip-story">{story_trunc}</div> 
+                <input type="button" value="Click for more" />
+            `;
             series.tooltip.keepTargetHover = true
             series.tooltip.pointerOrientation = "vertical";
             series.tooltip.label.interactionsEnabled = true;
+
             series.tooltip.events.on("hit", function (ev) {
                 const { title, story, timestamp, feelings } = ev.target.dataItem.dataContext
                 let dateOptions = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true };
@@ -107,8 +115,8 @@ class Chart extends React.Component {
                     feelings.forEach(feeling => {
                         markup += `
                             <div class="feeling-container">
-                                <div class="feeling">${feeling.name}</div>
                                 <div class="score">${feeling.intensity}</div>
+                                <div class="feeling">${feeling.name}</div>   
                             </div>
                         `
                     })
@@ -121,20 +129,28 @@ class Chart extends React.Component {
                         <div class="info-container">
                             <div><h2>${title}</h2></div>
                             <div>${displayDate}</div>
-                            <div><h3>Story</h3>${story}</div>
+                            <div>
+                                <h3>Story</h3>
+                                <div class="story-container">
+                                    ${story}
+                                </div>
+                            </div>
                         </div>
-            
                         <div class="feelings-container">
                             <div class="feeling-header">
-                                <div><h3>Feeling</h3></div>
-                                <div><h3>Intensity</h3></div>
+                                <div><h3>I notice I'm feeling</h3></div>
                             </div>
                             ${feelingsHtml}
                         </div>
                     </div>
                 `;
-
+                let closeModalIcon = document.createElement('i');
+                closeModalIcon.className = 'material-icons ampopup-close';
+                closeModalIcon.innerHTML = 'close';
+                closeModalIcon.addEventListener("click", () => chart.modal.close())
                 this.chart.openModal(modalHtml);
+                let closeModalDiv = document.querySelector('.ampopup-close')
+                closeModalDiv.replaceWith(closeModalIcon)
             }, this);
             series.data = data;
         }
