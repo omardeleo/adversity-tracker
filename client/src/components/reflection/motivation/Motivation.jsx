@@ -2,7 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import JournalNav from "../../ui/nav/JournalNav";
 import Beliefs from "./beliefs/BeliefsContainer";
-import Energy from "../energy/EnergyContainer";
+import Energy from "./energy/EnergyContainer";
+import Needs from "./needs/NeedsContainer";
 
 
 const Motivation = props => {
@@ -11,6 +12,8 @@ const Motivation = props => {
     switch (props.journalTab) {
       case "Energy":
         return <Energy />;
+      case "Needs":
+        return <Needs />;
       default:
         return <Beliefs />;
     }

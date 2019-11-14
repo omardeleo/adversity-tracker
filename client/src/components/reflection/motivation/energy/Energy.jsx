@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { SliderModule } from "../../modules/SliderModule";
-import * as scales from "../../ui/slider_scales";
-import CylinderGaugeModule from "../../dataVisualModules/CylinderGaugeModule";
+import { SliderModule } from "../../../modules/SliderModule";
+import * as scales from "../../../ui/slider_scales";
+import CylinderGaugeModule from "../../../dataVisualModules/CylinderGaugeModule";
 
 export const Energy = props => {
   const { updateForm } = props;
@@ -32,7 +32,7 @@ export const Energy = props => {
     <div className="form-wrapper">
       <div className="data-visual-module-row">
         <SliderModule
-          prompt={"My perceived energy level for self-control..."}
+          prompt={"My perceived energy level for self-discipline..."}
           info={null}
           scale={scales.energy}
           value={state.control_energy_level}
@@ -42,7 +42,7 @@ export const Energy = props => {
         <CylinderGaugeModule
           id="chart1"
           cName="cylinder-gauge1"
-          name="Self Control"
+          name="Self-Discipline"
           value={state.control_energy_level}
         />
       </div>

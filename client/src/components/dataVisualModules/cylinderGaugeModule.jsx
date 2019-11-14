@@ -13,6 +13,7 @@ export default function CylinderGaugeModule(props) {
   function renderCylinderGauge() {
     let chart = [];
     chart[props.id] = am4core.create(props.cName, am4charts.XYChart3D);
+    chart[props.id].background.fill = "#181818";
 
     let val1 = 100 - props.value;
     let val2 = 100 - val1;

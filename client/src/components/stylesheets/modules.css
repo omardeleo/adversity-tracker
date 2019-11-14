@@ -81,6 +81,20 @@
   float: left;
 }
 
+.needs-gauge1 {
+  float: right;
+  flex-grow: inherit;
+  margin: 10px;
+  padding-left: 40px;
+  margin-top: auto;
+  width: 580px;
+  height: 260px;
+  border-radius: 6px;
+  /* border: 60px; */
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02);
+}
 
 .cylinder-gauge1 {
   float:right;
