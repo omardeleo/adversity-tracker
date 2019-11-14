@@ -62,7 +62,7 @@
 
 .data-module-row 
 .data-module {
-  width: 40%;
+  width: 400px;
 }
 
 .data-visual-module-row {
@@ -80,6 +80,16 @@
   width: 100%;
   float: left;
 }
+
+
+.pressure-module-row {
+  width: 400px;
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
 
 .needs-gauge1 {
   float: right;

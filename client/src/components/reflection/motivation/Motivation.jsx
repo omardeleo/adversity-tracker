@@ -4,6 +4,7 @@ import JournalNav from "../../ui/nav/JournalNav";
 import Beliefs from "./beliefs/BeliefsContainer";
 import Energy from "./energy/EnergyContainer";
 import Needs from "./needs/NeedsContainer";
+import Pressure from "./pressure/PressureContainer";
 
 
 const Motivation = props => {
@@ -14,6 +15,8 @@ const Motivation = props => {
         return <Energy />;
       case "Needs":
         return <Needs />;
+      case "Pressure":
+        return <Pressure />;
       default:
         return <Beliefs />;
     }
