@@ -90,6 +90,12 @@
   align-items: baseline;
 }
 
+.heat-map {
+  width: 1000px;
+  height: 600px;
+  justify-content: center;
+}
+
 
 .needs-gauge1 {
   float: right;

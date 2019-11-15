@@ -44,6 +44,7 @@ class Chart extends React.Component {
       timeUnit: "minute",
       count: 1
     };
+    xAxis.tooltip.disabled = true;
     xAxis.strictMinMax = true;
     xAxis.dateFormats.setKey("hour", "hh:mm a");
     xAxis.dateFormats.setKey("minute", "hh:mm a");
@@ -81,14 +82,14 @@ class Chart extends React.Component {
     chart.scrollbarX.thumb.background.fill = am4core.color("#181818");
     chart.scrollbarX.startGrip.background.fill = am4core.color("#181818");
     chart.scrollbarX.endGrip.background.fill = am4core.color("#181818");
-    chart.scrollbarX.stroke = am4core.color("#181818");
+    chart.scrollbarX.stroke = am4core.color("#a9a9a9");
     chart.scrollbarX.strokeWidth = 0.4;
 
     chart.scrollbarY.background.fill = am4core.color("#181818");
     chart.scrollbarY.thumb.background.fill = am4core.color("#181818");
     chart.scrollbarY.startGrip.background.fill = am4core.color("#181818");
     chart.scrollbarY.endGrip.background.fill = am4core.color("#181818");
-    chart.scrollbarY.stroke = am4core.color("#181818");
+    chart.scrollbarY.stroke = am4core.color("#a9a9a9");
     chart.scrollbarY.strokeWidth = 0.4;
 
     chart.scrollbarX.thumb.background.states.getKey(

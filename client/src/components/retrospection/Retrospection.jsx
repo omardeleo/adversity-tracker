@@ -5,15 +5,17 @@ import React from 'react';
 
 
 import CylinderGauge from '../dataVisualModules/CylinderGauge';
+import HeatMap from '../dataVisualModules/HeatMapModule';
 //import { displayMonth } from '../../util/date_util';
 
 
 export const Retrospection = () => {
   return(
     <div>
-      <h1>Energy Data </h1>
+      <h1>Histogram Heat Map </h1>
       <div className="chart-container">
-          <CylinderGauge />
+          {/* <CylinderGauge /> */}
+          <HeatMap />
       </div>
     </div>
   )
