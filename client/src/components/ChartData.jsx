@@ -14,28 +14,54 @@ function Placeholder() {
 class ChartData extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {loadChart: false}
+        this.state = {
+            loadChart: false
+        }
     }
 
-    componentDidMount() {     
+    componentDidMount() {
         this.props.fetchAdversities(this.props.currentUser.id);
+    }
+    
+
+    convertIntensityValue(value) {
+        if (value < 34) {
+            return "mildly";
+        } else if (value > 34 && value < 67) {
+            return "moderately";
+        } else {
+            return "intensely";
+        }
+    }
+
+    mapIntensityValues(feelings) {
+        feelings.forEach(feeling => {
+            feeling.intensity = this.convertIntensityValue(feeling.intensity);
+        })
+        return feelings;
     }
 
     render() {
         const { adversities } = this.props;
         const adversityData = [];
+        
         for (let adversity of adversities) {
             let recognitions = [];
             for (let recognition of adversity.recognitions) {
-                recognitions.push(recognition.created_at) 
+                let { feelings, story } = recognition;
+                recognitions.push({ 
+                    timestamp: recognition.created_at, 
+                    story, 
+                    feelings: this.mapIntensityValues(feelings)
+                })
             }
-            let point = { adv_id: adversity.id, title: adversity.title, recognitions: recognitions }
+            let point = { adv_id: adversity.id, title: adversity.title, recognitions }
             adversityData.push(point);
         }
-        let chartDiv = adversityData.length > 0 ? 
-            <Chart 
-                adversities={adversityData} 
-                onTitleClick={this.props.setTitle} 
+        let chartDiv = adversityData.length > 0 ?
+            <Chart
+                adversities={adversityData}
+                onTitleClick={this.props.setTitle}
             /> : <Placeholder />;
         return chartDiv;
     }
