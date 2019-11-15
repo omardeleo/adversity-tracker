@@ -7,7 +7,7 @@ export const Header = props => {
           setAdversity, 
           fetchAdversities, 
           currentUser, 
-          forms, 
+          form, 
           submitForm, 
           updateForm 
         } = props;
@@ -28,7 +28,7 @@ export const Header = props => {
   };
 
   const handleAccept = () => {
-    submitForm(forms);
+    submitForm(form);
   };
 
   const handleClear = () => {

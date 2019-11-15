@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-export const createBelief = belief => (
+export const createReflection = belief => (
   $.ajax({
     method: 'POST',
     url: `/api/v1/beliefs`,
@@ -8,7 +8,7 @@ export const createBelief = belief => (
   })
 );
 
-export const fetchBeliefs = () => (
+export const fetchReflections = () => (
   $.ajax({
     method: 'GET',
     url: `/api/v1/beliefs`
