@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { closeModal } from '../../../actions/modal_actions';
 import Warning from './warning';
 
+import '../../stylesheets/modal.css';
+
 const Modal = ({ modal, closeModal }) => {
 
   if (!modal) {
