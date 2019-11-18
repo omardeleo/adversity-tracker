@@ -31,7 +31,7 @@ const JournalNav = props => {
   
   return(
     <div className="journal-nav">
-      <Tab section="Motivation" default={true} handleClick={handleClick}/>
+      <Tab section="Motivation" default={true} handleClick={handleClick} />
       <Tab section="Energy" handleClick={handleClick} />
       <Tab section="Recovery" handleClick={handleClick} />
     </div>
