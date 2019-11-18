@@ -13,7 +13,6 @@ const SubTabNav = props => {
     if (active !== clicked) {
       makeActive(clicked);
     }
-
   };
 
   const makeActive = clicked => {
