@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { setSubTab } from '../../../actions/ui_actions';
+import { openModal } from '../../../actions/modal_actions';
+import Modal from '../../ui/modal/modal';
 import Tab from './Tab';
 
+
 const SubTabNav = props => {
-  const { setSubTab } = props;
+  const { setSubTab, openModal } = props;
   const [active, setActive] = useState("Recognition");
 
   const handleClick = e => {
     const clicked = e.target.value;
-    setSubTab(clicked);
     if (active !== clicked) {
+      openModal('WARN');
+      setSubTab(clicked);
       makeActive(clicked);
     }
   };
@@ -30,6 +34,7 @@ const SubTabNav = props => {
 
   return (
     <div className="journal-nav">
+      <Modal form={active}/>
       <Tab section="Recognition" default={true} handleClick={handleClick} />
       <Tab section="Reflection" handleClick={handleClick} />
       <Tab section="Retrospection" handleClick={handleClick} />
@@ -37,12 +42,14 @@ const SubTabNav = props => {
   )
 };
 
-const mapStateToProps = ({ ui }) => ({
-  active: ui.sub
+const mapStateToProps = ({ ui, form }) => ({
+  active: ui.sub,
+  form: form
 });
 
 const mapDispatchToProps = dispatch => ({
-  setSubTab: tab => dispatch(setSubTab(tab))
+  setSubTab: tab => dispatch(setSubTab(tab)),
+  openModal: modal => dispatch(openModal(modal))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SubTabNav);

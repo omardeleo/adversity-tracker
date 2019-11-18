@@ -5,19 +5,19 @@ import Warning from './warning';
 
 import '../../stylesheets/modal.css';
 
-const Modal = ({ modal, closeModal }) => {
+const Modal = ({ modal, closeModal, form }) => {
 
   if (!modal) {
     return null;
   }
 
-  let form;
+  let content;
   let modalBehavior;
   const defaultBehavior = closeModal;
 
   switch (modal) {
     case 'WARN': {
-      form = <Warning />;
+      content = <Warning form={form} />;
       modalBehavior = defaultBehavior;
       break;
     }
@@ -28,7 +28,7 @@ const Modal = ({ modal, closeModal }) => {
   return (
     <div className="modal-background" onClick={modalBehavior}>
       <div className="modal-child" onClick={e => e.stopPropagation()}>
-        {form}
+        {content}
       </div>
     </div>
   )
