@@ -7,14 +7,15 @@ import Tab from './Tab';
 
 
 const SubTabNav = props => {
-  const { setSubTab, openModal } = props;
+  const { setSubTab, openModal, form } = props;
   const [active, setActive] = useState("Recognition");
 
   const handleClick = e => {
     const clicked = e.target.value;
     if (active !== clicked) {
-      openModal('WARN');
-      setSubTab(clicked);
+      if (form.length > 1) {
+        openModal('WARN');
+      }
       makeActive(clicked);
     }
   };
@@ -44,7 +45,7 @@ const SubTabNav = props => {
 
 const mapStateToProps = ({ ui, form }) => ({
   active: ui.sub,
-  form: form
+  form: Object.keys(form)
 });
 
 const mapDispatchToProps = dispatch => ({

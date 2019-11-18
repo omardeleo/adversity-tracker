@@ -20,7 +20,6 @@ export const Header = props => {
 
   const handleInput = key => e => {
     let value = e.target ? e.target.value : e.value;
-    debugger
     setState({
       ...state,
       [key]: value
