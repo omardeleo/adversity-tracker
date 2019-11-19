@@ -1,4 +1,4 @@
-import { UPDATE_FORM } from '../actions/form_actions';
+import { UPDATE_FORM, CLEAR_FORM } from '../actions/form_actions';
 
 const formReducer = (state = {}, action) => {
   
@@ -7,6 +7,8 @@ const formReducer = (state = {}, action) => {
   switch (action.type) {
     case UPDATE_FORM:
       return Object.assign({}, state, action.data);
+    case CLEAR_FORM:
+      return {};
     default:
       return state;
   }

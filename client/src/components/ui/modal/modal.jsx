@@ -5,7 +5,7 @@ import Warning from './warning';
 
 import '../../stylesheets/modal.css';
 
-const Modal = ({ modal, closeModal, form }) => {
+const Modal = ({ modal, closeModal, active }) => {
 
   if (!modal) {
     return null;
@@ -17,7 +17,7 @@ const Modal = ({ modal, closeModal, form }) => {
 
   switch (modal) {
     case 'WARN': {
-      content = <Warning form={form} />;
+      content = <Warning active={active} />;
       modalBehavior = defaultBehavior;
       break;
     }

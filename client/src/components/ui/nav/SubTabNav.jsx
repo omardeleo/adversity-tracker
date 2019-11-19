@@ -14,7 +14,7 @@ const SubTabNav = props => {
     const clicked = e.target.value;
     if (active !== clicked) {
       if (form.length > 1) {
-        openModal('WARN');
+        return openModal('WARN');
       }
       makeActive(clicked);
     }
@@ -35,7 +35,7 @@ const SubTabNav = props => {
 
   return (
     <div className="journal-nav">
-      <Modal form={active}/>
+      <Modal active={active} />
       <Tab section="Recognition" default={true} handleClick={handleClick} />
       <Tab section="Reflection" handleClick={handleClick} />
       <Tab section="Retrospection" handleClick={handleClick} />
