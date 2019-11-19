@@ -13,9 +13,9 @@ const SubTabNav = props => {
   const handleClick = e => {
     const clicked = e.target.value;
     if (active !== clicked) {
-      if (form.length > 1) {
-        return openModal('WARN');
-      }
+      // if (form.length > 1) {
+      //   return openModal('WARN');
+      // }
       makeActive(clicked);
     }
   };
