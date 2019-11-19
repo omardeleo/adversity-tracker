@@ -34,7 +34,7 @@ const SubTabNav = props => {
 
 
   return (
-    <div className="journal-nav">
+    <div className="nav">
       {/* <Modal active={active} /> */}
       <Tab section="Recognition" default={true} handleClick={handleClick} />
       <Tab section="Reflection" handleClick={handleClick} />

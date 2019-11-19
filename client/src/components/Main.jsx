@@ -5,6 +5,10 @@ import AdversityInput from './AdversityDataInputContainer';
 import Visualization from './VisualizationContainer';
 
 import './Main.css';
+import './stylesheets/Reflection.css';
+import './stylesheets/modules.css';
+import './stylesheets/header_module.css';
+import './stylesheets/nav.css';
 
 class Main extends React.Component {
     constructor(props) {
