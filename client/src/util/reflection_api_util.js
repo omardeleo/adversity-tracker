@@ -1,16 +1,16 @@
 import $ from 'jquery';
 
-export const createReflection = belief => (
+export const createReflection = reflection => (
   $.ajax({
     method: 'POST',
-    url: `/api/v1/beliefs`,
-    data: { belief }
+    url: `/api/v1/reflections`,
+    data: { reflection }
   })
 );
 
 export const fetchReflections = () => (
   $.ajax({
     method: 'GET',
-    url: `/api/v1/beliefs`
+    url: `/api/v1/reflections`
   })
 );

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       resources :recognitions, only: [:create]
       resources :stories, only: [:create]
       resources :feelings, only: [:index, :create, :show]
-      resources :beliefs, only: [:index, :create, :show]
+      resources :reflections, only: [:index, :create, :show]
       resource :session, only: [:create, :destroy, :check]
       get '/checkSession', to: 'sessions#check'
     end

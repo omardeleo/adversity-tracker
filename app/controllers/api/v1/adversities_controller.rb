@@ -5,7 +5,7 @@ module Api::V1
     def index
       @adversities = Adversity.where(user_id: params[:user_id])
 
-      render json: @adversities.to_json(:include => { :beliefs => {}, 
+      render json: @adversities.to_json(:include => { :reflections => {}, 
                                                       :recognitions => {
                                                             :include => [:feelings] } 
                                                     })
@@ -16,7 +16,7 @@ module Api::V1
     @adversity = Adversity.create(adversity_params)
       if @adversity.save
         
-      render json: @adversity.to_json(:include => { :beliefs => {}, 
+      render json: @adversity.to_json(:include => { :reflections => {}, 
                                                       :recognitions => {
                                                             :include => [:feelings] } 
                                                     })
