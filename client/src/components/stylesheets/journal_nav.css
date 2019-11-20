@@ -1,0 +1,37 @@
+.journal-nav {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.journal-tab {
+  padding: 10px;
+  width: 120px;
+  border: 2px solid #a9a9a9;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  margin-top: -1px;
+  color: #a9a9a9;
+  font-size: 16px;
+  background: #181818;
+}
+
+button:focus {
+  outline: none;
+}
+
+.selected {
+  transform: scale(1.2);
+  z-index: 2;
+  margin-top: 3px;
+}
+
+.journal-tab:nth-of-type(2) {
+  margin-left: -15px;
+  z-index: 1;
+}
+
+.journal-tab:nth-of-type(3) {
+  margin-left: -15px;
+
+}

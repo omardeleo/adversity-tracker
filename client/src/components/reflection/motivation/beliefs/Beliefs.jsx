@@ -1,31 +1,22 @@
-import React, { useState } from "react";
-import HeaderModule from "../../modules/HeaderModule";
-import { SliderModule } from "../../modules/SliderModule";
-import { SelectModule } from "../../modules/SelectModule";
-import { TextModule } from "../../modules/TextModule";
-import { PromptModule } from "../../modules/PromptModule";
-import * as scales from "../../ui/slider_scales";
-import { needsList } from "../../inventory/needs";
+import React, { useState, useEffect } from "react";
+import { SliderModule } from "../../../modules/SliderModule";
+import { SelectModule } from "../../../modules/SelectModule";
+import { TextModule } from "../../../modules/TextModule";
+import { PromptModule } from "../../../modules/PromptModule";
+import * as scales from "../../../ui/slider_scales";
+import { needsList } from "../../../inventory/needs";
 
 export const Beliefs = props => {
 
-  // Define default state
-  const defaultState = {
-    adversity_id: props.adversityId,
-    adversity: props.adversityTitle,
-    control_level: 0,
-    ability_level: 0,
-    need_level: 0,
-    pressure_level: 0,
-    belief_text: "",
-    need: "Need",
-    need_reason: "",
-  };
+  const { updateForm } = props;
 
+  // Define default state
+  const defaultState = {};
+  
   // Hook for [state variable, state action]
   const [state, setState] = useState(defaultState);
-
-  // handleInput Utility accepts a key as a string and sets input value in state
+  
+  // handleInput accepts a key as a string and sets input value in state
   const handleInput = key => e => {
     let value = e.target ? e.target.value : e.value;
     setState({
@@ -34,32 +25,12 @@ export const Beliefs = props => {
     });
   };
 
-  // handle accept can be configured as necessary
-  const handleAccept = () => {
-    const { createBelief } = props;
-    createBelief(state).then(() => props.fetchAdversities(props.currentUser.id));
-  };
-
-  // handle clear restores default state
-  const handleClear = () => {
-    setState(defaultState);
-  };
-
-  const actions = {accept: handleAccept, clear: handleClear};
+  useEffect(() => {
+    updateForm(state);
+  }, [updateForm, state]);
 
   return (
     <div className="form-wrapper">
-
-      <HeaderModule 
-        state={state}
-        defaultState={defaultState} 
-        actions={actions} 
-        handleInput={handleInput("adversity_id")}
-      />
-
-      <div className="sub-tab-wrapper">
-
-        <div className="sub-tab-label">Beliefs</div>
 
           <TextModule 
             prompt={"Why does this feel like an adversity?"}
@@ -93,7 +64,7 @@ export const Beliefs = props => {
           />
 
         </div>
-
+        
         <div className="data-module-row">
 
           <div className="data-module">
@@ -134,8 +105,6 @@ export const Beliefs = props => {
           />
 
         </div>
-
-      </div>
 
     </div>
   );

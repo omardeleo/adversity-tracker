@@ -1,11 +1,13 @@
 export const CLICK_MAIN_NAV = 'CLICK_MAIN_NAV';
 export const CLICK_SUB_NAV = 'CLICK_SUB_NAV';
+export const CLICK_JOURNAL_NAV = 'CLICK_JOURNAL_NAV';
 export const CLICK_TITLE = 'CLICK_TITLE';
 export const CLEAR_TITLE = 'CLEAR_TITLE';
 export const UPDATE_TITLE = 'UPDATE_TITLE';
 export const UPDATE_STORY = 'UPDATE_STORY';
 export const UPDATE_FEELING_TEXT = 'UPDATE_FEELING_TEXT';
 export const UPDATE_FEELING_VALUE = 'UPDATE_FEELING_VALUE';
+export const SET_ADVERSITY = 'SET_ADVERSITY';
 export const ADD_SLIDER = 'ADD_SLIDER';
 export const CLEAR_FORM = 'CLEAR_FORM';
 
@@ -18,6 +20,11 @@ export const setMainTab = tab => ({
 
 export const setSubTab = tab => ({
     type: CLICK_SUB_NAV,
+    tab
+});
+
+export const setJournalTab = tab => ({
+    type: CLICK_JOURNAL_NAV,
     tab
 });
 
@@ -39,27 +46,32 @@ export const clearForm = () => ({
 export const updateTitle = title => ({
     type: UPDATE_TITLE,
     title
-}) 
+}); 
 
 export const updateStory = story => ({
     type: UPDATE_STORY,
     story
-}) 
+}); 
 
 export const updateFeelingText = (feeling) => ({
     type: UPDATE_FEELING_TEXT,
     feeling
-}) 
+});
 
 export const updateFeelingValue = (feeling) => ({
     type: UPDATE_FEELING_VALUE,
     feeling
-}) 
+}); 
 
 export const setTitle = (title, id) => dispatch => {
-    dispatch(setCurrentTitle({title, id}))
-    dispatch(setMainTab('AdversityDataInput'))
+    dispatch(setCurrentTitle({title, id}));
+    dispatch(setMainTab('AdversityDataInput'));
 };
+
+export const setAdversity = adversity => ({
+    type: SET_ADVERSITY,
+    adversity
+});
 
 export const addSlider = () => {
    return{ type: ADD_SLIDER};
