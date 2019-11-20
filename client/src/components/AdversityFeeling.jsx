@@ -7,9 +7,6 @@ import { Add } from "@material-ui/icons";
 // import { CustomSlider } from './ui/CustomSlider';
 
 import './AdversityFeeling.css';
-import './stylesheets/recognition.css';
-
-
 
 const FeelingItem = props => {
     const { feeling, sliderVal } = props.feeling;

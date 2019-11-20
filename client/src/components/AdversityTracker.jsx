@@ -82,7 +82,6 @@ class AdversityTracker extends React.Component {
                 />
                 </div>
         } else if (subtab === 'Reflection') {
-            
             return <div className="tracker-container">
                 <Reflection generateFormButtons={this.generateFormButtons}/>
             </div>

@@ -1,9 +1,9 @@
-.journal-nav {
+.nav {
   display: flex;
   margin-bottom: 30px;
 }
 
-.journal-tab {
+.tab {
   padding: 10px;
   width: 120px;
   border: 2px solid #a9a9a9;
@@ -26,12 +26,12 @@ button:focus {
   margin-top: 3px;
 }
 
-.journal-tab:nth-of-type(2) {
+.tab:nth-of-type(2) {
   margin-left: -15px;
   z-index: 1;
 }
 
-.journal-tab:nth-of-type(3) {
+.tab:nth-of-type(3) {
   margin-left: -15px;
 
 }
