@@ -36,3 +36,17 @@
   width: 33%;
   font-size: 12px;
 }
+
+.slider-details {
+  width: 100%;
+  font-size: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.sub-detail {
+  width: 35%;
+  padding-inline-start: 10px;
+  text-align: left;
+}

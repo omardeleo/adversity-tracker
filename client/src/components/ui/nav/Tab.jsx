@@ -6,7 +6,7 @@ export default function NavTab(props) {
   return (
     <button
       id={props.section}
-      className={`journal-tab ${active}`}
+      className={`tab ${active}`}
       value={props.section}
       onClick={props.handleClick}
     >
