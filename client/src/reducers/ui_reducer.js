@@ -1,12 +1,14 @@
 import {
     CLICK_MAIN_NAV,
     CLICK_SUB_NAV,
+    CLICK_JOURNAL_NAV,
     CLICK_TITLE,
     CLEAR_TITLE,
     UPDATE_TITLE,
     UPDATE_STORY,
     UPDATE_FEELING_TEXT,
     UPDATE_FEELING_VALUE,
+    SET_ADVERSITY,
     ADD_SLIDER,
     CLEAR_FORM
 } from '../actions/ui_actions';
@@ -22,7 +24,7 @@ const initialState = {
         story: "",
         feelings: [{ feeling: "", sliderVal: 0 }]
     }
-}
+};
 
 const uiReducer = (state = initialState, action) => {
     Object.freeze(state);
@@ -35,6 +37,8 @@ const uiReducer = (state = initialState, action) => {
             return Object.assign({}, state, { tab: action.tab });
         case CLICK_SUB_NAV:
             return Object.assign({}, state, { subtab: action.tab });
+        case CLICK_JOURNAL_NAV:
+            return Object.assign({}, state, { journal_tab: action.tab });
         case CLICK_TITLE:
             newFormData = Object.assign({}, oldFormData, { title: action.payload.title });
             return Object.assign({}, state, { recognition_form: newFormData,
@@ -58,6 +62,8 @@ const uiReducer = (state = initialState, action) => {
             newFeelings[action.feeling.index].sliderVal = action.feeling.value;
             newFormData = Object.assign({}, oldFormData, { feelings: newFeelings });
             return Object.assign({}, state, { recognition_form: newFormData });
+        case SET_ADVERSITY:
+            return Object.assign({}, state, {adversity_id: action.adversity});
         case ADD_SLIDER: 
             newFeelings.push({ feeling: "", sliderVal: 0 });
             newFormData = Object.assign({}, oldFormData, { feelings: newFeelings });

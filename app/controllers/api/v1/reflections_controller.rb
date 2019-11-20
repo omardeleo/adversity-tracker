@@ -1,29 +1,29 @@
 module Api::V1
-   class BeliefsController < ApplicationController
+   class ReflectionsController < ApplicationController
         before_action :require_logged_in
 
         def index
-          @beliefs = Belief.where(adversity_id: params[:adversity_id])
-          # render json: @beliefs
+          @reflections = Reflection.where(adversity_id: params[:adversity_id])
+          # render json: @reflections
         end
         
         def create
-          @belief = Belief.new(belief_params)
-          if @belief.save
-            render json: @belief
+          @reflection = Reflection.new(belief_params)
+          if @reflection.save
+            render json: @reflection
           else
-            render json: @belief.errors.full_messages, status: 422
+            render json: @reflection.errors.full_messages, status: 422
           end
         end
 
         def show
-          @belief = Belief.find(params[:id])
+          @reflection = Reflection.find(params[:id])
 
-          render json: @belief
+          render json: @reflection
         end
 
         def belief_params
-            params.require(:belief).permit(
+            params.require(:reflection).permit(
                         :adversity_id,
                         :belief_text,
                         :control_level,
