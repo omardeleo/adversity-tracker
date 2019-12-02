@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import JournalNav from "../../ui/nav/JournalNav";
 import Beliefs from "./beliefs/BeliefsContainer";
 import Values from "./values/ValuesContainer";
+import { OptionsModule } from "../../modules/OptionsModule";
 
 const Motivation = props => {
 

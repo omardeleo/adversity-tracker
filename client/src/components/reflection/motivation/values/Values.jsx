@@ -3,6 +3,7 @@ import { SelectModule } from "../../../modules/SelectModule";
 import { InputModule } from "../../../modules/InputModule";
 import { TextModule } from "../../../modules/TextModule";
 import { valuesList } from "../../../inventory/values";
+import { OptionsModule } from "../../../modules/OptionsModule";
 
 export const Values = props => {
 
@@ -31,9 +32,10 @@ export const Values = props => {
     <div className="form-wrapper">
       
 
-      <SelectModule
+      <OptionsModule
         prompt={"I Value..."}
         info={null}
+        value={state.value}
         handleInput={handleInput("value")}
         placeholder={"Select a Value"}
         options={valuesList}
@@ -63,7 +65,6 @@ export const Values = props => {
         handleInput={handleInput("value_origin")}
         placeholder={"...write a story or experience..."}
       />
-
 
     </div>
   );
