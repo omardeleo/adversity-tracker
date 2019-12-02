@@ -5,7 +5,7 @@ export const InputModule = props => {
 
   const { prompt, info, value, handleInput, placeholder } = props;
 
-  const inputSubModule = <input value={value} onChange={handleInput}></input>
+  const inputSubModule = <input placeholder={placeholder} value={value} onChange={handleInput}></input>
 
   if (prompt) {
     return (

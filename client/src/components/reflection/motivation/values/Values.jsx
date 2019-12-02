@@ -41,18 +41,18 @@ export const Values = props => {
 
       <div className="data-module-row">
         <InputModule
-          prompt={"Phrase or credo that explains this value..."}
+          prompt={"Phrase that explains this value..."}
           info={null}
-          value={state.value_origin}
-          handleInput={handleInput("value_origin")}
-          placeholder={"...write a story or experience..."}
+          value={state.value_phrase}
+          handleInput={handleInput("value_phrase")}
+          placeholder={"...move fast and break things..."}
         />
         <InputModule
           prompt={"My action that shows this value..."}
           info={null}
-          value={state.value_origin}
-          handleInput={handleInput("value_origin")}
-          placeholder={"...write a story or experience..."}
+          value={state.value_action}
+          handleInput={handleInput("value_action")}
+          placeholder={"...write a personal demonstration..."}
         />
       </div>
 
