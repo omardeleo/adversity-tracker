@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const values = [
   "Abundance",
   "Acceptance",
