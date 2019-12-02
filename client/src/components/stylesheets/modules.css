@@ -222,3 +222,7 @@ input {
   padding-inline-start: 10px;
   text-align: left;
 }
+
+#select-multiple-native {
+  height: 200px;
+}
