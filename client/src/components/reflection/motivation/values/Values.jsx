@@ -31,7 +31,6 @@ export const Values = props => {
   return (
     <div className="form-wrapper">
       
-
       <OptionsModule
         prompt={"I Value..."}
         info={null}
