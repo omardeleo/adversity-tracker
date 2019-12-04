@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2019_11_19_025242) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "adversity_date"
     t.index ["user_id"], name: "index_adversities_on_user_id"
   end
 
@@ -36,6 +37,7 @@ ActiveRecord::Schema.define(version: 2019_11_19_025242) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "story", null: false
+    t.datetime "recognition_date"
   end
 
   create_table "reflections", force: :cascade do |t|
