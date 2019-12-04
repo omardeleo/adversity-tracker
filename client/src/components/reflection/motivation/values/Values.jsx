@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { SelectModule } from "../../../modules/SelectModule";
 import { InputModule } from "../../../modules/InputModule";
 import { TextModule } from "../../../modules/TextModule";
 import { valuesList } from "../../../inventory/values";
