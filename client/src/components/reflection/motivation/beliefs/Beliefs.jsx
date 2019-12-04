@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { SliderModule } from "../../../modules/SliderModule";
-import { SelectModule } from "../../../modules/SelectModule";
+import { OptionsModule } from "../../../modules/OptionsModule";
 import { TextModule } from "../../../modules/TextModule";
 import { PromptModule } from "../../../modules/PromptModule";
 import { InputModule } from "../../../modules/InputModule";
@@ -75,9 +75,10 @@ export const Beliefs = props => {
               info={null}
             />
 
-            <SelectModule
+            <OptionsModule
               prompt={null}
               info={null}
+              value={state.need}
               handleInput={handleInput("need")}
               placeholder={"Select a Need"}
               options={needsList}
