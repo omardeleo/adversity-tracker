@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { SliderModule } from "../../../modules/SliderModule";
-import { SelectModule } from "../../../modules/SelectModule";
+import { OptionsModule } from "../../../modules/OptionsModule";
 import { TextModule } from "../../../modules/TextModule";
 import { PromptModule } from "../../../modules/PromptModule";
+import { InputModule } from "../../../modules/InputModule";
 import * as scales from "../../../ui/slider_scales";
 import { needsList } from "../../../inventory/needs";
 
@@ -74,9 +75,10 @@ export const Beliefs = props => {
               info={null}
             />
 
-            <SelectModule
+            <OptionsModule
               prompt={null}
               info={null}
+              value={state.need}
               handleInput={handleInput("need")}
               placeholder={"Select a Need"}
               options={needsList}
@@ -92,8 +94,16 @@ export const Beliefs = props => {
               handleInput={handleInput("need_level")}
             />
 
-            <div className="text">because...<input value={state.need_reason} onChange={handleInput("need_reason")}></input></div>
+            <div className="text">because...</div>
             
+            <InputModule
+              prompt={null}
+              info={null}
+              value={state.need_reason}
+              handleInput={handleInput("need_reason")}
+            />
+
+
           </div>
 
           <SliderModule

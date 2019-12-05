@@ -1,3 +1,19 @@
+input {
+  border: 1px solid #a9a9a9;
+  box-shadow: 0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02);
+  border-radius: 6px;
+  background: none;
+  color: #a9a9a9;
+  height: 30px;
+  font-size: 16px;
+  padding-left: 5px;
+  outline: none;
+  transition: border-color 0.1s linear;
+    -moz-transition: border-color 0.1s linear;   
+    -o-transition: border-color 0.1s linear;     
+    -webkit-transition: border-color 0.1s linear; 
+}
+
 .tab-wrapper {
   width: 1024px;
   text-align: center;
@@ -41,6 +57,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .data-module {
@@ -129,21 +146,6 @@
   width: 90%;
 }
 
-.text input {
-  border: 1px solid #a9a9a9;
-  box-shadow: 0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02);
-  border-radius: 6px;
-  background: none;
-  color: #a9a9a9;
-  height: 30px;
-  width: 70%;
-  font-size: 16px;
-  outline: none;
-  transition: border-color 0.1s linear;
-    -moz-transition: border-color 0.1s linear;   
-    -o-transition: border-color 0.1s linear;     
-    -webkit-transition: border-color 0.1s linear; 
-}
 
 .text input:hover {
   border-color: #323232;
@@ -219,4 +221,8 @@
   width: 35%;
   padding-inline-start: 10px;
   text-align: left;
+}
+
+#select-multiple-native {
+  height: 200px;
 }

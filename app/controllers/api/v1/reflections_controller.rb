@@ -31,7 +31,11 @@ module Api::V1
                         :need,
                         :need_level,
                         :need_reason,
-                        :pressure_level)
+                        :pressure_level,
+                        :value,
+                        :value_phrase,
+                        :value_action,
+                        :value_origin)
         end
     end
 end
