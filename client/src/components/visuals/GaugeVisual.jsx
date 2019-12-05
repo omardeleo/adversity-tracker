@@ -4,7 +4,7 @@ import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import am4themes_dark from "@amcharts/amcharts4/themes/dark";
 
-export const GuageVisual = props => {
+export const GaugeVisual = props => {
   useEffect(() => {
     renderNeedsGauge();
     // return function cleanup() {
