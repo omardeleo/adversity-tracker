@@ -12,7 +12,6 @@ module Api::V1
     end
 
     def create
-
     @adversity = Adversity.create(adversity_params)
       if @adversity.save
         
@@ -34,7 +33,8 @@ module Api::V1
     def adversity_params
       params.require(:adversity).permit(
           :user_id, 
-          :title
+          :title,
+          :adversity_date
       )
     end
   end
