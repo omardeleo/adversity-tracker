@@ -13,6 +13,8 @@ class AdversityTracker extends React.Component {
     handleAccept(e) {
         e.preventDefault();
         const { title, story, feelings, adding, currentUser } = this.props;
+        let pastDate = document.querySelector('#past-date').value.split("/");
+        pastDate = [pastDate[1], pastDate[0], pastDate[2]].join("/")
         const user_id = currentUser.id;
         
         if (adding) {
@@ -30,11 +32,9 @@ class AdversityTracker extends React.Component {
                 .then(() => this.props.clearForm())
                 .then(() => this.props.history.push('/analyzer'));
         } else {
-            
-            this.props.createAdversity({ title, user_id })
+            this.props.createAdversity({ title, user_id, adversity_date: pastDate })
                 .then(({ adversity }) => {
-                    
-                    return createRecognition(adversity.id, story);
+                    return createRecognition(adversity.id, story, pastDate);
                 }).then(recognition => {
                     for (let feel of feelings) {
                         const { feeling, sliderVal } = feel;
