@@ -6,7 +6,7 @@ import { Reflection } from "./reflection/Reflection";
 import { Retrospection } from "./retrospection/Retrospection";
 import { createRecognition } from "../util/recognition_api_util";
 import { createFeeling } from "../util/feeling_api_util";
-import { getPastDateValue } from "../util/date_util";
+import { getPastDateValue, validatePastDate } from "../util/date_util";
 import './AdversityTracker.css';
 
 class AdversityTracker extends React.Component {
@@ -16,37 +16,48 @@ class AdversityTracker extends React.Component {
         const { title, story, feelings, adding, currentUser } = this.props;
         const pastDate = getPastDateValue();
         const user_id = currentUser.id;
-        
+
+        // let isValidDate;
+
+        // if (pastDate) {
+        //     isValidDate = validatePastDate(pastDate);
+        // }
+
         if (adding) {
             createRecognition(this.props.adversity_id, story, pastDate)
-                .then(recognition => {
-                    for (let feel of feelings) {
-                        const { feeling, sliderVal } = feel;
-                        createFeeling({
-                            name: feeling,
-                            intensity: sliderVal,
-                            recognition_id: recognition.id
-                        });
-                    }
-                })
-                .then(() => this.props.clearForm())
-                .then(() => this.props.history.push('/analyzer'));
+            .then(recognition => {
+                for (let feel of feelings) {
+                const { feeling, sliderVal } = feel;
+                createFeeling({
+                    name: feeling,
+                    intensity: sliderVal,
+                    recognition_id: recognition.id
+                });
+                }
+            })
+            .then(() => this.props.clearForm())
+            .then(() => this.props.history.push("/analyzer"));
         } else {
-            this.props.createAdversity({ title, user_id, adversity_date: pastDate })
-                .then(({ adversity }) => {
-                    return createRecognition(adversity.id, story, pastDate);
-                }).then(recognition => {
-                    for (let feel of feelings) {
-                        const { feeling, sliderVal } = feel;
-                        createFeeling({
-                            name: feeling,
-                            intensity: sliderVal,
-                            recognition_id: recognition.id
-                        });
-                    }
-                }).then(() => this.props.clearForm())
-                .then(() => this.props.history.push('/analyzer'));
+            this.props
+            .createAdversity({ title, user_id, adversity_date: pastDate })
+            .then(({ adversity }) => {
+                return createRecognition(adversity.id, story, pastDate);
+            })
+            .then(recognition => {
+                for (let feel of feelings) {
+                const { feeling, sliderVal } = feel;
+                createFeeling({
+                    name: feeling,
+                    intensity: sliderVal,
+                    recognition_id: recognition.id
+                });
+                }
+            })
+            .then(() => this.props.clearForm())
+            .then(() => this.props.history.push("/analyzer"));
         }
+
+        
     }
 
     generateFormButtons(actions) {
