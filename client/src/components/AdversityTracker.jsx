@@ -6,6 +6,7 @@ import { Reflection } from "./reflection/Reflection";
 import { Retrospection } from "./retrospection/Retrospection";
 import { createRecognition } from "../util/recognition_api_util";
 import { createFeeling } from "../util/feeling_api_util";
+import { getPastDateValue } from "../util/date_util";
 import './AdversityTracker.css';
 
 class AdversityTracker extends React.Component {
@@ -13,8 +14,7 @@ class AdversityTracker extends React.Component {
     handleAccept(e) {
         e.preventDefault();
         const { title, story, feelings, adding, currentUser } = this.props;
-        let pastDate = document.querySelector('#past-date').value.split("/");
-        pastDate = [pastDate[1], pastDate[0], pastDate[2]].join("/")
+        const pastDate = getPastDateValue();
         const user_id = currentUser.id;
         
         if (adding) {
@@ -50,7 +50,7 @@ class AdversityTracker extends React.Component {
     }
 
     generateFormButtons(actions) {
-        let {accept, clear} = actions;
+        const {accept, clear} = actions;
         
         return(
             <div className="button-container">
@@ -61,7 +61,6 @@ class AdversityTracker extends React.Component {
     }
 
     generateInputFields() {
-
         const { story, feelings, subtab } = this.props;
         
         if (subtab === 'Recognition') {
@@ -73,6 +72,8 @@ class AdversityTracker extends React.Component {
                     <AdversityTitle adding={adding} title={title} handleTitle={updateTitle} />
                     {formButtons}
                 </div>
+                <label htmlFor="past-date">Past adversity date: </label>
+                <input id="past-date" placeholder="ex: 12/13/2017" />
                 <Recognition handleStory={this.props.updateStory}
                 story={story}
                 feelings={feelings}
@@ -88,11 +89,9 @@ class AdversityTracker extends React.Component {
         } else {
             return <Retrospection />
         }
-
     }
 
     render() {
-        
         const inputFields = this.generateInputFields();
         
         return (

@@ -22,3 +22,8 @@ export const getDateRange = () => {
 export const displayMonth = () => {
     return currentDate.toLocaleString('default', { month: 'long', year: 'numeric' });
 }
+
+export const getPastDateValue = () => {
+    let pastDate = document.querySelector('#past-date').value.split("/");
+    return [pastDate[1], pastDate[0], pastDate[2]].join("/")
+}
