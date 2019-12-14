@@ -134,10 +134,12 @@ class Chart extends React.Component {
               }
               let dateOptions = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true };
               
+              let timestamp = recognition.recognition_date ? recognition.recognition_date : recognition.timestamp;
+
               let obj = {
                   title: adversity.title, 
-                  timestamp: recognition.timestamp,
-                  displayDate: new Date(recognition.timestamp).toLocaleString('en-US', dateOptions),
+                  timestamp: timestamp,
+                  displayDate: new Date(timestamp).toLocaleString('en-US', dateOptions),
                   story: recognition.story,
                   story_trunc: recognition.story.length > 140 ? recognition.story.slice(0, 140) + "..." : recognition.story.slice(0,140),
                   feelings: extractFeelings(recognition.feelings)
