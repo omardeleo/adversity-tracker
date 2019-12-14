@@ -21,3 +21,7 @@
 .accept-button:hover {
   border: 1px solid #606060;
 }
+
+.date-hidden {
+  visibility: hidden;
+}
