@@ -42,8 +42,6 @@ export default function AdversityTitle(props) {
                 variant="outlined"
                 onChange={e => props.handleTitle(e.target.value)}
             />
-            <input id="past-date" placeholder="ex: 12/13/2017" />
-            <label for="past-date">Past adversity date</label>
         </div>
     );
 }
