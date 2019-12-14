@@ -1,3 +1,5 @@
+import moment from "moment";
+
 let currentDate = new Date();
 let [thisMonth, today, thisYear] = [currentDate.getMonth(),
     currentDate.getDate(),
@@ -26,4 +28,10 @@ export const displayMonth = () => {
 export const getPastDateValue = () => {
     let pastDate = document.querySelector('#past-date').value.split("/");
     return [pastDate[1], pastDate[0], pastDate[2]].join("/")
+}
+
+export const validatePastDate = (date) => {
+    let adjustedDate = date.split('/');
+    adjustedDate = `${adjustedDate[1]}/${adjustedDate[0]}/${adjustedDate[2]}`;
+    return moment(adjustedDate, "M/D/YYYY", true).isValid();
 }
