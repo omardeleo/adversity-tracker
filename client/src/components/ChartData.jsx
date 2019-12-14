@@ -49,7 +49,8 @@ class ChartData extends React.Component {
             let recognitions = [];
             for (let recognition of adversity.recognitions) {
                 let { feelings, story } = recognition;
-                recognitions.push({ 
+                recognitions.push({
+                    recognition_date: recognition.recognition_date, 
                     timestamp: recognition.created_at, 
                     story, 
                     feelings: this.mapIntensityValues(feelings)
