@@ -52,7 +52,7 @@ class AdversityTracker extends React.Component {
     generateFormButtons(actions) {
         const {accept, clear} = actions;
         
-        return(
+        return (
             <div className="button-container">
                 <div className="accept-button" onClick={accept}>accept</div>
                 <div className="clear-button" onClick={clear}>clear</div>
@@ -60,26 +60,44 @@ class AdversityTracker extends React.Component {
         )
     }
 
+    handleCheck(e) {
+        const dateInput = document.querySelector('.date-input');
+        dateInput.classList.toggle('date-hidden');
+    }
+
     generateInputFields() {
         const { story, feelings, subtab } = this.props;
         
         if (subtab === 'Recognition') {
             const { adding, title, updateTitle } = this.props;
-            let action = { accept: this.handleAccept.bind(this), clear: this.props.clearForm }
-            let formButtons = this.generateFormButtons(action)
+            let action = { accept: this.handleAccept.bind(this), clear: this.props.clearForm };
+            let formButtons = this.generateFormButtons(action);
+
             return <div className="tracker-container"> 
                 <div className="header-wrapper">
                     <AdversityTitle adding={adding} title={title} handleTitle={updateTitle} />
                     {formButtons}
                 </div>
-                <label htmlFor="past-date">Past adversity date: </label>
-                <input id="past-date" placeholder="ex: 12/13/2017" />
-                <Recognition handleStory={this.props.updateStory}
-                story={story}
-                feelings={feelings}
-                handleAddSlider={this.props.addSlider}
-                handleFeelingTextChange={this.props.updateFeelingText}
-                handleSliderChange={this.props.updateFeelingValue}
+                <div className="date-check">
+                    <input 
+                        id="past-check" 
+                        type="checkbox"
+                        onClick={this.handleCheck.bind(this)}
+                    >
+                    </input> 
+                    <label htmlFor="past-check">This adversity occurred in the past</label>
+                </div>
+                <div className="date-input date-hidden">
+                    <label htmlFor="past-date">Past adversity date: </label>
+                    <input id="past-date" placeholder="ex: 12/13/2017" />
+                </div>
+                <Recognition 
+                    handleStory={this.props.updateStory}
+                    story={story}
+                    feelings={feelings}
+                    handleAddSlider={this.props.addSlider}
+                    handleFeelingTextChange={this.props.updateFeelingText}
+                    handleSliderChange={this.props.updateFeelingValue}
                 />
                 </div>
         } else if (subtab === 'Reflection') {
