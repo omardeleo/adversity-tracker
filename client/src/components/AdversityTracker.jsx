@@ -18,7 +18,7 @@ class AdversityTracker extends React.Component {
         const user_id = currentUser.id;
         
         if (adding) {
-            createRecognition(this.props.adversity_id, story)
+            createRecognition(this.props.adversity_id, story, pastDate)
                 .then(recognition => {
                     for (let feel of feelings) {
                         const { feeling, sliderVal } = feel;
