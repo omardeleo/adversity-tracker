@@ -22,6 +22,30 @@
   border: 1px solid #606060;
 }
 
+.date-check, .date-input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 38px;
+  margin: 10px 0;
+}
+
+.date-check input {
+  margin-right: 10px;
+}
+
+.date-input input{
+  margin-left: 10px;
+}
+
+.date-input input::placeholder {
+  color: #555
+}
+
 .date-hidden {
-  visibility: hidden;
+  display:none;
+}
+
+.date-error {
+  color: red;
 }
