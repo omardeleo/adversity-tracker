@@ -10,54 +10,66 @@ import { getPastDateValue, validatePastDate } from "../util/date_util";
 import './AdversityTracker.css';
 
 class AdversityTracker extends React.Component {
+    validateForm(title, story, feelings) {
+        return title.length > 0 && story.length > 0 
+            && feelings.every(feeling => feeling.feeling.length > 0);
+    }
 
     handleAccept(e) {
         e.preventDefault();
         const { title, story, feelings, adding, currentUser } = this.props;
-        const pastDate = getPastDateValue();
+        const pastDateChecked = document.querySelector('#past-check').checked;
         const user_id = currentUser.id;
+        let pastDate;
+        let isValidDate;
+        let isValidForm = this.validateForm(title, story, feelings)
 
-        // let isValidDate;
-
-        // if (pastDate) {
-        //     isValidDate = validatePastDate(pastDate);
-        // }
-
-        if (adding) {
-            createRecognition(this.props.adversity_id, story, pastDate)
-            .then(recognition => {
-                for (let feel of feelings) {
-                const { feeling, sliderVal } = feel;
-                createFeeling({
-                    name: feeling,
-                    intensity: sliderVal,
-                    recognition_id: recognition.id
-                });
-                }
-            })
-            .then(() => this.props.clearForm())
-            .then(() => this.props.history.push("/analyzer"));
-        } else {
-            this.props
-            .createAdversity({ title, user_id, adversity_date: pastDate })
-            .then(({ adversity }) => {
-                return createRecognition(adversity.id, story, pastDate);
-            })
-            .then(recognition => {
-                for (let feel of feelings) {
-                const { feeling, sliderVal } = feel;
-                createFeeling({
-                    name: feeling,
-                    intensity: sliderVal,
-                    recognition_id: recognition.id
-                });
-                }
-            })
-            .then(() => this.props.clearForm())
-            .then(() => this.props.history.push("/analyzer"));
+        if (pastDateChecked) {
+            pastDate = getPastDateValue();
+            isValidDate = validatePastDate(pastDate);
         }
 
-        
+        if (pastDateChecked && !isValidDate) {
+            let errorDiv = document.querySelector('.date-error');
+            errorDiv.classList.toggle('date-hidden');
+        } else if (isValidForm) {
+            if (adding) {
+                createRecognition(this.props.adversity_id, story, pastDate)
+                    .then(recognition => {
+                        for (let feel of feelings) {
+                            const { feeling, sliderVal } = feel;
+                            createFeeling({
+                                name: feeling,
+                                intensity: sliderVal,
+                                recognition_id: recognition.id
+                            });
+                        }
+                    })
+                    .then(() => {
+                        this.props.clearForm();
+
+                    })
+                    .then(() => this.props.history.push("/analyzer"));
+            } else {
+                this.props
+                    .createAdversity({ title, user_id, adversity_date: pastDate })
+                    .then(({ adversity }) => {
+                        return createRecognition(adversity.id, story, pastDate);
+                    })
+                    .then(recognition => {
+                        for (let feel of feelings) {
+                            const { feeling, sliderVal } = feel;
+                            createFeeling({
+                                name: feeling,
+                                intensity: sliderVal,
+                                recognition_id: recognition.id
+                            });
+                        }
+                    })
+                    .then(() => this.props.clearForm())
+                    .then(() => this.props.history.push("/analyzer"));
+            }
+        }
     }
 
     generateFormButtons(actions) {
@@ -89,18 +101,23 @@ class AdversityTracker extends React.Component {
                     <AdversityTitle adding={adding} title={title} handleTitle={updateTitle} />
                     {formButtons}
                 </div>
-                <div className="date-check">
-                    <input 
-                        id="past-check" 
-                        type="checkbox"
-                        onClick={this.handleCheck.bind(this)}
-                    >
-                    </input> 
-                    <label htmlFor="past-check">This adversity occurred in the past</label>
-                </div>
-                <div className="date-input date-hidden">
-                    <label htmlFor="past-date">Past adversity date: </label>
-                    <input id="past-date" placeholder="ex: 12/13/2017" />
+                <div className="past-date-module">
+                    <div className="date-check">
+                        <input
+                            id="past-check"
+                            type="checkbox"
+                            onClick={this.handleCheck.bind(this)}
+                        >
+                        </input>
+                        <label htmlFor="past-check">I'm recognizing a past adversity</label>
+                    </div>
+                    <div className="date-input date-hidden">
+                        <label htmlFor="past-date">This adversity occurred on... </label>
+                        <input id="past-date" placeholder="MM/DD/YYYY" />
+                    </div>
+                    <div className="date-error date-hidden">
+                        Please enter a valid date
+                    </div>
                 </div>
                 <Recognition 
                     handleStory={this.props.updateStory}
