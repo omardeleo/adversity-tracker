@@ -86,6 +86,10 @@ class AdversityTracker extends React.Component {
     handleCheck(e) {
         const dateInput = document.querySelector('.date-input');
         dateInput.classList.toggle('date-hidden');
+        let errorDiv = document.querySelector('.date-error');
+        if (!errorDiv.classList.contains('date-hidden')) {
+            errorDiv.classList.toggle('date-hidden');
+        }
     }
 
     generateInputFields() {
