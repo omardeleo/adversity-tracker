@@ -134,10 +134,12 @@ class Chart extends React.Component {
               }
               let dateOptions = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true };
               
+              let timestamp = recognition.recognition_date ? recognition.recognition_date : recognition.timestamp;
+
               let obj = {
                   title: adversity.title, 
-                  timestamp: recognition.timestamp,
-                  displayDate: new Date(recognition.timestamp).toLocaleString('en-US', dateOptions),
+                  timestamp: timestamp,
+                  displayDate: new Date(timestamp).toLocaleString('en-US', dateOptions),
                   story: recognition.story,
                   story_trunc: recognition.story.length > 140 ? recognition.story.slice(0, 140) + "..." : recognition.story.slice(0,140),
                   feelings: extractFeelings(recognition.feelings)
@@ -212,8 +214,8 @@ class Chart extends React.Component {
               closeModalIcon.innerHTML = 'close';
               closeModalIcon.addEventListener("click", () => chart.modal.close())
               this.chart.openModal(modalHtml);
-              let closeModalDiv = document.querySelector('.ampopup-close')
-              closeModalDiv.replaceWith(closeModalIcon)
+              let closeModalDiv = document.querySelector('.modal')
+              closeModalDiv.append(closeModalIcon)
           }, this);
           series.data = data;
           series.showOnInit = false;

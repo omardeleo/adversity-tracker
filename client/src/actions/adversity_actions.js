@@ -20,11 +20,8 @@ export const fetchAdversities = id => dispatch => (
 );
 
 export const createAdversity = (adversity) => dispatch => {
-    
-    return (APIUtil.createAdversity(adversity)
-    .then(adversity => { 
-        
-       return dispatch(receiveAdversity(adversity));
-        }
-    ));
-    };
+    return APIUtil.createAdversity(adversity)
+        .then(adversity => {   
+            return dispatch(receiveAdversity(adversity));
+        });
+};
