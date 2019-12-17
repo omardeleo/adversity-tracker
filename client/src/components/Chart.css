@@ -81,6 +81,7 @@
   flex-direction: column;
   align-items: flex-start;
   flex: 2;
+  text-align: left;
 }
 
 .feelings-container {
@@ -88,6 +89,10 @@
   flex-direction: column;
   align-items: flex-start;
   flex: 1;
+}
+
+.score {
+  margin-right: 10px;
 }
 
 .feeling-header, .feeling-container {
