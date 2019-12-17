@@ -214,8 +214,8 @@ class Chart extends React.Component {
               closeModalIcon.innerHTML = 'close';
               closeModalIcon.addEventListener("click", () => chart.modal.close())
               this.chart.openModal(modalHtml);
-              let closeModalDiv = document.querySelector('.ampopup-close')
-              closeModalDiv.replaceWith(closeModalIcon)
+              let closeModalDiv = document.querySelector('.modal')
+              closeModalDiv.append(closeModalIcon)
           }, this);
           series.data = data;
           series.showOnInit = false;
